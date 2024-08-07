@@ -7,7 +7,7 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem("token") || "");
   const [user, setUser] = useState(null);
-  const [services, setServices] = useState([]);
+  const [syllabus, setSyllabus] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const authorizationToken = `Bearer ${token}`;
 
@@ -48,16 +48,16 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const getServiceData = async () => {
+  const getSyllabusData = async () => {
     try {
       const response = await fetch(`${backendUrl}/api/data/syllabus`, {
         method: "GET",
       });
       if (response.ok) {
-        const services = await response.json();
-        setServices(services.msg);
+        const syllabus = await response.json();
+        setSyllabus(syllabus.msg);
       } else {
-        console.error("Error fetching services data");
+        console.error("Error fetching Syllabus data");
       }
     } catch (error) {
       console.log(error);
@@ -66,13 +66,13 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     userAuthentication();
-    getServiceData();
+    getSyllabusData();
   }, [authorizationToken]);
 
   const isLoggedIn = !!token;
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, storeTokenInLS, logoutUser, user, services, authorizationToken, isLoading }}>
+    <AuthContext.Provider value={{ isLoggedIn, storeTokenInLS, logoutUser, user, syllabus, authorizationToken, isLoading }}>
       {children}
     </AuthContext.Provider>
   );

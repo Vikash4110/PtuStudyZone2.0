@@ -22,7 +22,7 @@ const Navbar = () => {
         </Link>
         <div className="hidden md:flex flex-grow justify-center items-center space-x-8">
           <Link to="/about" className="font-bold text-sm md:text-base hover:text-blue-700 transition-colors duration-300">About Us</Link>
-          <Link to="/service" className="font-bold text-sm md:text-base hover:text-blue-700 transition-colors duration-300">Services</Link>
+          <Link to="/syllabus" className="font-bold text-sm md:text-base hover:text-blue-700 transition-colors duration-300">Syllabus</Link>
           <Link to="/contact" className="font-bold text-sm md:text-base hover:text-blue-700 transition-colors duration-300">Contact Us</Link>
         </div>
         <div className="hidden md:flex items-center space-x-4">
@@ -55,7 +55,7 @@ const Navbar = () => {
       {isOpen && (
         <div className="md:hidden mt-4 space-y-2">
           <Link to="/about" className="block font-bold text-sm hover:text-blue-700 transition-colors duration-300" onClick={() => setIsOpen(false)}>About Us</Link>
-          <Link to="/service" className="block font-bold text-sm hover:text-blue-700 transition-colors duration-300" onClick={() => setIsOpen(false)}>Services</Link>
+          <Link to="/syllabus" className="block font-bold text-sm hover:text-blue-700 transition-colors duration-300" onClick={() => setIsOpen(false)}>Syllabus</Link>
           <Link to="/contact" className="block font-bold text-sm hover:text-blue-700 transition-colors duration-300" onClick={() => setIsOpen(false)}>Contact Us</Link>
           {isLoggedIn ? (
             <>
