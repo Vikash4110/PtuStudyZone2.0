@@ -1,12 +1,13 @@
 const User = require("../models/user-model");
 const bcrypt = require('bcryptjs');
 
+// Home Route
 const home = async (req, res) => {
     res.status(200).send("Hello World");
 };
 
 // User Registration Logic
-const register = async (req, res, next) => {
+const register = async (req, res) => {
     try {
         const { username, rollno, department, semester, email, phone, password } = req.body;
 
@@ -15,14 +16,26 @@ const register = async (req, res, next) => {
             return res.status(400).json({ message: "Email already exists" });
         }
 
-        const newUser = await User.create({ username, rollno, department, semester, email, phone, password });
+        const newUser = new User({
+            username,
+            rollno,
+            department,
+            semester,
+            email,
+            phone,
+            password // Password will be hashed in the pre-save hook
+        });
+
+        await newUser.save(); // Save the user to the database
+
         res.status(201).json({
             msg: "Registration Successful",
             token: await newUser.generateToken(),
             userId: newUser._id.toString(),
         });
     } catch (err) {
-        next(err);
+        console.error("Registration error:", err);
+        res.status(500).json({ message: "Internal Server Error" });
     }
 };
 
@@ -36,7 +49,7 @@ const login = async (req, res) => {
             return res.status(400).json({ message: "Invalid Credentials" });
         }
 
-        const isPasswordValid = await userExist.comparePassword(password);
+        const isPasswordValid = await userExist.comparePassword(password); // Use comparePassword method
         if (isPasswordValid) {
             res.status(200).json({
                 msg: "Login Successful",

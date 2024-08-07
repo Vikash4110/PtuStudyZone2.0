@@ -1,15 +1,15 @@
-// server.js
 require('dotenv').config();
 const express = require('express');
 const connectDb = require('./utils/db');
-const app = express();
 const cors = require('cors');
 const authRoute = require('./router/auth-router');
 const contactRoute = require('./router/contact-user');
 const syllabusRoute = require('./router/syllabus-router');
 const errorMiddleware = require('./middlewares/error-middleware');
 const path = require('path');
+
 const Port = process.env.PORT || 3000;
+const app = express();
 
 const corsOptions = {
     origin: ['http://localhost:5173', 'https://ptustudyzone.vercel.app'],
@@ -28,9 +28,11 @@ app.get('/', (req, res) => {
     res.send('Hello Ptu');
 });
 
+// Error handling middleware
 app.use(errorMiddleware);
 
-app.use((req, res, next) => {
+// 404 Error handler
+app.use((req, res) => {
   console.log(`404 Error - Path: ${req.path}`);
   res.status(404).json({ msg: 'Not Found' });
 });
