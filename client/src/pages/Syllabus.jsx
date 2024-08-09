@@ -9,9 +9,9 @@ const Syllabus = () => {
   const [selectedSemester, setSelectedSemester] = useState("1"); // Default to first semester
   const [filteredSyllabus, setFilteredSyllabus] = useState([]);
 
-  useEffect(() => {
-    AOS.init({ duration: 1000 });
-  }, []);
+  // useEffect(() => {
+  //   AOS.init({ duration: 500 });
+  // }, []);
 
   useEffect(() => {
     // Filter syllabus based on selected semester
@@ -50,18 +50,17 @@ const Syllabus = () => {
           {filteredSyllabus.length > 0 ? (
             filteredSyllabus.map((curElem, index) => (
               <div
-                className={`bg-white rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105 p-6 border-t-4 ${
+                className={`bg-white rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-100 p-6 border-t-4 ${
                   index % 2 === 0 ? "border-blue-500" : "border-green-500"
                 }`}
                 key={index}
-                data-aos="fade-up"
+  
               >
                 <div className="w-full h-40 mb-4 overflow-hidden rounded-lg">
                   <img
                     src={ServiceImg}
                     alt={curElem.service}
-                    className="object-contain w-full h-full"
-                  />
+                    className="object-contain w-full h-full"/>
                 </div>
                 <h2 className="text-xl md:text-2xl font-bold text-blue-800 mb-2">{curElem.service}</h2>
                 <p className="text-sm md:text-base text-gray-600 mb-2">
@@ -75,8 +74,9 @@ const Syllabus = () => {
                 </p>
                 <a
                   href={curElem.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="block w-full text-center mt-4 px-3 py-2 text-sm md:text-base text-white rounded-lg bg-blue-600 hover:bg-blue-700 transition-colors duration-300"
-                  download
                 >
                   Download Syllabus
                 </a>

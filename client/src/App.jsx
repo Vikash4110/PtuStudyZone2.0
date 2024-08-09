@@ -17,7 +17,7 @@ import AdminServices from "./pages/AdminServices";
 import AdminAddService from "./pages/AdminAddService";
 import AdminEditService from "./pages/AdminEditService";
 import UpdateUser from "./pages/UpdateUser";
-
+import { Link, Navigate} from "react-router-dom";
 const App = () => {
   return (
     <BrowserRouter>
@@ -32,6 +32,8 @@ const App = () => {
         <Route path="/update-profile" element={<UpdateUser />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/admin" element={<AdminLayout />}>
+        <Route index element={<Navigate to="/admin/users" />} />
+
           <Route path="users" element={<AdminUsers />} />
           <Route path="contacts" element={<AdminContacts />} />
           <Route path="users/:id/edit" element={<AdminUpdate />} />

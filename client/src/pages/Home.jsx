@@ -1,8 +1,12 @@
 import AOS from "aos";
 import { useEffect } from "react";
+import { useAuth } from "../store/auth"; // Import the useAuth hook to access auth state
+import { Link } from "react-router-dom"; // Import Link to navigate to the Admin Panel
 import BackImg from "../assets/ptu-main-building.jpg";
 
 const Home = () => {
+  const { isAdmin } = useAuth(); // Get the isAdmin status from auth
+
   useEffect(() => {
     AOS.init({ duration: 1000 }); // Initialize AOS for animations
   }, []);
@@ -23,6 +27,18 @@ const Home = () => {
         <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded transition duration-300" data-aos="fade-up" data-aos-delay="400">
           Get Started
         </button>
+        {/* Conditionally render the Access Admin Panel button if the user is an admin */}
+        <br />
+        {isAdmin && (
+          <Link
+            to="/admin"
+            className="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 mt-6 rounded transition duration-300 block md:inline-block"
+            data-aos="fade-up"
+            data-aos-delay="600"
+          >
+            Access Admin Panel
+          </Link>
+        )}
       </div>
       <div className="relative z-10 mt-12 text-center">
         <h2 className="text-2xl md:text-3xl font-semibold text-white" data-aos="fade-up">

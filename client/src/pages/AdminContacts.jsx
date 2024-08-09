@@ -1,11 +1,13 @@
 import { useAuth } from "../store/auth";
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
+import { Instagram } from 'react-content-loader';
 
 const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 const AdminContacts = () => {
   const [contactData, setContactData] = useState([]);
+  const [loading, setLoading] = useState(true);
   const { authorizationToken } = useAuth();
 
   const getContactsData = async () => {
@@ -31,6 +33,8 @@ const AdminContacts = () => {
       }
     } catch (error) {
       console.error("Error fetching contacts:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -62,8 +66,15 @@ const AdminContacts = () => {
     getContactsData();
   }, []);
 
+
+  if (loading) {
+    return <Instagram />;
+  }
+
   return (
     <>
+    <br />
+    <br />
     <section className="py-12 bg-gray-100 min-h-screen">
       <div className="container mx-auto px-4">
         <h1 className="text-4xl font-bold text-center text-gray-800 mb-8">Admin Contacts</h1>

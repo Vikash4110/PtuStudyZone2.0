@@ -69,10 +69,13 @@ export const AuthProvider = ({ children }) => {
     getSyllabusData();
   }, [authorizationToken]);
 
+  // Determine if the user is an admin based on the user data
+  const isAdmin = user && user.isAdmin === true;
+
   const isLoggedIn = !!token;
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, storeTokenInLS, logoutUser, user, syllabus, authorizationToken, isLoading }}>
+    <AuthContext.Provider value={{ isLoggedIn, storeTokenInLS, logoutUser, user, syllabus, authorizationToken, isLoading, isAdmin }}>
       {children}
     </AuthContext.Provider>
   );

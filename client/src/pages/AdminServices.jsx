@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useAuth } from "../store/auth";
 import { toast } from "react-toastify";
 import { Link } from 'react-router-dom';
+import { Instagram } from 'react-content-loader';
 
 const AdminServices = () => {
   const [syllabus, setSyllabus] = useState([]);
@@ -77,9 +78,14 @@ const AdminServices = () => {
     getAllSyllabusData();
   }, []);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) {
+    return <Instagram />;
+  }
 
   return (
+    <>
+    <br />
+    <br />
     <section className="bg-white shadow-md rounded my-6">
       <div className="p-6">
         <h1 className="text-2xl font-semibold mb-4">Admin Syllabus Data</h1>
@@ -122,6 +128,7 @@ const AdminServices = () => {
         </div>
       </div>
     </section>
+    </> 
   );
 };
 
