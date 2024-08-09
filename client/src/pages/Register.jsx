@@ -3,7 +3,7 @@ import PtuImg from "../assets/PTULogo.gif";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../store/auth";
 import { toast } from "react-toastify";
-
+import BackImg from "../assets/ptu-main-building.jpg";
 const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 const Register = () => {

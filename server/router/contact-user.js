@@ -1,7 +1,6 @@
-// router/contact-user.js
 const express = require('express');
 const router = express.Router();
-const { contactForm } = require('../controllers/contact-controller'); // Correct path to your controller
+const { contactForm } = require('../controllers/contact-controller'); // Ensure this path is correct
 
 router.post('/contact', contactForm);
 

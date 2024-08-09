@@ -76,4 +76,18 @@ const user = async (req, res) => {
     }
 };
 
-module.exports = { home, register, login, user };
+
+const updateUser = async (req, res) => {
+    try {
+      const { username, rollno, department, semester, email, phone } = req.body;
+      const userId = req.user._id;
+  
+      const updatedUser = await User.findByIdAndUpdate(userId, { username, rollno, department, semester, email, phone }, { new: true, runValidators: true });
+      res.status(200).json({ message: "User updated successfully", userData: updatedUser });
+    } catch (error) {
+      console.error('Error updating user:', error);
+      res.status(500).json({ message: "Internal Server Error" });
+    }
+  };
+
+module.exports = { home, register, login, user, updateUser };
