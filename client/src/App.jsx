@@ -8,6 +8,7 @@ import Contact from "./pages/Contact";
 import Navbar from "./components/Navbar";
 import Error from "./pages/Error"; // Ensure this is imported
 import Syllabus from "./pages/Syllabus";
+import Pyq from "./pages/Pyq";
 import UserDashboard from "./pages/UserDashboard"; // Import UserDashboard
 import AdminLayout from "./components/layouts/AdminLayout";
 import AdminUsers from "./pages/AdminUsers";
@@ -16,6 +17,9 @@ import AdminUpdate from "./pages/AdminUpdate";
 import AdminSyllabus from "./pages/AdminSyllabus";
 import AdminAddSyllabus from "./pages/AdminAddSyllabus";
 import AdminEditSyllabus from "./pages/AdminEditSyllabus";
+import AdminPyq from "./pages/AdminPyq";
+import AdminEditPyq from "./pages/AdminEditPyq";
+import AdminAddPyq from "./pages/AdminAddPyq";
 import UpdateUser from "./pages/UpdateUser";
 import { Link, Navigate} from "react-router-dom";
 const App = () => {
@@ -28,6 +32,7 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/syllabus" element={<Syllabus />} />
+        <Route path="/pyq" element={<Pyq />} />
         <Route path="/dashboard" element={<UserDashboard />} />
         <Route path="/update-profile" element={<UpdateUser />} />
         <Route path="/contact" element={<Contact />} />
@@ -39,6 +44,9 @@ const App = () => {
           <Route path="syllabus" element={<AdminSyllabus />} />
           <Route path="syllabus/add" element={<AdminAddSyllabus />} />
           <Route path="syllabus/:id/edit" element={<AdminEditSyllabus />} />
+          <Route path="pyq" element={<AdminPyq />} />
+          <Route path="pyq/add" element={<AdminAddPyq />} />
+          <Route path="pyq/:id/edit" element={<AdminEditPyq />} />
         </Route>
         <Route path="*" element={<Error />} />{" "}
         {/* This will catch all undefined routes */}

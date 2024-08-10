@@ -7,6 +7,7 @@ const contactRoute = require('./router/contact-user');
 const syllabusRoute = require('./router/syllabus-router');
 const errorMiddleware = require('./middlewares/error-middleware');
 const adminRoute = require('./router/admin-router');
+const pyqRoute = require("./router/pyq-router");
 const path = require('path');
 
 const Port = process.env.PORT || 3000;
@@ -24,6 +25,7 @@ app.use(express.json());
 app.use('/api/auth', authRoute);
 app.use('/api/form', contactRoute);
 app.use('/api/data', syllabusRoute);
+app.use('/api/data', pyqRoute);
 app.use('/api/admin', adminRoute);
 
 app.get('/', (req, res) => {

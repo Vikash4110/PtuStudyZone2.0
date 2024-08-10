@@ -8,6 +8,7 @@ export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem("token") || "");
   const [user, setUser] = useState(null);
   const [syllabus, setSyllabus] = useState([]);
+  const [pyq, setPyq] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const authorizationToken = `Bearer ${token}`;
 
@@ -64,9 +65,27 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+
+  const getPyqData = async () => {
+    try {
+      const response = await fetch(`${backendUrl}/api/data/pyq`, {
+        method: "GET",
+      });
+      if (response.ok) {
+        const pyq = await response.json();
+        setPyq(pyq.msg);
+      } else {
+        console.error("Error fetching Pyq data");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     userAuthentication();
     getSyllabusData();
+    getPyqData();
   }, [authorizationToken]);
 
   // Determine if the user is an admin based on the user data
@@ -75,7 +94,7 @@ export const AuthProvider = ({ children }) => {
   const isLoggedIn = !!token;
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, storeTokenInLS, logoutUser, user, syllabus, authorizationToken, isLoading, isAdmin }}>
+    <AuthContext.Provider value={{ isLoggedIn, storeTokenInLS, logoutUser, user, syllabus, pyq, authorizationToken, isLoading, isAdmin }}>
       {children}
     </AuthContext.Provider>
   );

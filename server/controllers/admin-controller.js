@@ -1,7 +1,7 @@
 const User = require('../models/user-model');
 const Contact = require('../models/contact-model');
 const Syllabus = require('../models/syllabus-model');
-
+const Pyq = require('../models/pyq-model');
 // User Controllers
 const getAllUsers = async (req, res, next) => {
   try {
@@ -144,6 +144,69 @@ const deleteSyllabusById = async (req, res, next) => {
   }
 };
 
+
+
+// Syllabus Controllers
+const getAllPyq = async (req, res, next) => {
+  try {
+    const pyq = await Pyq.find();
+    if (!pyq.length) return res.status(404).json({ message: 'No pyq found' });
+    res.status(200).json(pyq);
+  } catch (error) {
+    next(error);
+  }
+};
+
+const getPyqById = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const pyq = await Pyq.findOne({ _id: id });
+    if (!pyq) return res.status(404).json({ message: 'pyq not found' });
+    res.status(200).json(pyq);
+  } catch (error) {
+    next(error);
+  }
+};
+
+const addPyq = async (req, res, next) => {
+  try {
+    const { service, semester, subject, subjectcode, linka, linkb, linkc } = req.body;
+    const newPyq = new Pyq({ service, semester, subject, subjectcode, linka, linkb, linkc });
+    await newPyq.save();
+    res.status(201).json({ message: 'Service added successfully' });
+  } catch (error) {
+    next(error);
+  }
+};
+
+const updatePyqById = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const updatedPyqData = req.body;
+
+    // Find the syllabus first
+    const pyq = await Pyq.findOne({ _id: id });
+    if (!pyq) {
+      return res.status(404).json({ message: 'Pyq not found' });
+    }
+
+    // Update the syllabus
+    await Pyq.updateOne({ _id: id }, { $set: updatedPyqData });
+    res.status(200).json({ message: 'Pyq updated successfully' });
+  } catch (error) {
+    next(error);
+  }
+};
+const deletePyqById = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const result = await Pyq.deleteOne({ _id: id });
+    if (!result.deletedCount) return res.status(404).json({ message: 'Pyq not found' });
+    res.status(200).json({ message: 'Pyq deleted successfully' });
+  } catch (error) {
+    next(error);
+  }
+};
 module.exports = {
   getAllUsers,
   getUserById,
@@ -156,4 +219,9 @@ module.exports = {
   addSyllabus,
   updateSyllabusById,
   deleteSyllabusById,
+  getAllPyq,
+  getPyqById,
+  addPyq,
+  updatePyqById,
+  deletePyqById,
 };
