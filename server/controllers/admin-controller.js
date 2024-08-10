@@ -24,13 +24,26 @@ const getUserById = async (req, res, next) => {
   }
 };
 
+// const updateUserById = async (req, res, next) => {
+//   try {
+//     const { id } = req.params;
+//     const updatedUserData = req.body;
+//     const updatedData = await User.updateOne({ _id: id }, { $set: updatedUserData });
+//     if (!updatedData.nModified) return res.status(404).json({ message: 'User not found or data unchanged' });
+//     res.status(200).json({ message: 'User updated successfully' });
+//   } catch (error) {
+//     next(error);
+//   }
+// };
+
 const updateUserById = async (req, res, next) => {
   try {
     const { id } = req.params;
     const updatedUserData = req.body;
-    const updatedData = await User.updateOne({ _id: id }, { $set: updatedUserData });
-    if (!updatedData.nModified) return res.status(404).json({ message: 'User not found or data unchanged' });
-    res.status(200).json({ message: 'User updated successfully' });
+    const updatedUser = await User.findByIdAndUpdate(id, { $set: updatedUserData }, { new: true });
+
+    if (!updatedUser) return res.status(404).json({ message: 'User not found or data unchanged' });
+    res.status(200).json({ message: 'User updated successfully', updatedUser });
   } catch (error) {
     next(error);
   }

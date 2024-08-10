@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { Link } from 'react-router-dom';
 import { Instagram } from 'react-content-loader';
 
-const AdminServices = () => {
+const AdminSyllabus = () => {
   const [syllabus, setSyllabus] = useState([]);
   const [loading, setLoading] = useState(true);
   const { authorizationToken } = useAuth();
@@ -132,4 +132,4 @@ const AdminServices = () => {
   );
 };
 
-export default AdminServices;
+export default AdminSyllabus;

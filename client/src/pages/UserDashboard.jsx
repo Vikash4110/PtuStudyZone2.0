@@ -2,8 +2,15 @@ import React, { useEffect, useState } from "react";
 import { useAuth } from "../store/auth";
 import { toast } from "react-toastify";
 import { motion } from "framer-motion";
-import { Instagram } from 'react-content-loader';
-import { FaUser, FaEnvelope, FaPhone, FaEdit, FaUniversity, FaIdBadge } from 'react-icons/fa';
+import { Instagram } from "react-content-loader";
+import {
+  FaUser,
+  FaEnvelope,
+  FaPhone,
+  FaEdit,
+  FaUniversity,
+  FaIdBadge,
+} from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
 const UserDashboard = () => {
@@ -16,9 +23,9 @@ const UserDashboard = () => {
     const fetchUserData = async () => {
       try {
         const response = await fetch(`${backendUrl}/api/auth/user`, {
-          method: 'GET',
+          method: "GET",
           headers: {
-            Authorization: authorizationToken
+            Authorization: authorizationToken,
           },
         });
 
@@ -29,8 +36,8 @@ const UserDashboard = () => {
         const data = await response.json();
         setUserData(data.userData);
       } catch (error) {
-        console.error('Error fetching user data:', error);
-        toast.error('Failed to fetch user data');
+        console.error("Error fetching user data:", error);
+        toast.error("Failed to fetch user data");
       }
     };
 
@@ -39,7 +46,7 @@ const UserDashboard = () => {
 
   if (!userData) {
     return (
-      <div className="flex justify-center items-center h-screen">
+      <div className="flex justify-center items-center h-screen bg-gray-100">
         <Instagram />
       </div>
     );
@@ -47,103 +54,66 @@ const UserDashboard = () => {
 
   return (
     <>
-    <br /><br /><br />
-    <div className="bg-gradient-to-r from-blue-500 to-purple-600 min-h-screen flex items-center justify-center">
-      <div className="container mx-auto">
-        <motion.div 
-          className="bg-white shadow-lg rounded-lg p-6 mb-6"
+    <br />
+    <div className="bg-gradient-to-br from-blue-600 to-purple-800 min-h-screen flex items-center justify-center">
+      <div className="container mx-auto px-6 py-8">
+        <motion.div
+          className="bg-white shadow-lg rounded-lg p-8 mb-8 text-center"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h1 className="text-3xl font-semibold text-center text-gray-800">User Dashboard</h1>
-          <p className="text-center text-gray-600 mt-2">Welcome back, {userData.username}!</p>
+          <h1 className="text-4xl font-semibold text-gray-800 mb-2">
+            User Dashboard
+          </h1>
+          <p className="text-gray-600">Welcome back, {userData.username}!</p>
         </motion.div>
 
-        <div className="bg-white shadow-md rounded-lg p-4">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4 text-center">Profile Information</h2>
-          <div className="flex flex-col items-center">
-            <motion.div 
-              className="bg-blue-100 p-4 rounded-lg shadow hover:shadow-lg transition-shadow duration-200 mb-4 flex items-center w-full max-w-md"
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <FaUser className="text-blue-600 mr-2" />
-              <div className="flex-grow text-left">
-                <p className="font-semibold text-gray-700">Name:</p>
-                <p className="text-gray-600">{userData.username}</p>
-              </div>
-            </motion.div>
-            <motion.div 
-              className="bg-green-100 p-4 rounded-lg shadow hover:shadow-lg transition-shadow duration-200 mb-4 flex items-center w-full max-w-md"
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <FaIdBadge className="text-green-600 mr-2" />
-              <div className="flex-grow text-left">
-                <p className="font-semibold text-gray-700">University Roll No:</p>
-                <p className="text-gray-600">{userData.rollno}</p>
-              </div>
-            </motion.div>
-            <motion.div 
-              className="bg-yellow-100 p-4 rounded-lg shadow hover:shadow-lg transition-shadow duration-200 mb-4 flex items-center w-full max-w-md"
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <FaUniversity className="text-yellow-600 mr-2" />
-              <div className="flex-grow text-left">
-                <p className="font-semibold text-gray-700">Department:</p>
-                <p className="text-gray-600">{userData.department}</p>
-              </div>
-            </motion.div>
-            <motion.div 
-              className="bg-yellow-100 p-4 rounded-lg shadow hover:shadow-lg transition-shadow duration-200 mb-4 flex items-center w-full max-w-md"
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <FaUniversity className="text-yellow-600 mr-2" />
-              <div className="flex-grow text-left">
-                <p className="font-semibold text-gray-700">Semester:</p>
-                <p className="text-gray-600">{userData.semester}</p>
-              </div>
-            </motion.div>
-            <motion.div 
-              className="bg-yellow-100 p-4 rounded-lg shadow hover:shadow-lg transition-shadow duration-200 mb-4 flex items-center w-full max-w-md"
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <FaEnvelope className="text-yellow-600 mr-2" />
-              <div className="flex-grow text-left">
-                <p className="font-semibold text-gray-700">Email:</p>
-                <p className="text-gray-600">{userData.email}</p>
-              </div>
-            </motion.div>
-            <motion.div 
-              className="bg-yellow-100 p-4 rounded-lg shadow hover:shadow-lg transition-shadow duration-200 mb-4 flex items-center w-full max-w-md"
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <FaPhone className="text-yellow-600 mr-2" />
-              <div className="flex-grow text-left">
-                <p className="font-semibold text-gray-700">Phone:</p>
-                <p className="text-gray-600">{userData.phone}</p>
-              </div>
-            </motion.div>
-            {/* Add more fields as needed */}
+        <div className="bg-white shadow-md rounded-lg p-8">
+          <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">
+            Profile Information
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <ProfileItem
+              icon={<FaUser className="text-blue-500" />}
+              label="Name"
+              value={userData.username}
+            />
+            <ProfileItem
+              icon={<FaIdBadge className="text-green-500" />}
+              label="University Roll No"
+              value={userData.rollno}
+            />
+            <ProfileItem
+              icon={<FaUniversity className="text-yellow-500" />}
+              label="Department"
+              value={userData.department}
+            />
+            <ProfileItem
+              icon={<FaUniversity className="text-yellow-500" />}
+              label="Semester"
+              value={userData.semester}
+            />
+            <ProfileItem
+              icon={<FaEnvelope className="text-red-500" />}
+              label="Email"
+              value={userData.email}
+            />
+            <ProfileItem
+              icon={<FaPhone className="text-green-500" />}
+              label="Phone"
+              value={userData.phone}
+            />
           </div>
-          <div className="flex justify-center mt-6">
-            <button
-              className="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition duration-300 flex items-center"
+          <div className="flex justify-center mt-8">
+            <motion.button
+              className="bg-gradient-to-r from-purple-600 to-blue-500 text-white px-6 py-3 rounded-full font-semibold shadow-md hover:shadow-lg transition duration-300 ease-in-out flex items-center"
               onClick={() => navigate("/update-profile")}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               <FaEdit className="mr-2" /> Update Profile
-            </button>
+            </motion.button>
           </div>
         </div>
       </div>
@@ -151,5 +121,20 @@ const UserDashboard = () => {
     </>
   );
 };
+
+const ProfileItem = ({ icon, label, value }) => (
+  <motion.div
+    className="bg-gray-100 p-6 rounded-lg shadow-md flex items-center"
+    initial={{ opacity: 0, y: -20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5 }}
+  >
+    {icon}
+    <div className="ml-4">
+      <p className="font-semibold text-gray-700">{label}:</p>
+      <p className="text-gray-600">{value}</p>
+    </div>
+  </motion.div>
+);
 
 export default UserDashboard;

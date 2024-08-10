@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../store/auth';
 import { toast } from 'react-toastify';
 
-const AdminEditService = () => {
-  const { id } = useParams();
+const AdminAddSyllabus = () => {
   const navigate = useNavigate();
   const { authorizationToken } = useAuth();
   const [service, setService] = useState("");
@@ -14,43 +13,11 @@ const AdminEditService = () => {
   const [link, setLink] = useState("");
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
-  useEffect(() => {
-    const fetchServiceDetails = async () => {
-      try {
-        const response = await fetch(`${backendUrl}/api/admin/syllabus/${id}`, {
-          method: 'GET',
-          headers: {
-            Authorization: authorizationToken,
-          },
-        });
-
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const data = await response.json();
-        // Make sure to handle data correctly
-        if (data) {
-          setService(data.service || '');
-          setSemester(data.semester || '');
-          setSubject(data.subject || '');
-          setSubjectcode(data.subjectcode || '');
-          setLink(data.link || '');
-        }
-      } catch (error) {
-        console.error('Error fetching service details:', error);
-        toast.error('Failed to fetch service details');
-      }
-    };
-
-    fetchServiceDetails();
-  }, [id, authorizationToken, backendUrl]);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`${backendUrl}/api/admin/syllabus/update/${id}`, {
-        method: 'PATCH',
+      const response = await fetch(`${backendUrl}/api/admin/syllabus/add`, {
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           Authorization: authorizationToken,
@@ -63,17 +30,20 @@ const AdminEditService = () => {
       }
 
       const data = await response.json();
-      toast.success(data.message);
+      toast.success('Service added successfully');
       navigate('/admin/syllabus');
     } catch (error) {
-      console.error('Error updating service:', error);
-      toast.error('Failed to update service');
+      console.error('Error adding service:', error);
+      toast.error('Failed to add service');
     }
   };
 
   return (
+    <>
+    <br />
+    <br />
     <section className="bg-white shadow-md rounded my-6 p-6">
-      <h1 className="text-2xl font-semibold mb-4">Edit Service</h1>
+      <h1 className="text-2xl font-semibold mb-4">Add New Syllabus</h1>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label className="block text-gray-700">Service Name</label>
@@ -127,13 +97,14 @@ const AdminEditService = () => {
         </div>
         <button
           type="submit"
-          className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700"
+          className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-700"
         >
-          Update Service
+          Add Syllabus
         </button>
       </form>
     </section>
+    </>
   );
 };
 
-export default AdminEditService;
+export default AdminAddSyllabus;

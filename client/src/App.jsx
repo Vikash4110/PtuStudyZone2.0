@@ -13,9 +13,9 @@ import AdminLayout from "./components/layouts/AdminLayout";
 import AdminUsers from "./pages/AdminUsers";
 import AdminContacts from "./pages/AdminContacts";
 import AdminUpdate from "./pages/AdminUpdate";
-import AdminServices from "./pages/AdminServices";
-import AdminAddService from "./pages/AdminAddService";
-import AdminEditService from "./pages/AdminEditService";
+import AdminSyllabus from "./pages/AdminSyllabus";
+import AdminAddSyllabus from "./pages/AdminAddSyllabus";
+import AdminEditSyllabus from "./pages/AdminEditSyllabus";
 import UpdateUser from "./pages/UpdateUser";
 import { Link, Navigate} from "react-router-dom";
 const App = () => {
@@ -33,13 +33,12 @@ const App = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/admin" element={<AdminLayout />}>
         <Route index element={<Navigate to="/admin/users" />} />
-
           <Route path="users" element={<AdminUsers />} />
           <Route path="contacts" element={<AdminContacts />} />
           <Route path="users/:id/edit" element={<AdminUpdate />} />
-          <Route path="syllabus" element={<AdminServices />} />
-          <Route path="syllabus/add" element={<AdminAddService />} />
-          <Route path="syllabus/:id/edit" element={<AdminEditService />} />
+          <Route path="syllabus" element={<AdminSyllabus />} />
+          <Route path="syllabus/add" element={<AdminAddSyllabus />} />
+          <Route path="syllabus/:id/edit" element={<AdminEditSyllabus />} />
         </Route>
         <Route path="*" element={<Error />} />{" "}
         {/* This will catch all undefined routes */}
