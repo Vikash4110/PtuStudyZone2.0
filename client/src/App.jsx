@@ -21,6 +21,10 @@ import AdminEditSyllabus from "./pages/AdminEditSyllabus";
 import AdminPyq from "./pages/AdminPyq";
 import AdminEditPyq from "./pages/AdminEditPyq";
 import AdminAddPyq from "./pages/AdminAddPyq";
+import AdminNotes from "./pages/AdminNotes";
+import AdminEditNotes from "./pages/AdminEditNotes";
+import AdminAddNotes from "./pages/AdminAddNotes";
+
 import UpdateUser from "./pages/UpdateUser";
 import { Link, Navigate} from "react-router-dom";
 const App = () => {
@@ -49,6 +53,10 @@ const App = () => {
           <Route path="pyq" element={<AdminPyq />} />
           <Route path="pyq/add" element={<AdminAddPyq />} />
           <Route path="pyq/:id/edit" element={<AdminEditPyq />} />
+          <Route path="notes" element={<AdminNotes />} />
+          <Route path="notes/add" element={<AdminAddNotes />} />
+          <Route path="notes/:id/edit" element={<AdminEditNotes />} />
+
         </Route>
         <Route path="*" element={<Error />} />{" "}
         {/* This will catch all undefined routes */}

@@ -19,7 +19,7 @@ const Notes = () => {
   const handleDownloadClick = (link, event) => {
     if (link.length === 0) {
       event.preventDefault();
-      toast.error("Sorry, No Notes available now!");
+      toast.error("Sorry 😢, No Notes available now!");
     } else if (!isValidDriveLink(link)) {
       event.preventDefault();
       toast.error("Invalid Drive link. Please contact the administrator.");

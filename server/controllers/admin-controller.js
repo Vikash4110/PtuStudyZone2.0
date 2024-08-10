@@ -2,6 +2,8 @@ const User = require('../models/user-model');
 const Contact = require('../models/contact-model');
 const Syllabus = require('../models/syllabus-model');
 const Pyq = require('../models/pyq-model');
+const Notes = require('../models/notes-model');
+
 // User Controllers
 const getAllUsers = async (req, res, next) => {
   try {
@@ -146,7 +148,7 @@ const deleteSyllabusById = async (req, res, next) => {
 
 
 
-// Syllabus Controllers
+// Pyq Controllers
 const getAllPyq = async (req, res, next) => {
   try {
     const pyq = await Pyq.find();
@@ -184,13 +186,13 @@ const updatePyqById = async (req, res, next) => {
     const { id } = req.params;
     const updatedPyqData = req.body;
 
-    // Find the syllabus first
+    // Find the Pyq first
     const pyq = await Pyq.findOne({ _id: id });
     if (!pyq) {
       return res.status(404).json({ message: 'Pyq not found' });
     }
 
-    // Update the syllabus
+    // Update the Pyq
     await Pyq.updateOne({ _id: id }, { $set: updatedPyqData });
     res.status(200).json({ message: 'Pyq updated successfully' });
   } catch (error) {
@@ -207,6 +209,69 @@ const deletePyqById = async (req, res, next) => {
     next(error);
   }
 };
+
+// Notes Controllers
+const getAllNotes = async (req, res, next) => {
+  try {
+    const notes = await Notes.find();
+    if (!notes.length) return res.status(404).json({ message: 'No Notes found' });
+    res.status(200).json(notes);
+  } catch (error) {
+    next(error);
+  }
+};
+
+const getNotesById = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const notes = await Notes.findOne({ _id: id });
+    if (!notes) return res.status(404).json({ message: 'Notes not found' });
+    res.status(200).json(notes);
+  } catch (error) {
+    next(error);
+  }
+};
+
+const addNotes = async (req, res, next) => {
+  try {
+    const { service, semester, subject, subjectcode, link } = req.body;
+    const newNotes = new Notes({ service, semester, subject, subjectcode, link });
+    await newNotes.save();
+    res.status(201).json({ message: 'Notes added successfully' });
+  } catch (error) {
+    next(error);
+  }
+};
+
+const updateNotesById = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const updatedNotesData = req.body;
+
+    // Find the Notes first
+    const notes = await Notes.findOne({ _id: id });
+    if (!notes) {
+      return res.status(404).json({ message: 'Notes not found' });
+    }
+
+    // Update the Notes
+    await Notes.updateOne({ _id: id }, { $set: updatedNotesData });
+    res.status(200).json({ message: 'Notes updated successfully' });
+  } catch (error) {
+    next(error);
+  }
+};
+const deleteNotesById = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const result = await Notes.deleteOne({ _id: id });
+    if (!result.deletedCount) return res.status(404).json({ message: 'Notes not found' });
+    res.status(200).json({ message: 'Notes deleted successfully' });
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   getAllUsers,
   getUserById,
@@ -224,4 +289,9 @@ module.exports = {
   addPyq,
   updatePyqById,
   deletePyqById,
+  getAllNotes,
+  getNotesById,
+  addNotes,
+  updateNotesById,
+  deleteNotesById,
 };

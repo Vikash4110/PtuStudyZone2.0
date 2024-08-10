@@ -24,5 +24,11 @@ router.route('/pyq/delete/:id').delete(authMiddleware, adminMiddleware, adminCon
 router.route('/pyq/add').post(authMiddleware, adminMiddleware, adminController.addPyq);
 router.route('/pyq/:id').get(authMiddleware, adminMiddleware, adminController.getPyqById);
 router.route('/pyq/update/:id').patch(authMiddleware, adminMiddleware, adminController.updatePyqById);
+// Notes Panel
+router.route('/notes').get(authMiddleware, adminMiddleware, adminController.getAllNotes);
+router.route('/notes/delete/:id').delete(authMiddleware, adminMiddleware, adminController.deleteNotesById);
+router.route('/notes/add').post(authMiddleware, adminMiddleware, adminController.addNotes);
+router.route('/notes/:id').get(authMiddleware, adminMiddleware, adminController.getNotesById);
+router.route('/notes/update/:id').patch(authMiddleware, adminMiddleware, adminController.updateNotesById);
 
 module.exports = router;

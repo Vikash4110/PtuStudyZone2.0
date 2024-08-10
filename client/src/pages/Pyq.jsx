@@ -19,7 +19,7 @@ const Pyq = () => {
   const handleDownloadClick = (link, event) => {
     if (link.length === 0) {
       event.preventDefault();
-      toast.error("Sorry, No Question Paper available now!");
+      toast.error("Sorry 😢, No Question Paper available now!");
     } else if (!isValidDriveLink(link)) {
       event.preventDefault();
       toast.error("Invalid Drive link. Please contact the administrator.");
