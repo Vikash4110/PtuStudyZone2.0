@@ -9,6 +9,7 @@ import Navbar from "./components/Navbar";
 import Error from "./pages/Error"; // Ensure this is imported
 import Syllabus from "./pages/Syllabus";
 import Pyq from "./pages/Pyq";
+import Notes from "./pages/Notes";
 import UserDashboard from "./pages/UserDashboard"; // Import UserDashboard
 import AdminLayout from "./components/layouts/AdminLayout";
 import AdminUsers from "./pages/AdminUsers";
@@ -33,6 +34,7 @@ const App = () => {
         <Route path="/logout" element={<Logout />} />
         <Route path="/syllabus" element={<Syllabus />} />
         <Route path="/pyq" element={<Pyq />} />
+        <Route path="/notes" element={<Notes />} />
         <Route path="/dashboard" element={<UserDashboard />} />
         <Route path="/update-profile" element={<UpdateUser />} />
         <Route path="/contact" element={<Contact />} />

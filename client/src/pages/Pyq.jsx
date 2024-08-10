@@ -2,15 +2,13 @@ import { useEffect, useState } from "react";
 import { useAuth } from "../store/auth";
 import "aos/dist/aos.css";
 import ServiceImg from "../assets/PTULogo.gif";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Pyq = () => {
   const { pyq } = useAuth();
   const [selectedSemester, setSelectedSemester] = useState("1"); // Default to first semester
   const [filteredPyq, setFilteredPyq] = useState([]);
-
-  // useEffect(() => {
-  //   AOS.init({ duration: 500 });
-  // }, []);
 
   useEffect(() => {
     // Filter Pyq based on selected semester
@@ -18,8 +16,25 @@ const Pyq = () => {
     setFilteredPyq(filtered);
   }, [selectedSemester, pyq]);
 
+  const handleDownloadClick = (link, event) => {
+    if (link.length === 0) {
+      event.preventDefault();
+      toast.error("Sorry, No Question Paper available now!");
+    } else if (!isValidDriveLink(link)) {
+      event.preventDefault();
+      toast.error("Invalid Drive link. Please contact the administrator.");
+    }
+    // If the link is valid, no need to preventDefault, and the link will open in a new tab
+  };
+
+  const isValidDriveLink = (link) => {
+    const driveRegex = /^(https:\/\/)?(drive\.google\.com\/file\/d\/|drive\.google\.com\/open\?id=)/;
+    return driveRegex.test(link);
+  };
+
   return (
     <>
+      <ToastContainer />
       <br /><br />
       <section className="py-12 bg-gradient-to-r from-blue-50 to-blue-100">
         <div className="container mx-auto text-center px-4">
@@ -53,13 +68,13 @@ const Pyq = () => {
                   index % 2 === 0 ? "border-blue-500" : "border-green-500"
                 }`}
                 key={index}
-  
               >
                 <div className="w-full h-40 mb-4 overflow-hidden rounded-lg">
                   <img
                     src={ServiceImg}
                     alt={curElem.service}
-                    className="object-contain w-full h-full"/>
+                    className="object-contain w-full h-full"
+                  />
                 </div>
                 <h2 className="text-xl md:text-2xl font-bold text-blue-800 mb-2">{curElem.service}</h2>
                 <p className="text-sm md:text-base text-gray-600 mb-2">
@@ -73,6 +88,7 @@ const Pyq = () => {
                 </p>
                 <a
                   href={curElem.linka}
+                  onClick={(e) => handleDownloadClick(curElem.linka, e)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block w-full text-center mt-4 px-3 py-2 text-sm md:text-base text-white rounded-lg bg-blue-600 hover:bg-blue-700 transition-colors duration-300"
@@ -81,6 +97,7 @@ const Pyq = () => {
                 </a>
                 <a
                   href={curElem.linkb}
+                  onClick={(e) => handleDownloadClick(curElem.linkb, e)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block w-full text-center mt-4 px-3 py-2 text-sm md:text-base text-white rounded-lg bg-blue-600 hover:bg-blue-700 transition-colors duration-300"
@@ -89,6 +106,7 @@ const Pyq = () => {
                 </a>
                 <a
                   href={curElem.linkc}
+                  onClick={(e) => handleDownloadClick(curElem.linkc, e)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block w-full text-center mt-4 px-3 py-2 text-sm md:text-base text-white rounded-lg bg-blue-600 hover:bg-blue-700 transition-colors duration-300"

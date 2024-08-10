@@ -5,25 +5,21 @@ import ServiceImg from "../assets/PTULogo.gif";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const Syllabus = () => {
-  const { syllabus } = useAuth();
+const Notes = () => {
+  const { notes } = useAuth();
   const [selectedSemester, setSelectedSemester] = useState("1"); // Default to first semester
   const [filteredSyllabus, setFilteredSyllabus] = useState([]);
 
-  // useEffect(() => {
-  //   AOS.init({ duration: 500 });
-  // }, []);
-
   useEffect(() => {
     // Filter syllabus based on selected semester
-    const filtered = syllabus.filter((curElem) => curElem.semester === selectedSemester);
+    const filtered = notes.filter((curElem) => curElem.semester === selectedSemester);
     setFilteredSyllabus(filtered);
-  }, [selectedSemester, syllabus]);
+  }, [selectedSemester, notes]);
 
   const handleDownloadClick = (link, event) => {
     if (link.length === 0) {
       event.preventDefault();
-      toast.error("Sorry, No Syllabus available now!");
+      toast.error("Sorry, No Notes available now!");
     } else if (!isValidDriveLink(link)) {
       event.preventDefault();
       toast.error("Invalid Drive link. Please contact the administrator.");
@@ -38,13 +34,13 @@ const Syllabus = () => {
 
   return (
     <>
-    <ToastContainer/>
+      <ToastContainer />
       <br /><br />
       <section className="py-12 bg-gradient-to-r from-blue-50 to-blue-100">
         <div className="container mx-auto text-center px-4">
-          <h1 className="text-4xl md:text-5xl font-bold mb-8 text-blue-900">Syllabus</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-8 text-blue-900">Notes</h1>
           <p className="text-base md:text-lg text-blue-700 mb-12">
-            Download your course syllabus and stay organized for the semester.
+            Download your course Notes and stay organized for the semester.
           </p>
           <div className="mb-6">
             <label htmlFor="semester" className="mr-2 text-lg text-blue-700">
@@ -72,13 +68,13 @@ const Syllabus = () => {
                   index % 2 === 0 ? "border-blue-500" : "border-green-500"
                 }`}
                 key={index}
-  
               >
                 <div className="w-full h-40 mb-4 overflow-hidden rounded-lg">
                   <img
                     src={ServiceImg}
                     alt={curElem.service}
-                    className="object-contain w-full h-full"/>
+                    className="object-contain w-full h-full"
+                  />
                 </div>
                 <h2 className="text-xl md:text-2xl font-bold text-blue-800 mb-2">{curElem.service}</h2>
                 <p className="text-sm md:text-base text-gray-600 mb-2">
@@ -90,14 +86,6 @@ const Syllabus = () => {
                 <p className="text-sm md:text-base text-gray-600 mb-2">
                   <strong>Subject Code:</strong> {curElem.subjectcode}
                 </p>
-                {/* <a
-                  href={curElem.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block w-full text-center mt-4 px-3 py-2 text-sm md:text-base text-white rounded-lg bg-blue-600 hover:bg-blue-700 transition-colors duration-300"
-                >
-                  Download Syllabus
-                </a> */}
                 <a
                   href={curElem.link}
                   onClick={(e) => handleDownloadClick(curElem.link, e)}
@@ -105,12 +93,12 @@ const Syllabus = () => {
                   rel="noopener noreferrer"
                   className="block w-full text-center mt-4 px-3 py-2 text-sm md:text-base text-white rounded-lg bg-blue-600 hover:bg-blue-700 transition-colors duration-300"
                 >
-                  Download Syllabus
+                  Download Notes
                 </a>
               </div>
             ))
           ) : (
-            <p className="text-center text-gray-600">No syllabus available for this semester.</p>
+            <p className="text-center text-gray-600">No Notes available for this semester.</p>
           )}
         </div>
       </section>
@@ -118,4 +106,4 @@ const Syllabus = () => {
   );
 };
 
-export default Syllabus;
+export default Notes;

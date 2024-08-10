@@ -35,6 +35,9 @@ const Navbar = () => {
           <Link to="/syllabus" className={getLinkClass('/syllabus')}>
             Syllabus
           </Link>
+          <Link to="/notes" className={getLinkClass('/notes')}>
+            Notes
+          </Link>
           <Link to="/pyq" className={getLinkClass('/pyq')}>
             Pyq
           </Link>
@@ -84,6 +87,9 @@ const Navbar = () => {
           </Link>
           <Link to="/syllabus" className={getLinkClass('/syllabus')} onClick={() => setIsOpen(false)}>
             Syllabus
+          </Link>
+          <Link to="/notes" className={getLinkClass('/notes')} onClick={() => setIsOpen(false)}>
+            Notes
           </Link>
           <Link to="/pyq" className={getLinkClass('/pyq')} onClick={() => setIsOpen(false)}>
             Pyq
