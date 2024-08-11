@@ -10,6 +10,7 @@ export const AuthProvider = ({ children }) => {
   const [syllabus, setSyllabus] = useState([]);
   const [pyq, setPyq] = useState([]);
   const [notes, setNotes] = useState([]);
+  const [youtube, setYoutube] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const authorizationToken = `Bearer ${token}`;
 
@@ -99,11 +100,28 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const getYoutubeData = async () => {
+    try {
+      const response = await fetch(`${backendUrl}/api/data/youtube`, {
+        method: "GET",
+      });
+      if (response.ok) {
+        const youtube = await response.json();
+        setYoutube(youtube.msg);
+      } else {
+        console.error("Error fetching Youtube data");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     userAuthentication();
     getSyllabusData();
     getPyqData();
     getNotesData();
+    getYoutubeData();
   }, [authorizationToken]);
 
   // Determine if the user is an admin based on the user data
@@ -112,7 +130,7 @@ export const AuthProvider = ({ children }) => {
   const isLoggedIn = !!token;
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, storeTokenInLS, logoutUser, user, syllabus, pyq, notes, authorizationToken, isLoading, isAdmin }}>
+    <AuthContext.Provider value={{ isLoggedIn, storeTokenInLS, logoutUser, user, syllabus, pyq, notes, youtube, authorizationToken, isLoading, isAdmin }}>
       {children}
     </AuthContext.Provider>
   );

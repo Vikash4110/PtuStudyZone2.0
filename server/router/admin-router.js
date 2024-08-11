@@ -30,5 +30,16 @@ router.route('/notes/delete/:id').delete(authMiddleware, adminMiddleware, adminC
 router.route('/notes/add').post(authMiddleware, adminMiddleware, adminController.addNotes);
 router.route('/notes/:id').get(authMiddleware, adminMiddleware, adminController.getNotesById);
 router.route('/notes/update/:id').patch(authMiddleware, adminMiddleware, adminController.updateNotesById);
+// Blogs Panel
+router.route('/blogs')
+  .get(authMiddleware, adminMiddleware, adminController.getAllBlogs);
+router.route('/blogs/delete/:id')
+  .delete(authMiddleware, adminMiddleware, adminController.deleteBlogById);
 
+// Youtube Panel
+router.route('/youtube').get(authMiddleware, adminMiddleware, adminController.getAllYoutube);
+router.route('/youtube/delete/:id').delete(authMiddleware, adminMiddleware, adminController.deleteYoutubeById);
+router.route('/youtube/add').post(authMiddleware, adminMiddleware, adminController.addYoutube);
+router.route('/youtube/:id').get(authMiddleware, adminMiddleware, adminController.getYoutubeById);
+router.route('/youtube/update/:id').patch(authMiddleware, adminMiddleware, adminController.updateYoutubeById);
 module.exports = router;

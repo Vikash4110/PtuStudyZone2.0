@@ -9,6 +9,8 @@ const errorMiddleware = require('./middlewares/error-middleware');
 const adminRoute = require('./router/admin-router');
 const pyqRoute = require("./router/pyq-router");
 const notesRoute = require('./router/notes-router');
+const youtubeRoute = require('./router/youtube-router');
+const blogRouter = require("./router/blog-router");
 const path = require('path');
 
 const Port = process.env.PORT || 3000;
@@ -28,7 +30,9 @@ app.use('/api/form', contactRoute);
 app.use('/api/data', syllabusRoute);
 app.use('/api/data', pyqRoute);
 app.use('/api/data', notesRoute);
+app.use('/api/data', youtubeRoute);
 app.use('/api/admin', adminRoute);
+app.use('/api/blogs', blogRouter);
 
 app.get('/', (req, res) => {
   res.send('Hello Ptu');

@@ -3,7 +3,8 @@ const Contact = require('../models/contact-model');
 const Syllabus = require('../models/syllabus-model');
 const Pyq = require('../models/pyq-model');
 const Notes = require('../models/notes-model');
-
+const Blog = require('../models/blog-model');
+const Youtube = require("../models/youtube-model");
 // User Controllers
 const getAllUsers = async (req, res, next) => {
   try {
@@ -270,7 +271,97 @@ const deleteNotesById = async (req, res, next) => {
   } catch (error) {
     next(error);
   }
+}; 
+
+
+const getAllBlogs = async (req, res, next) => {
+  try {
+    const blogs = await Blog.find();
+    if (!blogs.length) return res.status(404).json({ message: 'No blogs found' });
+    res.status(200).json({ blogs }); // Return blogs as an object
+  } catch (error) {
+    next(error);
+  }
 };
+
+// Delete blog by ID
+const deleteBlogById = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const deletedBlog = await Blog.findByIdAndDelete(id);
+    if (!deletedBlog) {
+      return res.status(404).json({ message: "Blog not found" });
+    }
+    res.status(200).json({ message: "Blog deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ message: "Failed to delete blog", error });
+  }
+};
+
+
+// Youtube Controllers
+const getAllYoutube = async (req, res, next) => {
+  try {
+    const youtube = await Youtube.find();
+    if (!youtube.length) return res.status(404).json({ message: 'No youtube found' });
+    res.status(200).json(youtube);
+  } catch (error) {
+    next(error);
+  }
+};
+
+const getYoutubeById = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const youtube = await Youtube.findOne({ _id: id });
+    if (!youtube) return res.status(404).json({ message: 'youtube not found' });
+    res.status(200).json(youtube);
+  } catch (error) {
+    next(error);
+  }
+};
+
+const addYoutube = async (req, res, next) => {
+  try {
+    const { service, semester, subject, subjectcode, link } = req.body;
+    const newYoutube = new Youtube({ service, semester, subject, subjectcode, link });
+    await newYoutube.save();
+    res.status(201).json({ message: 'Service added successfully' });
+  } catch (error) {
+    next(error);
+  }
+};
+
+const updateYoutubeById = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const updatedYoutubeData = req.body;
+
+    // Find the syllabus first
+    const youtube = await Youtube.findOne({ _id: id });
+    if (!youtube) {
+      return res.status(404).json({ message: 'youtube not found' });
+    }
+
+    // Update the syllabus
+    await Youtube.updateOne({ _id: id }, { $set: updatedYoutubeData });
+    res.status(200).json({ message: 'Youtube updated successfully' });
+  } catch (error) {
+    next(error);
+  }
+};
+const deleteYoutubeById = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const result = await Youtube.deleteOne({ _id: id });
+    if (!result.deletedCount) return res.status(404).json({ message: 'Youtube not found' });
+    res.status(200).json({ message: 'Youtube deleted successfully' });
+  } catch (error) {
+    next(error);
+  }
+};
+
+
 
 module.exports = {
   getAllUsers,
@@ -294,4 +385,11 @@ module.exports = {
   addNotes,
   updateNotesById,
   deleteNotesById,
+  getAllBlogs,
+  deleteBlogById,
+  getAllYoutube,
+  getYoutubeById,
+  addYoutube,
+  updateYoutubeById,
+  deleteYoutubeById,
 };

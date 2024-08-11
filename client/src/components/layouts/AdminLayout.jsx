@@ -1,6 +1,6 @@
 import { Link, Outlet, Navigate } from "react-router-dom";
-import { FaUser, FaHome, FaBookOpen, FaClipboardList } from "react-icons/fa";
-import { RiContactsBookFill, RiCustomerServiceFill } from "react-icons/ri";
+import { FaUser, FaHome, FaBookOpen, FaYoutube, FaClipboardList, FaBlogger } from "react-icons/fa";
+import { RiContactsBookFill } from "react-icons/ri";
 import { useAuth } from "../../store/auth";
 import { useState } from "react";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
@@ -69,6 +69,20 @@ const AdminLayout = () => {
               label="Previous Year Questions"
               activeTab={activeTab}
               onClick={() => handleTabClick("PYQ")}
+            />
+             <SidebarLink
+              to="/admin/youtube"
+              icon={<FaYoutube />}
+              label="Youtube"
+              activeTab={activeTab}
+              onClick={() => handleTabClick("Youtube")}
+            />
+             <SidebarLink
+              to="/admin/blogs"
+              icon={<FaBlogger />}
+              label="Blogs"
+              activeTab={activeTab}
+              onClick={() => handleTabClick("Blogs")}
             />
             <SidebarLink
               to="/"

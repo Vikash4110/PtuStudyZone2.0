@@ -17,10 +17,10 @@ const Navbar = () => {
     const baseClass = 'font-bold text-sm md:text-base px-2 py-1 rounded transition-colors duration-300';
     return location.pathname === path 
       ? `${baseClass} bg-blue-500 text-white` 
-      : `${baseClass} hover:`;
+      : `${baseClass} hover:bg-gray-200`;
   };
 
-  const navbarClass = 'bg-white'; // Navbar background color
+  const navbarClass = 'bg-white';
 
   return (
     <nav className={`fixed top-0 w-full z-50 p-4 transition-colors duration-300 ${navbarClass}`}>
@@ -41,9 +41,19 @@ const Navbar = () => {
           <Link to="/pyq" className={getLinkClass('/pyq')}>
             Pyq
           </Link>
-          <Link to="/contact" className={getLinkClass('/contact')}>
-            Contact Us
+          <Link to="/youtube" className={getLinkClass('/youtube')}>
+            Youtube
           </Link>
+          {isLoggedIn && (
+            <>
+              <Link to="/blogs" className={getLinkClass('/blogs')}>
+                Blogs
+              </Link>
+              <Link to="/contact" className={getLinkClass('/contact')}>
+                Contact Us
+              </Link>
+            </>
+          )}
         </div>
         <div className="hidden md:flex items-center space-x-4">
           {isLoggedIn ? (
@@ -81,7 +91,7 @@ const Navbar = () => {
         </div>
       </div>
       {isOpen && (
-        <div className="md:hidden mt-4 space-y-2">
+        <div className="md:hidden mt-4 space-y-2 flex flex-col items-start">
           <Link to="/about" className={getLinkClass('/about')} onClick={() => setIsOpen(false)}>
             About Us
           </Link>
@@ -91,18 +101,28 @@ const Navbar = () => {
           <Link to="/notes" className={getLinkClass('/notes')} onClick={() => setIsOpen(false)}>
             Notes
           </Link>
+          <Link to="/youtube" className={getLinkClass('/youtube')} onClick={() => setIsOpen(false)}>
+            Youtube
+          </Link>
           <Link to="/pyq" className={getLinkClass('/pyq')} onClick={() => setIsOpen(false)}>
             Pyq
           </Link>
-          <Link to="/contact" className={getLinkClass('/contact')} onClick={() => setIsOpen(false)}>
-            Contact Us
-          </Link>
+          {isLoggedIn && (
+            <>
+              <Link to="/blogs" className={getLinkClass('/blogs')} onClick={() => setIsOpen(false)}>
+                Blogs
+              </Link>
+              <Link to="/contact" className={getLinkClass('/contact')} onClick={() => setIsOpen(false)}>
+                Contact Us
+              </Link>
+            </>
+          )}
           {isLoggedIn ? (
             <>
               <Link to="/dashboard" className="block bg-yellow-500 text-white font-bold text-sm w-28 px-2 py-1 rounded hover:bg-yellow-700 transition-colors duration-300 transform hover:scale-105" onClick={() => setIsOpen(false)}>
                 Dashboard
               </Link>
-              <Link to="/logout" className="block font-bold text-sm hover:text-blue-700 transition-colors duration-300" onClick={() => setIsOpen(false)}>
+              <Link to="/logout" className="block bg-red-500 text-white font-bold text-sm w-28 px-2 py-1 rounded hover:bg-red-700 transition-colors duration-300 transform hover:scale-105" onClick={() => setIsOpen(false)}>
                 Logout
               </Link>
             </>
