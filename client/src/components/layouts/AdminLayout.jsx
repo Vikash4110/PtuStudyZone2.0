@@ -70,12 +70,20 @@ const AdminLayout = () => {
               activeTab={activeTab}
               onClick={() => handleTabClick("PYQ")}
             />
+          
              <SidebarLink
               to="/admin/youtube"
               icon={<FaYoutube />}
               label="Youtube"
               activeTab={activeTab}
               onClick={() => handleTabClick("Youtube")}
+            />
+              <SidebarLink
+              to="/admin/book"
+              icon={<FaBookOpen />}
+              label="Books"
+              activeTab={activeTab}
+              onClick={() => handleTabClick("PYQ")}
             />
              <SidebarLink
               to="/admin/blogs"
@@ -84,6 +92,7 @@ const AdminLayout = () => {
               activeTab={activeTab}
               onClick={() => handleTabClick("Blogs")}
             />
+
             <SidebarLink
               to="/"
               icon={<FaHome />}

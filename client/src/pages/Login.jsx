@@ -3,7 +3,7 @@ import PtuImg from "../assets/PTULogo.gif";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../store/auth";
 import { toast } from "react-toastify";
-import { CircleLoader } from "react-spinners"; // Importing a loader component
+import { RotatingLines } from "react-loader-spinner"; // Import the loader component
 
 const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
@@ -92,7 +92,19 @@ const Login = () => {
                 className={`w-full bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-300 ${loading ? "opacity-50 cursor-not-allowed" : ""}`}
                 disabled={loading} // Disable button while loading
               >
-                {loading ? <CircleLoader size={24} color="#ffffff" /> : "Login"}
+                {loading ? (
+                  <div className="flex justify-center items-center">
+                    <RotatingLines
+                      strokeColor="white"
+                      strokeWidth="5"
+                      animationDuration="0.75"
+                      width="24"
+                      visible={true}
+                    />
+                  </div>
+                ) : (
+                  "Login"
+                )}
               </button>
             </form>
             <div className="mt-4 text-center">

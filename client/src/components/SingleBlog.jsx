@@ -47,7 +47,7 @@ const SingleBlog = () => {
             <span>{new Date(blog.createdAt).toLocaleDateString()}</span>
           </div>
         </div>
-        <p className="text-gray-700 leading-relaxed mb-6">{blog.content}</p>
+        <span className="text-gray-700 leading-relaxed mb-6">{blog.content}</span>
         
         {/* Back Button */}
         <button 

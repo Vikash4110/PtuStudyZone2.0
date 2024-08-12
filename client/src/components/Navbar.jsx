@@ -35,14 +35,17 @@ const Navbar = () => {
           <Link to="/syllabus" className={getLinkClass('/syllabus')}>
             Syllabus
           </Link>
-          <Link to="/notes" className={getLinkClass('/notes')}>
-            Notes
-          </Link>
           <Link to="/pyq" className={getLinkClass('/pyq')}>
-            Pyq
+            PYQ
           </Link>
           <Link to="/youtube" className={getLinkClass('/youtube')}>
             Youtube
+          </Link>
+          <Link to="/notes" className={getLinkClass('/notes')}>
+            Notes
+          </Link>   
+          <Link to="/book" className={getLinkClass('/book')}>
+            Books
           </Link>
           {isLoggedIn && (
             <>
@@ -105,7 +108,10 @@ const Navbar = () => {
             Youtube
           </Link>
           <Link to="/pyq" className={getLinkClass('/pyq')} onClick={() => setIsOpen(false)}>
-            Pyq
+            PYQ
+          </Link>
+          <Link to="/book" className={getLinkClass('/book')} onClick={() => setIsOpen(false)}>
+            Books
           </Link>
           {isLoggedIn && (
             <>

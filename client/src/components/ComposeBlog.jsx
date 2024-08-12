@@ -62,7 +62,7 @@ const ComposeBlog = () => {
               />
             </div>
           </div>
-          <div className="mb-4">
+          <span className="mb-4">
             <label className="block text-gray-700 font-semibold">Content</label>
             <textarea
               value={content}
@@ -71,7 +71,7 @@ const ComposeBlog = () => {
               rows="5"
               required
             />
-          </div>
+          </span>
         
           <button 
             type="submit" 

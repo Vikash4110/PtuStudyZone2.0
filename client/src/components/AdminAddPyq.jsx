@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../store/auth';
 import { toast } from 'react-toastify';
 
-const AdminEditPyq = () => {
-  const { id } = useParams();
+const AdminAddPyq = () => {
   const navigate = useNavigate();
   const { authorizationToken } = useAuth();
   const [service, setService] = useState("");
@@ -14,49 +13,13 @@ const AdminEditPyq = () => {
   const [linka, setLinka] = useState("");
   const [linkb, setLinkb] = useState("");
   const [linkc, setLinkc] = useState("");
-
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
-
-  useEffect(() => {
-    const fetchServiceDetails = async () => {
-      try {
-        const response = await fetch(`${backendUrl}/api/admin/pyq/${id}`, {
-          method: 'GET',
-          headers: {
-            Authorization: authorizationToken,
-          },
-        });
-
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const data = await response.json();
-        // Make sure to handle data correctly
-        if (data) {
-          setService(data.service || '');
-          setSemester(data.semester || '');
-          setSubject(data.subject || '');
-          setSubjectcode(data.subjectcode || '');
-          setLinka(data.linka || '');
-          setLinkb(data.linkb || '');
-          setLinkc(data.linkc || '');
-
-        }
-      } catch (error) {
-        console.error('Error fetching pyq details:', error);
-        toast.error('Failed to fetch pyq details');
-      }
-    };
-
-    fetchServiceDetails();
-  }, [id, authorizationToken, backendUrl]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`${backendUrl}/api/admin/pyq/update/${id}`, {
-        method: 'PATCH',
+      const response = await fetch(`${backendUrl}/api/admin/pyq/add`, {
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           Authorization: authorizationToken,
@@ -69,17 +32,20 @@ const AdminEditPyq = () => {
       }
 
       const data = await response.json();
-      toast.success(data.message);
+      toast.success('Pyq added successfully');
       navigate('/admin/pyq');
     } catch (error) {
-      console.error('Error updating pyq:', error);
-      toast.error('Failed to update pyq');
+      console.error('Error adding service:', error);
+      toast.error('Failed to add service');
     }
   };
 
   return (
+    <>
+    <br />
+    <br />
     <section className="bg-white shadow-md rounded my-6 p-6">
-      <h1 className="text-2xl font-semibold mb-4">Edit Pyq</h1>
+      <h1 className="text-2xl font-semibold mb-4">Add New PYQ</h1>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label className="block text-gray-700">Service Name</label>
@@ -126,7 +92,7 @@ const AdminEditPyq = () => {
           <input
             type="url"
             value={linka}
-            onChange={(e) => setLink(e.target.value)}
+            onChange={(e) => setLinka(e.target.value)}
             className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md"
             required
           />
@@ -136,7 +102,7 @@ const AdminEditPyq = () => {
           <input
             type="url"
             value={linkb}
-            onChange={(e) => setLink(e.target.value)}
+            onChange={(e) => setLinkb(e.target.value)}
             className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md"
             required
           />
@@ -146,20 +112,21 @@ const AdminEditPyq = () => {
           <input
             type="url"
             value={linkc}
-            onChange={(e) => setLink(e.target.value)}
+            onChange={(e) => setLinkc(e.target.value)}
             className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md"
             required
           />
         </div>
         <button
           type="submit"
-          className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700"
+          className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-700"
         >
-          Update Pyq
+          Add Pyq
         </button>
       </form>
     </section>
+    </>
   );
 };
 
-export default AdminEditPyq;
+export default AdminAddPyq;

@@ -42,4 +42,12 @@ router.route('/youtube/delete/:id').delete(authMiddleware, adminMiddleware, admi
 router.route('/youtube/add').post(authMiddleware, adminMiddleware, adminController.addYoutube);
 router.route('/youtube/:id').get(authMiddleware, adminMiddleware, adminController.getYoutubeById);
 router.route('/youtube/update/:id').patch(authMiddleware, adminMiddleware, adminController.updateYoutubeById);
+
+// Youtube Panel
+router.route('/book').get(authMiddleware, adminMiddleware, adminController.getAllBook);
+router.route('/book/delete/:id').delete(authMiddleware, adminMiddleware, adminController.deleteBookById);
+router.route('/book/add').post(authMiddleware, adminMiddleware, adminController.addBook);
+router.route('/book/:id').get(authMiddleware, adminMiddleware, adminController.getBookById);
+router.route('/book/update/:id').patch(authMiddleware, adminMiddleware, adminController.updateBookById);
 module.exports = router;
+

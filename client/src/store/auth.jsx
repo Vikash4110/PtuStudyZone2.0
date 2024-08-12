@@ -11,6 +11,7 @@ export const AuthProvider = ({ children }) => {
   const [pyq, setPyq] = useState([]);
   const [notes, setNotes] = useState([]);
   const [youtube, setYoutube] = useState([]);
+  const [book, setBook] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const authorizationToken = `Bearer ${token}`;
 
@@ -116,12 +117,31 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+
+
+  const getBookData = async () => {
+    try {
+      const response = await fetch(`${backendUrl}/api/data/book`, {
+        method: "GET",
+      });
+      if (response.ok) {
+        const book = await response.json();
+        setBook(book.msg);
+      } else {
+        console.error("Error fetching Book data");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     userAuthentication();
     getSyllabusData();
     getPyqData();
     getNotesData();
     getYoutubeData();
+    getBookData();
   }, [authorizationToken]);
 
   // Determine if the user is an admin based on the user data
@@ -130,7 +150,7 @@ export const AuthProvider = ({ children }) => {
   const isLoggedIn = !!token;
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, storeTokenInLS, logoutUser, user, syllabus, pyq, notes, youtube, authorizationToken, isLoading, isAdmin }}>
+    <AuthContext.Provider value={{ isLoggedIn, storeTokenInLS, logoutUser, user, syllabus, pyq, notes, youtube,book, authorizationToken, isLoading, isAdmin }}>
       {children}
     </AuthContext.Provider>
   );

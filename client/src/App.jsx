@@ -1,41 +1,46 @@
 // src/App.jsx
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
+import About from "./pages/About";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
-import Logout from "./pages/Logout";
+import Logout from "./components/Logout";
 import Contact from "./pages/Contact";
 import Navbar from "./components/Navbar";
-import Error from "./pages/Error"; // Ensure this is imported
+import Error from "./components/Error"; // Ensure this is imported
 import Syllabus from "./pages/Syllabus";
 import Pyq from "./pages/Pyq";
 import Notes from "./pages/Notes";
+import Book from "./pages/Book";
 import UserDashboard from "./pages/UserDashboard"; 
 
 import AdminLayout from "./components/layouts/AdminLayout";
 import AdminUsers from "./pages/AdminUsers";
 import AdminContacts from "./pages/AdminContacts";
-import AdminUpdate from "./pages/AdminUpdate";
+import AdminUpdate from "./components/AdminUpdate";
 import AdminSyllabus from "./pages/AdminSyllabus";
-import AdminAddSyllabus from "./pages/AdminAddSyllabus";
-import AdminEditSyllabus from "./pages/AdminEditSyllabus";
+import AdminAddSyllabus from "./components/AdminAddSyllabus";
+import AdminEditSyllabus from "./components/AdminEditSyllabus";
 import AdminPyq from "./pages/AdminPyq";
-import AdminEditPyq from "./pages/AdminEditPyq";
-import AdminAddPyq from "./pages/AdminAddPyq";
+import AdminEditPyq from "./components/AdminEditPyq";
+import AdminAddPyq from "./components/AdminAddPyq";
 import AdminNotes from "./pages/AdminNotes";
-import AdminEditNotes from "./pages/AdminEditNotes";
-import AdminAddNotes from "./pages/AdminAddNotes";
+import AdminEditNotes from "./components/AdminEditNotes";
+import AdminAddNotes from "./components/AdminAddNotes";
 import AdminBlogs from "./pages/AdminBlogs";
 import AdminYoutube from "./pages/AdminYoutube";
-import AdminAddYoutube from "./pages/AdminAddYoutube";
-import AdminEditYoutube from "./pages/AdminEditYoutube";
+import AdminAddYoutube from "./components/AdminAddYoutube";
+import AdminEditYoutube from "./components/AdminEditYoutube";
+import AdminBook from "./pages/AdminBook";
+import AdminAddBook from "./components/AdminAddBook";
+import AdminEditBook from "./components/AdminEditBook";
 
-import MyBlog from './pages/MyBlog';
+import MyBlog from './components/MyBlog';
 import PTUBlog from './pages/PTUBlog';
-import EditBlog from './pages/EditBlog';
-import SingleBlog from './pages/SingleBlog';
-import ComposeBlog from './pages/ComposeBlog';
-import UpdateUser from "./pages/UpdateUser";
+import EditBlog from './components/EditBlog';
+import SingleBlog from './components/SingleBlog';
+import ComposeBlog from './components/ComposeBlog';
+import UpdateUser from "./components/UpdateUser";
 import Youtube from "./pages/Youtube";
 import { Navigate } from "react-router-dom";
 
@@ -46,11 +51,13 @@ const App = () => {
      
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="/syllabus" element={<Syllabus />} />
           <Route path="/pyq" element={<Pyq />} />
+          <Route path="/book" element={<Book />} />
           <Route path="/notes" element={<Notes />} />
           {/* Dashboard */}
           <Route path="/dashboard" element={<UserDashboard />} />
@@ -91,6 +98,10 @@ const App = () => {
             <Route path="youtube" element={<AdminYoutube />} />
             <Route path="youtube/add" element={<AdminAddYoutube />} />
             <Route path="youtube/:id/edit" element={<AdminEditYoutube />} />
+              {/* Books */}
+              <Route path="book" element={<AdminBook />} />
+            <Route path="book/add" element={<AdminAddBook />} />
+            <Route path="book/:id/edit" element={<AdminEditBook />} />
 
           </Route>
           <Route path="*" element={<Error />} /> {/* This will catch all undefined routes */}

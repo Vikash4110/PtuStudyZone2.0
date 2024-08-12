@@ -5,6 +5,8 @@ const Pyq = require('../models/pyq-model');
 const Notes = require('../models/notes-model');
 const Blog = require('../models/blog-model');
 const Youtube = require("../models/youtube-model");
+const Book = require("../models/book-model");
+
 // User Controllers
 const getAllUsers = async (req, res, next) => {
   try {
@@ -362,6 +364,68 @@ const deleteYoutubeById = async (req, res, next) => {
 };
 
 
+// Books Controllers
+const getAllBook = async (req, res, next) => {
+  try {
+    const book = await Book.find();
+    if (!book.length) return res.status(404).json({ message: 'No book found' });
+    res.status(200).json(book);
+  } catch (error) {
+    next(error);
+  }
+};
+
+const getBookById = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const book = await Book.findOne({ _id: id });
+    if (!book) return res.status(404).json({ message: 'book not found' });
+    res.status(200).json(book);
+  } catch (error) {
+    next(error);
+  }
+};
+
+const addBook = async (req, res, next) => {
+  try {
+    const { service, semester, subject, subjectcode, link } = req.body;
+    const newBook = new Book({ service, semester, subject, subjectcode, link });
+    await newBook.save();
+    res.status(201).json({ message: 'Book added successfully' });
+  } catch (error) {
+    next(error);
+  }
+};
+
+const updateBookById = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const updatedBookData = req.body;
+
+    // Find the Book first
+    const book = await Book.findOne({ _id: id });
+    if (!book) {
+      return res.status(404).json({ message: 'book not found' });
+    }
+
+    // Update the Book
+    await Book.updateOne({ _id: id }, { $set: updatedBookData });
+    res.status(200).json({ message: 'Book updated successfully' });
+  } catch (error) {
+    next(error);
+  }
+};
+const deleteBookById = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const result = await Book.deleteOne({ _id: id });
+    if (!result.deletedCount) return res.status(404).json({ message: 'Book not found' });
+    res.status(200).json({ message: 'Book deleted successfully' });
+  } catch (error) {
+    next(error);
+  }
+};
+
 
 module.exports = {
   getAllUsers,
@@ -392,4 +456,9 @@ module.exports = {
   addYoutube,
   updateYoutubeById,
   deleteYoutubeById,
+  getAllBook,
+  getBookById,
+  addBook,
+  updateBookById,
+  deleteBookById,
 };

@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useAuth } from "../store/auth";
 import { toast } from "react-toastify";
 import { Link } from 'react-router-dom';
-import { Instagram } from 'react-content-loader';
+import { Instagram } from 'react-content-loader'; 
 
-const AdminPyq = () => {
+const AdminBook = () => {
   const [syllabus, setSyllabus] = useState([]);
   const [loading, setLoading] = useState(true);
   const { authorizationToken } = useAuth();
@@ -17,7 +17,7 @@ const AdminPyq = () => {
     }
 
     try {
-      const response = await fetch(`${backendUrl}/api/admin/pyq`, {
+      const response = await fetch(`${backendUrl}/api/admin/book`, {
         method: "GET",
         headers: {
           Authorization: authorizationToken,
@@ -36,8 +36,8 @@ const AdminPyq = () => {
       const data = await response.json();
       setSyllabus(Array.isArray(data) ? data : []);
     } catch (error) {
-      console.error('Error fetching Syllabus:', error);
-      toast.error('Failed to fetch Syllabus');
+      console.error('Error fetching Books:', error);
+      toast.error('Failed to fetch Books');
     } finally {
       setLoading(false);
     }
@@ -50,7 +50,7 @@ const AdminPyq = () => {
     }
 
     try {
-      const response = await fetch(`${backendUrl}/api/admin/pyq/delete/${id}`, {
+      const response = await fetch(`${backendUrl}/api/admin/book/delete/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: authorizationToken,
@@ -66,11 +66,11 @@ const AdminPyq = () => {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      toast.success("Syllabus Deleted Successfully");
+      toast.success("Book Channel Deleted Successfully");
       setSyllabus(prevSyllabus => prevSyllabus.filter((item) => item._id !== id));
     } catch (error) {
-      console.error('Error deleting Syllabus:', error);
-      toast.error('Failed to delete Syllabus');
+      console.error('Error deleting Book:', error);
+      toast.error('Failed to delete Book');
     }
   };
 
@@ -88,10 +88,10 @@ const AdminPyq = () => {
     <br />
     <section className="bg-white shadow-md rounded my-6">
       <div className="p-6">
-        <h1 className="text-2xl font-semibold mb-4">Admin PYQ Data</h1>
+        <h1 className="text-2xl font-semibold mb-4">Admin Book Data</h1>
         <div className="mb-4">
-          <Link to="/admin/pyq/add" className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-700">
-            Add New PYQ
+          <Link to="/admin/book/add" className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-700">
+            Add New Book
           </Link>
         </div>
         <div className="overflow-x-auto">
@@ -102,9 +102,7 @@ const AdminPyq = () => {
                 <th className="py-2 px-4 bg-gray-200">Semester</th>
                 <th className="py-2 px-4 bg-gray-200">Subject</th>
                 <th className="py-2 px-4 bg-gray-200">Subject Code</th>
-                <th className="py-2 px-4 bg-gray-200">Link 1</th>
-                <th className="py-2 px-4 bg-gray-200">Link 2</th>
-                <th className="py-2 px-4 bg-gray-200">Link 3</th>
+                <th className="py-2 px-4 bg-gray-200">Link</th>
                 <th className="py-2 px-4 bg-gray-200">Edit</th>
                 <th className="py-2 px-4 bg-gray-200">Delete</th>
               </tr>
@@ -116,11 +114,9 @@ const AdminPyq = () => {
                   <td className="py-2 px-4 border">{curService.semester}</td>
                   <td className="py-2 px-4 border">{curService.subject}</td>
                   <td className="py-2 px-4 border">{curService.subjectcode}</td>
-                  <td className="py-2 px-4 border"><a href={curService.linka} target="_blank" rel="noopener noreferrer">Link 1</a></td>
-                  <td className="py-2 px-4 border"><a href={curService.linkb} target="_blank" rel="noopener noreferrer">Link 2</a></td>
-                  <td className="py-2 px-4 border"><a href={curService.linkc} target="_blank" rel="noopener noreferrer">Link 3</a></td>
+                  <td className="py-2 px-4 border"><a href={curService.link} target="_blank" rel="noopener noreferrer">Link</a></td>
                   <td className="py-2 px-4 border">
-                    <Link to={`/admin/pyq/${curService._id}/edit`} className="bg-blue-500 text-white py-1 px-3 rounded hover:bg-blue-700">Edit</Link>
+                    <Link to={`/admin/book/${curService._id}/edit`} className="bg-blue-500 text-white py-1 px-3 rounded hover:bg-blue-700">Edit</Link>
                   </td>
                   <td className="py-2 px-4 border">
                     <button className="bg-red-500 text-white py-1 px-3 rounded hover:bg-red-700" onClick={() => deleteSyllabus(curService._id)}>Delete</button>
@@ -136,4 +132,4 @@ const AdminPyq = () => {
   );
 };
 
-export default AdminPyq;
+export default AdminBook;

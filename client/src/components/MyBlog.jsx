@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { FaUser, FaEye, FaEdit, FaPen, FaTrash } from 'react-icons/fa'; // Import user and action icons
+import { FaUser, FaEye, FaEdit, FaPen, FaTrash, FaRegNewspaper } from 'react-icons/fa'; // Import user and action icons
 import { toast } from "react-toastify";
-
+import { Link } from "react-router-dom";
 const MyBlog = () => {
   const [blogs, setBlogs] = useState([]);
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
@@ -64,9 +64,14 @@ const MyBlog = () => {
       <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-100 py-8">
         <div className="container mx-auto px-4">
           <h1 className="text-4xl font-bold mb-6 text-center text-gray-900">My Blogs</h1>
+          <div className="flex justify-center mb-8 space-x-4">
           <button onClick={handleCompose} className="flex items-center bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors duration-300">
             <FaPen className="mr-2" />Compose Blog
           </button>
+          <Link to="/blogs" className="flex items-center bg-purple-500 text-white py-2 px-4 rounded-lg hover:bg-purple-600 transition-colors duration-300">
+              <FaRegNewspaper className="mr-2" /> PTU Blog
+            </Link>
+            </div>
           <br />
           {blogs.length === 0 ? (
             <p className="text-center text-gray-600">No blogs found. Please compose a blog.</p>
