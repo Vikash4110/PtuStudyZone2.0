@@ -1,0 +1,25 @@
+.background{
+    
+    /* Add your background pattern here */
+    background-color: white;
+    background-image: radial-gradient(rgba(26, 9, 218, 0.171) 2px, transparent 0);
+    background-size: 30px 30px;
+    background-position: -5px -5px
+
+}
+/* Custom CSS for fine-tuning */
+@media (max-width: 640px) {
+    .underline-image {
+      top: -1.5rem; /* Adjust for smaller screens if necessary */
+      width: 40%; /* Adjust size for small screens */
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .underline-image {
+      top: -5rem; /* Larger screens adjustments */
+      width: 72px; /* Ensure size for large screens */
+    }
+  }
+  
+  
