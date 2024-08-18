@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useAuth } from "../store/auth";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import { FaUser, FaEnvelope, FaPhone, FaIdBadge, FaUniversity } from 'react-icons/fa';
+import underline from '../assets/underline.png';
+import { FaUser, FaEnvelope, FaPhone,  FaMobile, FaBuilding, FaListOl } from 'react-icons/fa';
 
 const UpdateUser = () => {
   const [data, setData] = useState({
@@ -73,107 +74,114 @@ const UpdateUser = () => {
 
   return (
     <>
-    <br /><br />
-    <div className="bg-gradient-to-r from-blue-500 to-purple-600 min-h-screen flex items-center justify-center">
-      <div className="container mx-auto">
-        <div className="bg-white shadow-lg rounded-lg p-6 mb-6">
-          <h1 className="text-3xl font-semibold text-center text-gray-800">Update Profile</h1>
-        </div>
-        <form onSubmit={handleSubmit} className="bg-white shadow-md rounded-lg p-6">
-          <div className="mb-4">
-            <label htmlFor="username" className="block text-gray-700 mb-2">
-              <FaUser className="inline-block mr-2" /> Username
-            </label>
-            <input
-              type="text"
-              name="username"
-              id="username"
-              value={data.username}
-              onChange={handleInput}
-              required
-              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-500"
-            />
-          </div>
-          <div className="mb-4">
-            <label htmlFor="rollno" className="block text-gray-700 mb-2">
-              <FaIdBadge className="inline-block mr-2" /> Roll No
-            </label>
-            <input
-              type="text"
-              name="rollno"
-              id="rollno"
-              value={data.rollno}
-              onChange={handleInput}
-              required
-              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-500"
-            />
-          </div>
-          <div className="mb-4">
-            <label htmlFor="department" className="block text-gray-700 mb-2">
-              <FaUniversity className="inline-block mr-2" /> Department
-            </label>
-            <input
-              type="text"
-              name="department"
-              id="department"
-              value={data.department}
-              onChange={handleInput}
-              required
-              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-500"
-            />
-          </div>
-          <div className="mb-4">
-            <label htmlFor="semester" className="block text-gray-700 mb-2">
-            <FaUniversity className="inline-block mr-2" />
-              Semester
-            </label>
-            <input
-              type="text"
-              name="semester"
-              id="semester"
-              value={data.semester}
-              onChange={handleInput}
-              required
-              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-500"
-            />
-          </div>
-          <div className="mb-4">
-            <label htmlFor="email" className="block text-gray-700 mb-2">
-              <FaEnvelope className="inline-block mr-2" /> Email
-            </label>
-            <input
-              type="email"
-              name="email"
-              id="email"
-              value={data.email}
-              onChange={handleInput}
-              required
-              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-500"
-            />
-          </div>
-          <div className="mb-4">
-            <label htmlFor="phone" className="block text-gray-700 mb-2">
-              <FaPhone className="inline-block mr-2" /> Phone
-            </label>
-            <input
-              type="text"
-              name="phone"
-              id="phone"
-              value={data.phone}
-              onChange={handleInput}
-              required
-              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-500"
-            />
-          </div>
-          <button
-            type="submit"
-            className="w-full bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition duration-300"
-          >
-            Update
-          </button>
-        </form>
-      </div>
-    </div>
+   <br/><br/>
+            <div className="flex justify-center items-center min-h-screen bg-[#fbfbfb] px-4 pt-10 md:pt-0">
+                <div className="grid grid-cols-1 md:grid-cols-1 items-center gap-10 max-w-screen-lg w-full md:w-5/6 lg:w-3/6 ">
+                    <div className=" w-5/6 justify-self-center md:w-full bg-white rounded-[40px] p-8 shadow-lg">
+                        <div className="relative flex justify-center items-center flex-col text-center sm:text-left mb-10 mt-6">
+                            <h1 className="font-black text-[30px] text-black">
+                                Update Profile
+                            </h1>
+                            <img src={underline} alt="underline" className="absolute top-[-4rem] left-1/2 transform -translate-x-1/2 w-48 h-auto md:top-[-4rem]" />
+                        </div>
+                        <form onSubmit={handleSubmit} className="flex flex-col space-y-6">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 ">
+                    
+                            <div className="flex flex-col">
+                                <label htmlFor="username" className="flex  ml-2 font-semibold">
+                                    <span><FaUser className="inline-block mr-2 " /></span><span>Username</span> 
+                                </label>
+                                <input
+                                    type="text"
+                                    name="username"
+                                    id="username"
+                                    value={data.username}
+                                    onChange={handleInput}
+                                    required
+                                    className="w-full bg-white p-4 rounded-[20px]  shadow-sm border placeholder:text-gray-500 focus:outline-none focus:border-blue-400"
+                                />
+                            </div>
+                            <div className="flex flex-col">
+                                <label htmlFor="rollno" className="flex  ml-2 font-semibold">
+                                <span><FaMobile className="inline-block mr-2" /></span><span>Roll No.</span>
+                                </label>
+                                <input
+                                    type="text"
+                                    name="rollno"
+                                    id="rollno"
+                                    value={data.rollno}
+                                    onChange={handleInput}
+                                    required
+                                    className="w-full bg-white p-4 rounded-[20px]  shadow-sm border placeholder:text-gray-500 focus:outline-none focus:border-blue-400"
+                                />
+                            </div>
+                            <div className="flex flex-col">
+                                <label htmlFor="department" className="flex  ml-2 font-semibold">
+                                <span><FaBuilding className="inline-block mr-2" /></span><span>Department</span>
+                                </label>
+                                <input
+                                    type="text"
+                                    name="department"
+                                    id="department"
+                                    value={data.department}
+                                    onChange={handleInput}
+                                    required
+                                    className="w-full bg-white p-4 rounded-[20px]  shadow-sm border placeholder:text-gray-500 focus:outline-none focus:border-blue-400"
+                                />
+                            </div>
+                            <div className="flex flex-col">
+                                <label htmlFor="semester" className="flex  ml-2 font-semibold">
+                                <span><FaListOl className="inline-block mr-2" /></span><span>Semester</span>
+                                </label>
+                                <input
+                                    type="text"
+                                    name="semester"
+                                    id="semester"
+                                    value={data.semester}
+                                    onChange={handleInput}
+                                    required
+                                    className="w-full bg-white p-4 rounded-[20px]  shadow-sm border placeholder:text-gray-500 focus:outline-none focus:border-blue-400"
+                                />
+                            </div>
+                            <div className="flex flex-col">
+                                <label htmlFor="email" className="flex  ml-2 font-semibold">
+                                <span><FaEnvelope className="inline-block mr-2" /></span><span>Email</span>
+                                </label>
+                                <input
+                                    type="email"
+                                    name="email"
+                                    id="email"
+                                    value={data.email}
+                                    onChange={handleInput}
+                                    required
+                                    className="w-full bg-white p-4 rounded-[20px]  shadow-sm border placeholder:text-gray-500 focus:outline-none focus:border-blue-400"
+                                />
+                            </div>
+                            <div className="flex flex-col">
+                                <label htmlFor="phone" className="flex  ml-2 font-semibold">
+                                    <span><FaPhone className="inline-block mr-2" /></span><span>Phone</span>
+                                </label>
+                                <input
+                                    type="text"
+                                    name="phone"
+                                    id="phone"
+                                    value={data.phone}
+                                    onChange={handleInput}
+                                    required
+                                    className="w-full bg-white p-4 rounded-[20px]  shadow-sm border placeholder:text-gray-500 focus:outline-none focus:border-blue-400"
+                                />
+                            </div>
+                            </div>
+                            <button
+                                type="submit"
+                                className="block w-full font-bold bg-gradient-to-r from-purple-500 to-red-500 text-white py-4 mt-6 rounded-[20px] transition-transform duration-200 ease-in-out hover:scale-105 active:scale-95"
+                            >
+                                Update
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>  
     </>
   );
 };

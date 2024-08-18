@@ -2,8 +2,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
-import Register from "./pages/Register";
-import Login from "./pages/Login";
+import AuthPage from "./pages/AuthPage";
 import Logout from "./components/Logout";
 import Contact from "./pages/Contact";
 import Navbar from "./components/Navbar";
@@ -52,8 +51,8 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<AuthPage />} />
+          <Route path="/login" element={<AuthPage />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="/syllabus" element={<Syllabus />} />
           <Route path="/pyq" element={<Pyq />} />

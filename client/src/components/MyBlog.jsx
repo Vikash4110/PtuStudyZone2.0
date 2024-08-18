@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { FaUser, FaEye, FaEdit, FaPen, FaTrash, FaRegNewspaper } from 'react-icons/fa'; // Import user and action icons
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
+import underline from '../assets/underline.png';
 const MyBlog = () => {
   const [blogs, setBlogs] = useState([]);
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
@@ -61,32 +62,54 @@ const MyBlog = () => {
   return (
     <>
       <br /><br />
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-100 py-8">
+      <div className="py-12">
         <div className="container mx-auto px-4">
-          <h1 className="text-4xl font-bold mb-6 text-center text-gray-900">My Blogs</h1>
-          <div className="flex justify-center mb-8 space-x-4">
-          <button onClick={handleCompose} className="flex items-center bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors duration-300">
-            <FaPen className="mr-2" />Compose Blog
+        <div className='relative flex justify-center items-center text-center sm:text-left mb-10 mt-6'>
+            <h1 className='text-5xl sm:text-5xl md:text-6xl font-bold flex item-start justify-center sm:justify-start text-center'>
+              <span className='mr-2'>My Blogs</span>
+            </h1>
+            <img src={underline} className='-z-10 absolute top-[-3rem] sm:top-[-4rem] lg:top-[-5rem] xl:top-[-5rem] md:top-[-5rem] left-1/2 transform -translate-x-1/2 w-48 sm:w-56 md:w-72' />
+
+          </div>
+
+
+
+          <div className="flex justify-center mt-14  space-x-4 ">
+          <button onClick={handleCompose} className="items-center justify-center flex space-x-2 bg-white text-[#323290] font-semibold border-2 border-[#323290] py-2 px-4 md:py-2.5 md:px-6 rounded-full shadow hover:bg-[#323290] hover:text-white transition-colors duration-300">
+            <FaPen /> <span>Compose Blog</span>
           </button>
-          <Link to="/blogs" className="flex items-center bg-purple-500 text-white py-2 px-4 rounded-lg hover:bg-purple-600 transition-colors duration-300">
-              <FaRegNewspaper className="mr-2" /> PTU Blog
+          <Link to="/blogs" className="flex space-x-2 items-center ustify-center bg-white text-[#323290] font-semibold border-2 border-[#323290] py-2 px-4 md:py-2.5 md:px-6 rounded-full shadow hover:bg-[#323290] hover:text-white transition-colors duration-300">
+              <FaRegNewspaper /> <span>PTU Blog</span>
             </Link>
             </div>
-          <br />
+            
+
+
+            <div className="container mx-auto  gap-8 px-4 w-5/6  justify-center">
           {blogs.length === 0 ? (
-            <p className="text-center text-gray-600">No blogs found. Please compose a blog.</p>
+            <div className='relative flex justify-center items-center flex-col text-center sm:text-left mb-10 mt-6 col-start-1 col-span-3'>
+              <h1 className='text-base sm:text-lgxl md:text-xl font-bold flex items-center justify-center sm:justify-start'>
+                <span className='mr-2 text-[#ed1f26]'>No Blogs found !</span>               
+                <span className='mr-2 text-[#ed1f26]'>Please Compose a new Blog</span>               
+              </h1>
+             
+            </div>
           ) : (
             blogs.map((blog) => (
-              <div key={blog._id} className="mb-6 p-5 bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out">
-                <h2 className="text-3xl font-bold text-gradient mb-2">{blog.title}</h2>
-                <div className="flex justify-between items-center mb-3">
-                  <div className="flex items-center">
-                    <FaUser className="text-purple-600 mr-2 text-xl" />
-                    <span className="text-md font-semibold text-purple-700">{blog.authorName}</span>
+              <div key={blog._id} className="bg-white rounded-2xl shadow-md shadow-[#323290] p-6 relative mt-20 flex flex-col space-y-4 hover:scale-105 transition-transform duration-300 w-full">
+              <div className="flex items-center  ">
+                      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gradient mb-2  ">{blog.title}</h2>
+
+                    </div>
+                    <div className="flex justify-between">
+                  <div className="flex items-center ">
+                    <FaUser className="text-sm md:text-base lg:text-lg text-[#323290]  leading-relaxed text-center " />
+                    <span className="text-sm md:text-base lg:text-lg text-[#323290]  leading-relaxed text-center font-semibold ">{blog.authorName}</span>
                   </div>
-                  <span className="text-gray-500 text-sm">{new Date(blog.createdAt).toLocaleDateString()}</span>
-                </div>
-                <p className="text-gray-800 mb-4">{blog.content.substring(0, 100)}...</p>
+                  <span className="text-sm md:text-base lg:text-lg text-gray-600 mb-4 font-semibold leading-relaxed text-center ">{new Date(blog.createdAt).toLocaleDateString()}</span>
+                  </div>
+
+                  <p className="text-sm md:text-base lg:text-lg text-gray-600 mb-4 leading-relaxed  ">{blog.content.substring(0, 100)}...</p>
                 <div className="flex justify-end mt-4">
                   <button onClick={() => handleView(blog._id)} className="flex items-center bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 transition-colors duration-300 mr-2">
                     <FaEye className="mr-1" /> View
@@ -101,6 +124,7 @@ const MyBlog = () => {
               </div>
             ))
           )}
+        </div>
         </div>
       </div>
     </>

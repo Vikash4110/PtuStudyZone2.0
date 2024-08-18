@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect } from "react";
 
+
 const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 export const AuthContext = createContext();

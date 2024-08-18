@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
+import { FaPen } from 'react-icons/fa';
 import { toast } from "react-toastify";
+import underline from '../assets/underline.png';
 
 const EditBlog = () => {
   const { id } = useParams();
@@ -50,45 +52,66 @@ const EditBlog = () => {
 
   return (
     <>
-    <br /><br />
-    <div className="container mx-auto my-8">
-      <h1 className="text-3xl font-bold mb-4">Edit Blog</h1>
-      <form onSubmit={handleSubmit}>
-        <div className="mb-4">
-          <label className="block text-gray-700">Title</label>
-          <input
-            type="text"
-            value={blog.title}
-            onChange={(e) => setBlog({ ...blog, title: e.target.value })}
-            className="w-full p-2 border border-gray-300 rounded"
-            required
-          />
+      <br /><br />
+      <div className="flex justify-center items-center min-h-screen bg-[#fbfbfb] px-4 ">
+        <div className="grid grid-cols-1 md:grid-cols-1 items-center gap-10 max-w-screen-lg w-full md:w-3/6">
+          <div className=" w-5/6 justify-self-center md:w-full bg-white rounded-[40px] p-8 shadow-lg">
+            <div className="relative flex justify-center items-center flex-col text-center sm:text-left mb-10 mt-6">
+              <h1 className="font-black text-[30px] text-black">
+                <FaPen className="inline-block mr-2" /> Edit Blog
+              </h1>
+              <img src={underline} alt="underline" className="absolute top-[-4rem] left-1/2 transform -translate-x-1/2 w-48 h-auto md:top-[-4rem]" />
+            </div>
+            <form onSubmit={handleSubmit} className='flex flex-col space-y-6'>
+              <div className='flex flex-col'>
+
+                <label for='title' className='font-bold'>Title</label>
+
+                <input
+                  type="text"
+                  id='title'
+                  value={blog.title}
+                  onChange={(e) => setBlog({ ...blog, title: e.target.value })}
+                  className="w-full bg-white p-4 rounded-[20px]  shadow-sm border placeholder:text-gray-500 focus:outline-none focus:border-blue-400"
+                  required
+                />
+
+              </div>
+              <div className='flex flex-col'>
+
+                <label for='authName' className='font-bold'>Author Name</label>
+                <input
+                  type="text"
+                  id='authName'
+                  value={blog.authorName}
+                  onChange={(e) => setBlog({ ...blog, authorName: e.target.value })}
+                  className="w-full bg-white p-4 rounded-[20px]  shadow-sm border placeholder:text-gray-500 focus:outline-none focus:border-blue-400"
+                  required
+                />
+              </div>
+
+              <div className='flex flex-col'>
+
+                <label for='content' className='font-bold'>Content</label>
+                <textarea
+                  value={blog.content}
+                  id='content'
+                  onChange={(e) => setBlog({ ...blog, content: e.target.value })}
+                  className="w-full bg-white p-4 rounded-[20px] shadow-sm border placeholder:text-gray-500 focus:outline-none focus:border-blue-400"
+                  rows="5"
+                  required
+                />
+
+              </div>
+
+
+              <button type="submit" className="block w-full font-bold bg-gradient-to-r from-purple-500 to-red-500 text-white py-4 mt-6 rounded-[20px] transition-transform duration-200 ease-in-out hover:scale-105 active:scale-95">
+                Update Blog
+              </button>
+            </form>
+          </div>
         </div>
-        <div className="mb-4">
-          <label className="block text-gray-700">Content</label>
-          <textarea
-            value={blog.content}
-            onChange={(e) => setBlog({ ...blog, content: e.target.value })}
-            className="w-full p-2 border border-gray-300 rounded"
-            rows="5"
-            required
-          />
-        </div>
-        <div className="mb-4">
-          <label className="block text-gray-700">Author Name</label>
-          <input
-            type="text"
-            value={blog.authorName}
-            onChange={(e) => setBlog({ ...blog, authorName: e.target.value })}
-            className="w-full p-2 border border-gray-300 rounded"
-            required
-          />
-        </div>
-        <button type="submit" className="p-2 bg-blue-600 text-white rounded">
-          Update Blog
-        </button>
-      </form>
-    </div>
+      </div>
     </>
   );
 };
