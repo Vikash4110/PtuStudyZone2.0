@@ -3,6 +3,9 @@ import { useAuth } from "../store/auth";
 import { toast } from "react-toastify";
 import { motion } from "framer-motion";
 import { Instagram } from "react-content-loader";
+import profileImg from '../assets/profile2.jpg';
+import Footer from "../components/Footer" 
+
 import {
   FaUser,
   FaEnvelope,
@@ -10,6 +13,9 @@ import {
   FaEdit,
   FaUniversity,
   FaIdBadge,
+  FaTwitter,
+  FaFacebook,
+  FaInstagram,
 } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
@@ -54,87 +60,81 @@ const UserDashboard = () => {
 
   return (
     <>
-    <br />
-    <div className="bg-gradient-to-br from-blue-600 to-purple-800 min-h-screen flex items-center justify-center">
-      <div className="container mx-auto px-6 py-8">
-        <motion.div
-          className="bg-white shadow-lg rounded-lg p-8 mb-8 text-center"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+    <br /><br />
+    <div className="bg-gray-100 min-h-screen flex items-center justify-center">
+  <div className="container mx-auto px-6 py-8">
+    <div className="bg-white shadow-2xl  rounded-xl overflow-hidden flex flex-col lg:flex-row min-h-[70vh] w-full lg:w-5/6 mx-auto mt-20 lg:mt-0">
+      {/* Left Section */}
+      <div className="bg-gradient-to-br from-purple-500 to-red-500 p-8 lg:w-1/3 flex flex-col items-center justify-center">
+        <img
+          src={profileImg}
+          alt="User Avatar"
+          className="w-32 h-32 rounded-full mb-4"
+        />
+        <h2 className="text-white text-3xl font-semibold capitalize">
+          {userData.username}
+        </h2>
+        <p className="text-white text-base mb-4">Student</p>
+        <motion.button
+          className="text-white mt-4 px-4 py-2 rounded-full border border-white flex items-center"
+          onClick={() => navigate("/update-profile")}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
         >
-          <h1 className="text-4xl font-semibold text-gray-800 mb-2">
-            User Dashboard
-          </h1>
-          <p className="text-gray-600">Welcome back, {userData.username}!</p>
-        </motion.div>
+          <FaEdit className="mr-2" /> Edit Profile
+        </motion.button>
+      </div>
 
-        <div className="bg-white shadow-md rounded-lg p-8">
-          <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">
-            Profile Information
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <ProfileItem
-              icon={<FaUser className="text-blue-500" />}
-              label="Name"
-              value={userData.username}
-            />
-            <ProfileItem
-              icon={<FaIdBadge className="text-green-500" />}
-              label="University Roll No"
-              value={userData.rollno}
-            />
-            <ProfileItem
-              icon={<FaUniversity className="text-yellow-500" />}
-              label="Department"
-              value={userData.department}
-            />
-            <ProfileItem
-              icon={<FaUniversity className="text-yellow-500" />}
-              label="Semester"
-              value={userData.semester}
-            />
-            <ProfileItem
-              icon={<FaEnvelope className="text-red-500" />}
-              label="Email"
-              value={userData.email}
-            />
-            <ProfileItem
-              icon={<FaPhone className="text-green-500" />}
-              label="Phone"
-              value={userData.phone}
-            />
-          </div>
-          <div className="flex justify-center mt-8">
-            <motion.button
-              className="bg-gradient-to-r from-purple-600 to-blue-500 text-white px-6 py-3 rounded-full font-semibold shadow-md hover:shadow-lg transition duration-300 ease-in-out flex items-center"
-              onClick={() => navigate("/update-profile")}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <FaEdit className="mr-2" /> Update Profile
-            </motion.button>
-          </div>
+      {/* Right Section */}
+      <div className="p-8 pt-8 lg:w-2/3 flex flex-col justify-center">
+      
+        <h2 className="text-2xl font-bold text-gray-800 mb-6">
+          Student Data
+        </h2>
+        <div className="grid md:grid-cols-2 gap-6 ">
+          <ProfileItem
+            label="Email"
+            value={userData.email}
+            icon={<FaEnvelope className="text-gray-500" />}
+          />
+          <ProfileItem
+            label="Phone"
+            value={userData.phone}
+            icon={<FaPhone className="text-gray-500" />}
+          />
+          <ProfileItem
+            label="University Roll No"
+            value={userData.rollno}
+            icon={<FaIdBadge className="text-gray-500" />}
+          />
+          <ProfileItem
+            label="Department"
+            value={userData.department}
+            icon={<FaUniversity className="text-gray-500" />}
+          />
+          <ProfileItem
+            label="Semester"
+            value={userData.semester}
+            icon={<FaUniversity className="text-gray-500" />}
+          />
         </div>
       </div>
     </div>
-    </>
+  </div>
+</div>
+<Footer/>
+</>
   );
 };
 
-const ProfileItem = ({ icon, label, value }) => (
-  <motion.div
-    className="bg-gray-100 p-6 rounded-lg shadow-md flex items-center"
-    initial={{ opacity: 0, y: -20 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.5 }}
-  >
+const ProfileItem = ({ label, value, icon }) => (
+  <div className="flex items-center">
     {icon}
     <div className="ml-4">
-      <p className="font-semibold text-gray-700">{label}:</p>
-      <p className="text-gray-600">{value}</p>
+      <p className="text-gray-600">{label}</p>
+      <p className="font-semibold text-gray-800">{value}</p>
     </div>
-  </motion.div>
+  </div>
 );
 
 export default UserDashboard;
