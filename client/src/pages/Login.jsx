@@ -1,16 +1,13 @@
 import React, { useState } from "react";
+import PtuImg from "../assets/PTULogo.gif";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../store/auth";
 import { toast } from "react-toastify";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
-import { faLock } from '@fortawesome/free-solid-svg-icons'
 import { RotatingLines } from "react-loader-spinner"; // Import the loader component
-import Footer from "../components/Footer" 
 
 const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
-const Login = ({ setIsLoggedIn }) => {
+const Login = () => {
   const navigate = useNavigate();
   const { storeTokenInLS } = useAuth();
   const [credentials, setCredentials] = useState({ email: "", password: "" });
@@ -57,72 +54,68 @@ const Login = ({ setIsLoggedIn }) => {
 
   return (
     <>
-
-
-      <form onSubmit={handleSubmit} className="flex flex-col gap-8 w-full max-w-md mx-auto mt-6  text-center border-2 rounded-3xl py-10 lg:py-20 px-6 lg:px-10 shadow-2xl ">
-        <div className="relative h-11 w-full">
-          <input
-            type="email"
-            name="email"
-            value={credentials.email}
-            onChange={handleInputChange}
-            placeholder=""
-            className="shadow-xl peer h-full w-full rounded-xl border border-gray-300 border-t-transparent bg-transparent px-3 py-3 font-sans text-sm font-normal text-gray-700 outline-none transition-all placeholder-shown:border placeholder-shown:border-gray-200 placeholder-shown:border-t-gray-200 focus:border-2 focus:border-[#ed1f26] focus:border-t-transparent focus:border-r-transparent focus:border-l-transparent disabled:border-0 disabled:bg-gray-50"
-            required
-          />
-          <label
-            className="pointer-events-none absolute left-3 -top-1.5 flex items-center space-x-2  select-none text-[12px] font-medium leading-tight text-gray-800 transition-all peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-500 peer-focus:-top-1.5 peer-focus:text-[12px] peer-focus:text-[#ed1f26]"
-          >
-            <span><FontAwesomeIcon icon={faEnvelope} /></span><span>Email</span>
-          </label>
-        </div>
-
-
-        <div className="relative h-11 w-full">
-          <input
-            type="password"
-            name="password"
-            value={credentials.password}
-            onChange={handleInputChange}
-            placeholder=""
-            className="shadow-xl peer h-full w-full rounded-xl border border-gray-300 border-t-transparent bg-transparent px-3 py-3 font-sans text-sm font-normal text-gray-700 outline-none transition-all placeholder-shown:border placeholder-shown:border-gray-200 placeholder-shown:border-t-gray-200 focus:border-2 focus:border-b-[#ed1f26] focus:border-t-transparent focus:border-r-transparent focus:border-l-transparent disabled:border-0 disabled:bg-gray-50"
-            required
-          />
-          <label
-            className="pointer-events-none absolute left-3 -top-1.5 flex items-center space-x-2  select-none text-[12px] font-medium leading-tight text-gray-800 transition-all peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-500 peer-focus:-top-1.5 peer-focus:text-[12px] peer-focus:text-[#ed1f26]"
-          >
-            <span><FontAwesomeIcon icon={faLock} /></span><span>Password</span>
-          </label>
-        </div>
-
-
-
-        <button
-          type="submit"
-          className={` py-2 px-4 rounded-full mt-6 font-medium text-white w-1/2 mx-auto  block  bg-gradient-to-r from-purple-500 to-red-500   transition-transform duration-200 ease-in-out hover:scale-105 active:scale-95${loading ? "opacity-50 cursor-not-allowed" : ""}`}
-          disabled={loading} // Disable button while loading
-        >
-          {loading ? (
-            <div className="flex justify-center items-center">
-              <RotatingLines
-                strokeColor="white"
-                strokeWidth="5"
-                animationDuration="0.75"
-                width="24"
-                visible={true}
-              />
+      <br />
+      <section className="flex items-center justify-center min-h-screen bg-gradient-to-r from-purple-500 to-blue-500 p-6">
+        <div className="flex flex-col lg:flex-row bg-white rounded-lg shadow-lg overflow-hidden">
+          <div className="lg:w-1/2 bg-black flex items-center justify-center">
+            <img src={PtuImg} alt="PTU Logo" className="object-cover h-full" />
+          </div>
+          <div className="lg:w-1/2 p-8">
+            <h1 className="text-2xl font-bold text-gray-800 mb-6">Login</h1>
+            <form onSubmit={handleSubmit}>
+              <div className="mb-4">
+                <label htmlFor="email" className="block text-gray-700">Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  value={credentials.email}
+                  onChange={handleInputChange}
+                  placeholder="Enter your email"
+                  className="w-full p-2 border border-gray-300 rounded"
+                  required
+                />
+              </div>
+              <div className="mb-4">
+                <label htmlFor="password" className="block text-gray-700">Password</label>
+                <input
+                  type="password"
+                  name="password"
+                  value={credentials.password}
+                  onChange={handleInputChange}
+                  placeholder="Enter your password"
+                  className="w-full p-2 border border-gray-300 rounded"
+                  required
+                />
+              </div>
+              <button
+                type="submit"
+                className={`w-full bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-300 ${loading ? "opacity-50 cursor-not-allowed" : ""}`}
+                disabled={loading} // Disable button while loading
+              >
+                {loading ? (
+                  <div className="flex justify-center items-center">
+                    <RotatingLines
+                      strokeColor="white"
+                      strokeWidth="5"
+                      animationDuration="0.75"
+                      width="24"
+                      visible={true}
+                    />
+                  </div>
+                ) : (
+                  "Login"
+                )}
+              </button>
+            </form>
+            <div className="mt-4 text-center">
+              <p className="text-gray-600">
+                Don't have an account?{" "}
+                <Link to="/register" className="text-blue-600 hover:underline">Register</Link>
+              </p>
             </div>
-          ) : (
-            "Login"
-          )}
-        </button>
-
-        <p className="text-center mt-4 text-gray-600">
-          New Here? <Link to="/register" className="text-[#ed1f26] font-semibold hover:underline" >Sign Up</Link>
-        </p>
-
-
-      </form>
+          </div>
+        </div>
+      </section>
     </>
   );
 };

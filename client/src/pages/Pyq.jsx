@@ -1,13 +1,10 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../store/auth";
 import "aos/dist/aos.css";
-import Footer from "../components/Footer" 
-
-import underline from '../assets/underline.png';
+import ServiceImg from "../assets/PTULogo.gif";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import PyqIcon from '../assets/paper.svg';
-import './RadioBtn.css'
+
 const Pyq = () => {
   const { pyq } = useAuth();
   const [selectedSemester, setSelectedSemester] = useState("1"); // Default to first semester
@@ -39,97 +36,90 @@ const Pyq = () => {
     <>
       <ToastContainer />
       <br /><br />
-      <section className="py-12">
+      <section className="py-12 bg-gradient-to-r from-blue-50 to-blue-100">
         <div className="container mx-auto text-center px-4">
-        <div className='relative flex justify-center items-center flex-col text-center sm:text-left mb-10 mt-6'>
-              <h1 className='text-4xl sm:text-5xl md:text-6xl font-bold flex items-center justify-center sm:justify-start text-center'>
-                <span className='mr-2'>Previous Year Question Papers</span>               
-              </h1>
-              <img src={underline} className='absolute top-[-1rem] sm:top-[-1rem] lg:top-[-5rem] md:top-[-1rem] left-1/2 transform -translate-x-1/2 w-48 sm:w-56 md:w-72' />
-            </div>
-
-            <p className="text-lg md:text-xl text-[#323290] mb-12 font-semibold">
-            Access previous year question papers to enhance your preparation and boost your confidence for PTU exams.
-            </p>
-            <div className="mb-6 text-center">
-            
-            <div className="radio-inputs">
+          <h1 className="text-4xl md:text-5xl font-bold mb-8 text-blue-900">Previous Year Question Paper's</h1>
+          <p className="text-base md:text-lg text-blue-700 mb-12">
+            Download your course Previous Year Question Paper and stay organized for the semester.
+          </p>
+          <div className="mb-6">
+            <label htmlFor="semester" className="mr-2 text-lg text-blue-700">
+              Select Semester:
+            </label>
+            <select
+              id="semester"
+              value={selectedSemester}
+              onChange={(e) => setSelectedSemester(e.target.value)}
+              className="border rounded-md p-2"
+            >
               {[1, 2, 3, 4, 5, 6, 7, 8].map((sem) => (
-                <label key={sem} className="radio">
-                  <input
-                    type="radio"
-                    value={sem.toString()}
-                    checked={selectedSemester === sem.toString()}
-                    onChange={() => setSelectedSemester(sem.toString())}
-                    className="form-radio h-5 w-5 text-[#323290]"
-                  />
-                  <span className="name">Semester {sem}</span>
-                </label>
+                <option key={sem} value={sem}>
+                  Semester {sem}
+                </option>
               ))}
-            </div>
+            </select>
           </div>
         </div>
-        <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4 w-5/6 h-full justify-center">
+        <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
           {filteredPyq.length > 0 ? (
             filteredPyq.map((curElem, index) => (
               <div
+                className={`bg-white rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-100 p-6 border-t-4 ${
+                  index % 2 === 0 ? "border-blue-500" : "border-green-500"
+                }`}
                 key={index}
-                className="bg-white rounded-2xl shadow-md shadow-[#323290] p-6 relative mt-32 flex flex-col items-center hover:scale-105 transition-transform duration-300 lg:w-5/6  md:w-5/6 sm:w-full w-5/6" >
-                    <div className="bg-[#323290] w-28 h-28 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 mx-auto mb-6 rounded-full text-white flex items-center justify-center absolute -top-12 md:-top-16 lg:-top-20 -right-16 sm:-right-6 md:-right-16 lg:-right-16">
-                      <img src={PyqIcon} className="w-12 h-12 sm:w-10 sm:h-10 md:w-14 md:h-14 lg:w-16 lg:h-16" />
-                    </div>
-              
-                
-                
-                    <p className="text-sm md:text-base lg:text-lg text-gray-600 mb-4 leading-relaxed text-center  sm:pt-4">
-                      <strong>Semester:</strong> {curElem.semester}
-                    </p>
-                    <p className="text-sm md:text-base lg:text-lg text-gray-600 mb-4 leading-relaxed text-center">
-                      <strong>Subject:</strong> {curElem.subject}
-                    </p>
-                    <p className="text-sm md:text-base lg:text-lg text-gray-600 mb-4 leading-relaxed text-center">
-                      <strong>Subject Code:</strong> {curElem.subjectcode}
-                    </p>
+              >
+                <div className="w-full h-40 mb-4 overflow-hidden rounded-lg">
+                  <img
+                    src={ServiceImg}
+                    alt={curElem.service}
+                    className="object-contain w-full h-full"
+                  />
+                </div>
+                <h2 className="text-xl md:text-2xl font-bold text-blue-800 mb-2">{curElem.service}</h2>
+                <p className="text-sm md:text-base text-gray-600 mb-2">
+                  <strong>Semester:</strong> {curElem.semester}
+                </p>
+                <p className="text-sm md:text-base text-gray-600 mb-2">
+                  <strong>Subject:</strong> {curElem.subject}
+                </p>
+                <p className="text-sm md:text-base text-gray-600 mb-2">
+                  <strong>Subject Code:</strong> {curElem.subjectcode}
+                </p>
                 <a
                   href={curElem.linka}
                   onClick={(e) => handleDownloadClick(curElem.linka, e)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-white text-[#323290] font-semibold border-2 border-[#323290] py-2 mb-1 px-4 md:py-2.5 md:px-6 rounded-full shadow hover:bg-[#323290] hover:text-white transition-colors duration-300"
+                  className="block w-full text-center mt-4 px-3 py-2 text-sm md:text-base text-white rounded-lg bg-blue-600 hover:bg-blue-700 transition-colors duration-300"
                 >
-                  Download PYQ 1 
+                  Download Pyq 1 
                 </a>
                 <a
                   href={curElem.linkb}
                   onClick={(e) => handleDownloadClick(curElem.linkb, e)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-white text-[#323290] font-semibold border-2 border-[#323290] py-2 mb-1 px-4 md:py-2.5 md:px-6 rounded-full shadow hover:bg-[#323290] hover:text-white transition-colors duration-300"
+                  className="block w-full text-center mt-4 px-3 py-2 text-sm md:text-base text-white rounded-lg bg-blue-600 hover:bg-blue-700 transition-colors duration-300"
                 >
-                  Download PYQ 2
+                  Download Pyq 2
                 </a>
                 <a
                   href={curElem.linkc}
                   onClick={(e) => handleDownloadClick(curElem.linkc, e)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-white text-[#323290] font-semibold border-2 border-[#323290] py-2 mb-1  px-4 md:py-2.5 md:px-6 rounded-full shadow hover:bg-[#323290] hover:text-white transition-colors duration-300"
+                  className="block w-full text-center mt-4 px-3 py-2 text-sm md:text-base text-white rounded-lg bg-blue-600 hover:bg-blue-700 transition-colors duration-300"
                 >
-                  Download PYQ 3
+                  Download Pyq 3
                 </a>
               </div>
             ))
           ) : (
-            <div className='relative flex justify-center items-center flex-col text-center sm:text-left mb-10 mt-6 col-start-1 col-span-3'>
-              <h1 className='text-base sm:text-lgxl md:text-xl font-bold flex items-center justify-center sm:justify-start'>
-                <span className='mr-2 text-[#ed1f26]'>No PYQ available for this semester at the moment.</span>               
-              </h1>
-             
-            </div>
+            <p className="text-center text-gray-600">No Pyq available for this semester.</p>
           )}
         </div>
       </section>
-      <Footer/>
     </>
   );
 };

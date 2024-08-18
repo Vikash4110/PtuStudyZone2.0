@@ -5,7 +5,6 @@ import Section3 from '../components/Section3'
 import Section4 from '../components/Section4'
 import About from '../components/AboutHome'
 import Footer from "../components/Footer" 
-import {Link} from "react-router-dom";
 import '../index.css'
 const Home = ()=>{
 
