@@ -86,6 +86,7 @@ const AdminSyllabus = () => {
     <>
     <br />
     <br />
+    <br />
     <section className="bg-white shadow-md rounded my-6">
       <div className="p-6">
         <h1 className="text-2xl font-semibold mb-4">Admin Syllabus Data</h1>

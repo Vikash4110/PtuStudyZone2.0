@@ -7,24 +7,20 @@ import MainVideo from "../assets/ptuvid.mp4";
 // Sample slide content
 const slides = [
   { 
-    title: "Learn and Improve Yourself in Less Time", 
-    description: "Our self-improvement courses are very effective" 
+    title: "Comprehensive Study Material", 
+    description: "Access all your course notes, previous year questions, and books in one place" 
   },
   { 
-    title: "Unlock Your Potential", 
-    description: "Find courses that fit your needs" 
+    title: "Interactive Learning Community", 
+    description: "Connect with peers, share knowledge, and get support from fellow students" 
   },
   { 
-    title: "Expert Instructors", 
-    description: "Learn from the best in the industry" 
+    title: "Resourceful Book Library", 
+    description: "Explore a wide range of textbooks and reference materials for every subject" 
   },
   { 
-    title: "Flexible Scheduling", 
-    description: "Learn at your own pace" 
-  },
-  { 
-    title: "Affordable Pricing", 
-    description: "Quality education at a great price" 
+    title: "Detailed Syllabus Insights", 
+    description: "Stay organized with thorough syllabus breakdowns tailored to your coursework" 
   },
 ];
 
@@ -54,7 +50,7 @@ const MainSlider = () => {
     slidesToScroll: 1,
     arrows: true,
     autoplay: true,
-    autoplaySpeed: 4000,
+    autoplaySpeed: 3000,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
   };

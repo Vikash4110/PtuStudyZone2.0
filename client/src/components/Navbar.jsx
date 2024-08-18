@@ -26,7 +26,7 @@ const Nav = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50 || location.pathname !== "/") {
+      if (window.scrollY >50 || location.pathname !== "/") {
         setNavbarBg("bg-white shadow-md");
         setTextColor("text-[#ed1f26]");
         setPadding("py-2 md:py-4"); // Decreased height

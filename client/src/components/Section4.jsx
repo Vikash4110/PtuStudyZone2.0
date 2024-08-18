@@ -1,7 +1,10 @@
 import React from 'react';
 import backgroundImage from '../assets/slider-image1.jpg'; // Replace with the correct path to your background image
 import {Link} from "react-router-dom";
+import { useAuth } from "../store/auth";
+
 function Section4() {
+  const { isAdmin } = useAuth();
   return (
     <div
       className="h-96 flex items-center justify-center "
@@ -27,6 +30,13 @@ function Section4() {
           <Link to="/contact" className="bg-[#ed1f26] hover:bg-pink-700 text-white font-bold py-2 px-4 rounded">
             Contact Us
           </Link>
+          {isAdmin && (
+    <Link
+      to="/admin"
+      className="bg-[#34be19] hover:bg-green-700 text-white font-bold py-2 px-4 rounded" >
+      Access Admin Panel
+    </Link>
+  )}
         </div>
       </div>
     </div>

@@ -1,8 +1,8 @@
 import React from 'react';
 import { FaBookOpen, FaUserGraduate, FaChalkboardTeacher, FaBlog, FaLinkedin, FaGithub, FaInstagram, FaYoutube, FaTwitter, FaYoutubeSquare, FaBook, FaBlogger } from 'react-icons/fa';
 import { motion } from 'framer-motion';
-import profilePic from '../assets/mypic.jpg'; // Replace with the path to your image
-import logo from '../assets/PTULogo.gif'; // Replace with the path to your logo
+import profilePic from '../assets/mypic.jpg'; 
+import MainLogo from "../assets/mainlogo.png";
 
 const About = () => {
   return (
@@ -22,12 +22,16 @@ const About = () => {
 
           {/* Intro Section */}
           <motion.div
-            className="bg-gradient-to-r from-pink-300 via-purple-300 to-blue-300 rounded-lg shadow-2xl p-8 mb-8 flex flex-col items-center"
+            className="bg-gradient-to-r from-pink-300 via-purple-300 to-blue-300 rounded-lg shadow-2xl p-8 mb-8 flex flex-row items-center "
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8 }}
           >
-            <img src={logo} alt="PTU Study Zone Logo" className="w-32 h-32 mb-4 rounded-full" />
+            <img
+                src={MainLogo}
+                alt="Main Logo"
+                style={{ height: "150px", width: "auto" }}
+              />
             <div className="text-center">
               <p className="text-gray-800 text-lg leading-relaxed">
                 PTU Study Zone is a comprehensive platform designed to simplify the academic experience for students at Punjab Technical University. Whether you're looking for well-organized notes, previous year questions (PYQ), the latest syllabus, or educational resources, everything you need is available in one place.

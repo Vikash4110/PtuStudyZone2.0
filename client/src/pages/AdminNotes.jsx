@@ -86,12 +86,13 @@ const AdminNotes = () => {
     <>
     <br />
     <br />
+    <br />
     <section className="bg-white shadow-md rounded my-6">
       <div className="p-6">
-        <h1 className="text-2xl font-semibold mb-4">Admin Syllabus Data</h1>
+        <h1 className="text-2xl font-semibold mb-4">Admin Notes Data</h1>
         <div className="mb-4">
           <Link to="/admin/notes/add" className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-700">
-            Add New Syllabus
+            Add New Notes
           </Link>
         </div>
         <div className="overflow-x-auto">
