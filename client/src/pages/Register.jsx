@@ -1,5 +1,4 @@
 import { useState } from "react";
-import PtuImg from "../assets/PTULogo.gif";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../store/auth";
 import { toast } from "react-toastify";
@@ -39,7 +38,9 @@ const Register = ({ setIsLoggedIn }) => {
     e.preventDefault();
 
     if (!backendUrl) {
-      toast.error("Backend URL is not defined. Please check your environment variables.");
+      toast.error(
+        "Backend URL is not defined. Please check your environment variables."
+      );
       return;
     }
 
@@ -57,7 +58,9 @@ const Register = ({ setIsLoggedIn }) => {
       const res_data = await response.json();
 
       if (!response.ok) {
-        throw new Error(res_data.extraDetails || res_data.message || "Registration failed");
+        throw new Error(
+          res_data.extraDetails || res_data.message || "Registration failed"
+        );
       }
 
       storeTokenInLS(res_data.token);
@@ -82,12 +85,12 @@ const Register = ({ setIsLoggedIn }) => {
 
   return (
     <>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-8 w-full max-w-md mx-auto mt-6  text-center border-2 rounded-3xl py-10 lg:py-12 px-6 lg:px-10 shadow-2xl ">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-2 w-full max-w-md mx-auto mt-6  text-center border-2 rounded-3xl py-10 lg:py-12 px-6 lg:px-10 shadow-2xl ">
 
         <div className="grid grid-cols-2 gap-6">
 
 
-          <div className="relative h-11 w-full">
+          <div className="relative h-11 w-full col-start-1 col-span-2 md:col-span-1">
             <input
               type="text"
               name="username"
@@ -104,7 +107,8 @@ const Register = ({ setIsLoggedIn }) => {
             </label>
           </div>
 
-          <div className="relative h-11 w-full">
+
+          <div className="relative h-11 w-full col-start-1 col-span-2 md:col-span-1" >
             <input
               type="text"
               name="rollno"
@@ -121,7 +125,7 @@ const Register = ({ setIsLoggedIn }) => {
             </label>
           </div>
 
-          <div className="relative h-11 w-full">
+          <div className="relative h-11 w-full col-start-1 col-span-2 ">
             <select
               name="department"
               value={user.department}
@@ -145,7 +149,7 @@ const Register = ({ setIsLoggedIn }) => {
 
 
 
-          <div className="relative h-11 w-full">
+          <div className="relative h-11 w-full col-start-1 col-span-2 md:col-span-1">
             <select
               name="semester"
               value={user.semester}
@@ -166,7 +170,27 @@ const Register = ({ setIsLoggedIn }) => {
             </label>
           </div>
 
-          <div className="relative h-11 w-full">
+          
+
+          <div className="relative h-11 w-full col-start-1 col-span-2 md:col-span-1 ">
+            <input
+              type="text"
+              name="phone"
+              value={user.phone}
+              onChange={handleInput}
+              placeholder=""
+              className="shadow-xl peer h-full w-full rounded-xl border border-gray-300 border-t-transparent bg-transparent px-3 py-3 font-sans text-sm font-normal text-gray-700 outline-none transition-all placeholder-shown:border placeholder-shown:border-gray-200 placeholder-shown:border-t-gray-200 focus:border-2 focus:border-[#ed1f26] focus:border-t-transparent focus:border-r-transparent focus:border-l-transparent disabled:border-0 disabled:bg-gray-50"
+              required
+            />
+
+            <label
+              className="pointer-events-none absolute left-3 -top-1.5 flex items-center space-x-2  select-none text-[12px] font-medium leading-tight text-gray-800 transition-all peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-500 peer-focus:-top-1.5 peer-focus:text-[12px] peer-focus:text-[#ed1f26]"
+            >
+              <span><FontAwesomeIcon icon={faPhone} /></span><span>Phone</span>
+            </label>
+          </div>
+
+          <div className="relative h-11 w-full col-start-1 col-span-2 ">
             <input
               type="email"
               name="email"
@@ -184,24 +208,6 @@ const Register = ({ setIsLoggedIn }) => {
             </label>
           </div>
 
-
-          <div className="relative h-11 w-full">
-            <input
-              type="text"
-              name="phone"
-              value={user.phone}
-              onChange={handleInput}
-              placeholder=""
-              className="shadow-xl peer h-full w-full rounded-xl border border-gray-300 border-t-transparent bg-transparent px-3 py-3 font-sans text-sm font-normal text-gray-700 outline-none transition-all placeholder-shown:border placeholder-shown:border-gray-200 placeholder-shown:border-t-gray-200 focus:border-2 focus:border-[#ed1f26] focus:border-t-transparent focus:border-r-transparent focus:border-l-transparent disabled:border-0 disabled:bg-gray-50"
-              required
-            />
-
-            <label
-              className="pointer-events-none absolute left-3 -top-1.5 flex items-center space-x-2  select-none text-[12px] font-medium leading-tight text-gray-800 transition-all peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-500 peer-focus:-top-1.5 peer-focus:text-[12px] peer-focus:text-[#ed1f26]"
-            >
-              <span><FontAwesomeIcon icon={faPhone} /></span><span>Phone</span>
-            </label>
-          </div>
 
 
           <div className="relative h-11 w-full col-start-1 col-span-2">
@@ -221,6 +227,8 @@ const Register = ({ setIsLoggedIn }) => {
             >
               <span><FontAwesomeIcon icon={faLock} /></span><span>Password</span>
             </label>
+
+
           </div>
         </div>
 

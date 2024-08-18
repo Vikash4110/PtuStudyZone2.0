@@ -66,7 +66,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="flex justify-center min-h-screen items-center  bg-[#fbfbfb] pt-20">
+    <div className="flex justify-center min-h-screen items-center  bg-[#fbfbfb] pt-24">
       <div className="grid grid-cols-1 lg:grid-cols-2 md:grid-cols-1 items-center gap-10 max-w-screen-lg w-full lg:w-5/6 md:w-4/6  ">
 
         {/* Image Section */}
@@ -112,8 +112,8 @@ const Contact = () => {
         </div>
 
         {/* Form Section */}
-        <div className="w-5/6 justify-self-center md:w-full bg-white rounded-[40px] p-8 shadow-lg ">
-          <div className="relative flex justify-center items-center flex-col text-center sm:text-left mb-10 mt-6">
+        <div className="w-5/6 justify-self-center md:w-full bg-white rounded-[40px] p-8 shadow-lg hover:scale-105">
+          <div className="relative flex justify-center items-center flex-col text-center sm:text-left mb-10 ">
             <h1 className="font-semibold text-2xl md:text-3xl text-black">Send us a message</h1>
 
           </div>

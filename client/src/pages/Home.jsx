@@ -1,60 +1,37 @@
-import AOS from "aos";
-import { useEffect } from "react";
-import { useAuth } from "../store/auth"; // Import the useAuth hook to access auth state
-import { Link } from "react-router-dom"; // Import Link to navigate to the Admin Panel
-import BackImg from "../assets/ptu-main-building.jpg";
+import React from 'react'
+import Section1 from '../components/Section1'
+import Section2 from '../components/Section2'
+import Section3 from '../components/Section3'
+import Section4 from '../components/Section4'
+import About from '../components/AboutHome'
+import { useAuth } from "../store/auth";
+import Footer from "../components/Footer" 
+import {Link} from "react-router-dom";
+import '../index.css'
+const Home = ()=>{
 
-const Home = () => {
   const { isAdmin } = useAuth(); // Get the isAdmin status from auth
 
-  useEffect(() => {
-    AOS.init({ duration: 1000 }); // Initialize AOS for animations
-  }, []);
-
-  return (
-    <div
-      className="min-h-screen flex flex-col justify-center items-center bg-cover bg-center"
-      style={{ backgroundImage: `url(${BackImg})` }}
+    return(
+        <>       
+       <Section1 />
+       <Section2 />
+       <Section4 />
+       <About />
+       <Section3 />
+       {isAdmin && (
+    <Link
+      to="/admin"
+      className="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 mt-6 rounded transition duration-300 block md:inline-block"
+      data-aos="fade-up"
+      data-aos-delay="600"
     >
-      <div className="absolute inset-0 bg-black opacity-50"></div>
-      <div className="relative z-10 p-6 text-center text-white">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4" data-aos="fade-up">
-          Welcome to PTU Study Zone
-        </h1>
-        <p className="text-lg md:text-xl mb-8" data-aos="fade-up" data-aos-delay="200">
-          Your one-stop destination for study materials, resources, and community support.
-        </p>
-        <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded transition duration-300" data-aos="fade-up" data-aos-delay="400">
-          Get Started
-        </button>
-        {/* Conditionally render the Access Admin Panel button if the user is an admin */}
-        <br />
-        {isAdmin && (
-          <Link
-            to="/admin"
-            className="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-4 mt-6 rounded transition duration-300 block md:inline-block"
-            data-aos="fade-up"
-            data-aos-delay="600"
-          >
-            Access Admin Panel
-          </Link>
-        )}
-      </div>
-      <div className="relative z-10 mt-12 text-center">
-        <h2 className="text-2xl md:text-3xl font-semibold text-white" data-aos="fade-up">
-          Explore Our Resources
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
-          {["Notes", "Previous Year Questions", "Books"].map((item, index) => (
-            <div key={index} className="bg-white bg-opacity-80 rounded-lg p-4 shadow-lg" data-aos="fade-up" data-aos-delay={index * 200}>
-              <h3 className="text-xl font-bold text-gray-800 mb-2">{item}</h3>
-              <p className="text-gray-600">Discover a wide range of {item.toLowerCase()} to help you excel in your studies.</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-};
+      Access Admin Panel
+    </Link>
+  )}
+  <Footer/>
+        </>
 
-export default Home;
+    )
+}
+export default Home

@@ -34,11 +34,11 @@ const ComposeBlog = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-[#fbfbfb] px-4 ">
+    <div className="flex justify-center items-center min-h-screen bg-[#fbfbfb] px-4 pt-28">
       <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-10 max-w-screen-lg w-full">
         
         {/* Form Section */}
-        <div className=" w-5/6 justify-self-center md:w-full bg-white rounded-[40px] p-8 shadow-lg">
+        <div className=" w-5/6 justify-self-center md:w-full bg-white rounded-[40px] p-8 shadow-lg md:hover:scale-105">
           <div className="relative flex justify-center items-center flex-col text-center sm:text-left mb-10 mt-6">
             <h1 className="font-black text-[30px] text-black">
               <FaPen className="inline-block mr-2" /> New Blog

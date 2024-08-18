@@ -8,7 +8,7 @@ const About = () => {
   return (
     <>
       <br /><br />
-      <div className="min-h-screen bg-gradient-to-r from-blue-50 to-blue-100 p-8">
+      <div className="min-h-screen bg-white mt-36">
         <div className="max-w-7xl mx-auto">
           {/* Title Section */}
           <motion.h1
