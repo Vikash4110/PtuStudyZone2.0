@@ -4,7 +4,9 @@ import "aos/dist/aos.css";
 import ServiceImg from "../assets/PTULogo.gif";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import SourcesIcon from '../assets/resource-allocation.svg';
+import underline from '../assets/underline.png';
+import './RadioBtn.css'
 const Youtube = () => {
   const { youtube } = useAuth();
   const [selectedSemester, setSelectedSemester] = useState("1"); // Default to first semester
@@ -28,70 +30,76 @@ const Youtube = () => {
     <>
       <ToastContainer/>
       <br /><br />
-      <section className="py-12 bg-gradient-to-r from-blue-50 to-blue-100">
-        <div className="container mx-auto text-center px-4">
-          <h1 className="text-4xl md:text-5xl font-bold mb-8 text-blue-900">Youtube Channel</h1>
-          <p className="text-base md:text-lg text-blue-700 mb-12">
-            Watch your course Youtube Channels and stay organized for the semester.
-          </p>
-          <div className="mb-6">
-            <label htmlFor="semester" className="mr-2 text-lg text-blue-700">
-              Select Semester:
-            </label>
-            <select
-              id="semester"
-              value={selectedSemester}
-              onChange={(e) => setSelectedSemester(e.target.value)}
-              className="border rounded-md p-2"
-            >
+      <section className="py-12">
+      <div className="container mx-auto text-center px-4">
+        <div className='relative flex justify-center items-center flex-col text-center sm:text-left mb-10 mt-6'>
+              <h1 className='text-4xl sm:text-5xl md:text-6xl font-bold flex items-center justify-center sm:justify-start text-center'>
+                <span className='mr-2'>Sources</span>               
+              </h1>
+              <img src={underline} className='absolute top-[-4rem] sm:top-[-4rem] md:top-[-5rem] left-1/2 transform -translate-x-1/2 w-48 sm:w-56 md:w-72' />
+            </div>
+
+            <p className="text-lg md:text-xl text-[#323290] mb-12 font-semibold">
+            Explore YouTube channel links to enhance your understanding and master PTU subjects with ease.
+            </p>
+            <div className="mb-6 text-center">
+            
+            <div className="radio-inputs">
               {[1, 2, 3, 4, 5, 6, 7, 8].map((sem) => (
-                <option key={sem} value={sem}>
-                  Semester {sem}
-                </option>
+                <label key={sem} className="radio">
+                  <input
+                    type="radio"
+                    value={sem.toString()}
+                    checked={selectedSemester === sem.toString()}
+                    onChange={() => setSelectedSemester(sem.toString())}
+                    className="form-radio h-5 w-5 text-[#323290]"
+                  />
+                  <span className="name">Semester {sem}</span>
+                </label>
               ))}
-            </select>
+            </div>
           </div>
-        </div>
-        <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
+          </div>
+      
+      
+        <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4 w-5/6 h-full justify-center">
           {filteredYoutube.length > 0 ? ( // Use filteredYoutube instead of filteredSyllabus
             filteredYoutube.map((curElem, index) => (
               <div
-                className={`bg-white rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-100 p-6 border-t-4 ${
-                  index % 2 === 0 ? "border-blue-500" : "border-green-500"
-                }`}
-                key={index}
-              >
-                <div className="w-full h-40 mb-4 overflow-hidden rounded-lg">
-                  <img
-                    src={ServiceImg}
-                    alt={curElem.service}
-                    className="object-contain w-full h-full"
-                  />
-                </div>
-                <h2 className="text-xl md:text-2xl font-bold text-blue-800 mb-2">{curElem.service}</h2>
-                <p className="text-sm md:text-base text-gray-600 mb-2">
-                  <strong>Semester:</strong> {curElem.semester}
-                </p>
-                <p className="text-sm md:text-base text-gray-600 mb-2">
-                  <strong>Subject:</strong> {curElem.subject}
-                </p>
-                <p className="text-sm md:text-base text-gray-600 mb-2">
-                  <strong>Subject Code:</strong> {curElem.subjectcode}
-                </p>
-                
-                <a
-                  href={curElem.link}
-                  onClick={(e) => handleDownloadClick(curElem.link, e)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block w-full text-center mt-4 px-3 py-2 text-sm md:text-base text-white rounded-lg bg-blue-600 hover:bg-blue-700 transition-colors duration-300"
-                >
-                  Youtube Channel
-                </a>
-              </div>
+                    key={index}  // Make sure each element has a unique key
+                    className="bg-white rounded-2xl shadow-md shadow-[#323290] p-6 relative mt-32 flex flex-col items-center hover:scale-105 transition-transform duration-300 lg:w-5/6  md:w-5/6 sm:w-full w-5/6" >
+                    <div className="bg-[#323290] w-28 h-28 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 mx-auto mb-6 rounded-full text-white flex items-center justify-center absolute -top-12 md:-top-16 lg:-top-20 -right-16 sm:-right-6 md:-right-16 lg:-right-16">
+                      <img src={SourcesIcon} className="w-12 h-12 sm:w-10 sm:h-10 md:w-14 md:h-14 lg:w-16 lg:h-16" />
+                    </div>
+
+                    <p className="text-sm md:text-base lg:text-lg text-gray-600 mb-4 leading-relaxed text-center  sm:pt-4">
+                      <strong>Semester:</strong> {curElem.semester}
+                    </p>
+                    <p className="text-sm md:text-base lg:text-lg text-gray-600 mb-4 leading-relaxed text-center">
+                      <strong>Subject:</strong> {curElem.subject}
+                    </p>
+                    <p className="text-sm md:text-base lg:text-lg text-gray-600 mb-4 leading-relaxed text-center">
+                      <strong>Subject Code:</strong> {curElem.subjectcode}
+                    </p>
+                    <a
+                      href={curElem.link}
+                      onClick={(e) => handleDownloadClick(curElem.link, e)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-white text-[#323290] font-semibold border-2 border-[#323290] py-2 px-4 md:py-2.5 md:px-6 rounded-full shadow hover:bg-[#323290] hover:text-white transition-colors duration-300"
+                    >
+                      Youtube Channel
+                    </a>
+                  </div>
             ))
           ) : (
-            <p className="text-center text-gray-600">No Youtube available for this semester.</p>
+            <div className='relative flex justify-center items-center flex-col text-center sm:text-left mb-10 mt-6 col-start-1 col-span-3'>
+              <h1 className='text-base sm:text-lgxl md:text-xl font-bold flex items-center justify-center sm:justify-start'>
+                <span className='mr-2 text-[#ed1f26]'>No Youtube channel for this semester at the moment.</span>               
+              </h1>
+             
+            </div>
+            
           )}
         </div>
       </section>
