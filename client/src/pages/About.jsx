@@ -1,17 +1,25 @@
 import React from 'react';
 import { FaBookOpen, FaUserGraduate, FaChalkboardTeacher, FaBlog, FaLinkedin, FaGithub, FaInstagram, FaYoutube, FaTwitter, FaYoutubeSquare, FaBook, FaBlogger, FaLinkedinIn } from 'react-icons/fa';
 import { motion } from 'framer-motion';
-import profilePicVikash from '../assets/vikash1.png'; // Replace with the path to your image
-import profilePicSahil from '../assets/sahil.png'; // Replace with the path to your image
-import about from '../assets/aboutPage.png'; // Replace with the path to your logo
-import about1 from '../assets/aboutPage1.png'; // Replace with the path to your logo
-import brain from '../assets/brain.png'; // Replace with the path to your logo
-import brains from '../assets/brains.png'; // Replace with the path to your logo
-import bulb from '../assets/bulb.png'; // Replace with the path to your logo
-import LinkdeinLogo from '../assets/linkedin.png'; // Replace with the path to your logo
-import githubLogo from '../assets/github.png'; // Replace with the path to your logo
-import instagramLogo from '../assets/instagram.png'; // Replace with the path to your logo
-import blogLogo from '../assets/blogger.png'; // Replace with the path to your logo
+import profilePicVikash from '../assets/vikash1.png'; 
+import profilePicSahil from '../assets/sahil.png'; 
+import about from '../assets/aboutPage.png';
+import about1 from '../assets/aboutPage1.png';
+import brain from '../assets/brain.png';
+import brains from '../assets/brains.png';
+import bulb from '../assets/bulb.png';
+import LinkdeinLogo from '../assets/linkedin.png';
+import githubLogo from '../assets/github.png';
+import instagramLogo from '../assets/instagram.png';
+import blogLogo from '../assets/blogger.png';
+import notesLogo from '../assets/note.png';
+import pyqLogo from '../assets/pyq.png';
+import syllabusLogo from '../assets/syllabus.png'; 
+import blogLogo1 from '../assets/blog.png';
+import youtubeLogo from '../assets/youtube.png';
+import bookLogo from '../assets/book.png';
+import studyLogo from '../assets/study.png';
+import resourceLogo from '../assets/resource.png';
 import './About.css'
 
 const About = () => {
@@ -39,20 +47,7 @@ const About = () => {
               <div className="space-y-6">
                 <div className="flex items-start shadow-2xl p-4 rounded-3xl border-2  hover:scale-105">
                   <div className="flex-shrink-0">
-                    <svg
-                      className="h-8 w-8 text-[#323290]"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M12 20.5v-1.9c-1.7 1-3.5 1-5.1 0A7.4 7.4 0 014.5 16H2v-2c0-2 1-4 3-5v-.6c-1.5-1.5-2.5-3.5-2.5-5.6C2.5 1 5 0 7.5 0h9c2.5 0 5 1 5 3.8 0 2-1 4-2.5 5.6V9c2 1 3 3 3 5v2h-2.5a7.4 7.4 0 01-2.4 2.6c-1.6 1-3.4 1-5.1 0v1.9c0 .3-.3.5-.5.5-.3 0-.5-.2-.5-.5z"
-                      />
-                    </svg>
+                  <img src={studyLogo} className='w-14 h-14' />
                   </div>
                   <div className="ml-4">
                     <h3 className="text-xl font-semibold text-gray-800">Your Ultimate Study Companion</h3>
@@ -63,20 +58,7 @@ const About = () => {
                 </div>
                 <div className="flex items-start shadow-2xl p-4 rounded-3xl border-2 hover:scale-105 ">
                   <div className="flex-shrink-0">
-                    <svg
-                      className="h-8 w-8 text-[#323290]"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M5 12h14M5 12L9 8m0 8l-4-4m14 0L15 8m0 8l4-4M7 5v14"
-                      />
-                    </svg>
+                  <img src={resourceLogo} className='w-14 h-14' />
                   </div>
                   <div className="ml-4">
                     <h3 className="text-xl font-semibold text-gray-800">Empowering Students with Quality Resources</h3>
@@ -125,7 +107,10 @@ const About = () => {
               <div className="space-y-6">
                 <div className="flex items-start shadow-2xl p-4 rounded-3xl border-2  hover:scale-105">
                   <div className="flex-shrink-0">
-                    <FaBookOpen className="text-blue-700 text-4xl mb-4" />
+                 
+                <img src={notesLogo} className='w-14 h-14' />
+                
+              
                   </div>
                   <div className="ml-4">
                     <h3 className="text-xl font-semibold text-gray-800">Comprehensive Notes</h3>
@@ -136,7 +121,7 @@ const About = () => {
                 </div>
                 <div className="flex items-start shadow-2xl p-4 rounded-3xl border-2  hover:scale-105">
                   <div className="flex-shrink-0">
-                    <FaUserGraduate className="text-green-700 text-4xl mb-4" />
+                  <img src={pyqLogo} className='w-14 h-14' />
                   </div>
                   <div className="ml-4">
                     <h3 className="text-xl font-semibold text-gray-800">Previous Year Questions (PYQ)</h3>
@@ -147,7 +132,7 @@ const About = () => {
                 </div>
                 <div className="flex items-start shadow-2xl p-4 rounded-3xl border-2  hover:scale-105">
                   <div className="flex-shrink-0">
-                    <FaChalkboardTeacher className="text-yellow-700 text-4xl mb-4" />
+                  <img src={syllabusLogo} className='w-14 h-14'/>
 
                   </div>
                   <div className="ml-4">
@@ -160,7 +145,7 @@ const About = () => {
 
                 <div className="flex items-start shadow-2xl p-4 rounded-3xl border-2  hover:scale-105">
                   <div className="flex-shrink-0">
-                    <FaBlog className="text-pink-700 text-4xl mb-4" />
+                  <img src={blogLogo1} className='w-14 h-14' />
 
                   </div>
                   <div className="ml-4">
@@ -174,7 +159,7 @@ const About = () => {
 
                 <div className="flex items-start shadow-2xl p-4 rounded-3xl border-2  hover:scale-105">
                   <div className="flex-shrink-0">
-                    <FaYoutubeSquare className="text-red-700 text-4xl mb-4" />
+                  <img src={youtubeLogo} className='w-14 h-14' />
 
                   </div>
                   <div className="ml-4">
@@ -187,7 +172,7 @@ const About = () => {
 
                 <div className="flex items-start shadow-2xl p-4 rounded-3xl border-2  hover:scale-105">
                   <div className="flex-shrink-0">
-                    <FaBook className="text-purple-700 text-4xl mb-4" />
+                  <img src={bookLogo} className='w-14 h-14'/>
 
                   </div>
                   <div className="ml-4">
