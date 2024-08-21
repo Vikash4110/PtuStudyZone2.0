@@ -1,5 +1,8 @@
 import React from 'react';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEnvelope ,faPhone } from '@fortawesome/free-solid-svg-icons'
+
 import { Link } from "react-router-dom";
 import MainLogo from "../assets/mainlogo.png";
 
@@ -48,8 +51,10 @@ const Footer = () => {
         </div>
         <div className="mb-6 text-center sm:text-left">
           <h4 className="mb-4 font-semibold text-lg sm:text-xl">CONTACT US</h4>
-          <p className="text-sm sm:text-lg"><strong>Tel :</strong> +91 7973117120</p>
-          <p className="text-sm sm:text-lg"><strong>Mail :</strong> bharal224@gmail.com</p>
+          <p className="text-sm sm:text-lg mb-2"><strong><FontAwesomeIcon icon={faPhone} /></strong> +91 7973117120</p>
+          <p className="text-sm sm:text-lg mb-2"><strong><FontAwesomeIcon icon={faEnvelope} /></strong> bharal224@gmail.com</p>
+          <p className="text-sm sm:text-lg mb-2"><strong><FontAwesomeIcon icon={faPhone} /></strong> +91 7837189549</p>
+          <p className="text-sm sm:text-lg"><strong><FontAwesomeIcon icon={faEnvelope} /></strong> sahiljamwal2720@gmail.com</p>
         </div>
         <div className="w-full text-center mt-6 text-sm sm:text-lg">
           <p>COPYRIGHT &copy; ALL RIGHTS RESERVED 2024</p>

@@ -34,7 +34,7 @@ function Section4() {
           {isAdmin && (
     <Link
       to="/admin"
-      className="bg-[#34be19] hover:bg-green-700 text-white font-bold py-2 px-4 rounded" >
+      className="bg-[#34be19] hover:bg-green-700 text-white font-bold py-2 px-4 rounded" data-aos="zoom-out" data-duration="1000" data-aos-delay="200">
       Access Admin Panel
     </Link>
   )}

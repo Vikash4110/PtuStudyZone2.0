@@ -4,6 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { FaUser, FaCalendarAlt, FaArrowLeft } from 'react-icons/fa';
 import { toast } from "react-toastify";
 
+
 const SingleBlog = () => {
   const { id } = useParams();
   const [blog, setBlog] = useState(null);
@@ -17,6 +18,7 @@ const SingleBlog = () => {
         setBlog(res.data);
       } catch (err) {
         console.error('Failed to fetch blog:', err);
+        toast.error("Failed to fetch the blog post. Please try again later.");
       }
     };
 
@@ -32,32 +34,38 @@ const SingleBlog = () => {
   };
 
   return (
-    <>
-    <br /><br />
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-50 to-purple-100 p-4">
-      <div className="relative bg-white rounded-lg shadow-lg p-6 md:p-8 max-w-2xl w-full">
-        <h1 className="text-4xl font-bold mb-4 text-center text-gray-800">{blog.title}</h1>
-        <div className="flex justify-between items-center mb-4">
-          <div className="flex items-center text-blue-600">
-            <FaUser className="mr-2 text-blue-600" />
-            <span className="font-semibold text-blue-600">{blog.authorName}</span>
-          </div>
-          <div className="flex items-center text-gray-600">
-            <FaCalendarAlt className="mr-2 text-gray-600" />
-            <span>{new Date(blog.createdAt).toLocaleDateString()}</span>
-          </div>
+    <div className="min-h-screen bg-white p-6 flex items-center justify-center">
+      <div className="bg-white rounded-2xl shadow-2xl  shadow-[#323290ba] p-6 relative mt-20 flex flex-col space-y-5  transition-transform duration-300 w-full md:w-5/6 lg:w-4/6">
+        <div className="card__date text-[#6e6b80] text-[0.8rem] flex items-center">
+          <FaCalendarAlt className="mr-2" />
+          <span>{new Date(blog.createdAt).toLocaleDateString()}</span>
         </div>
-        <span className="text-gray-700 leading-relaxed mb-6">{blog.content}</span>
-        
-        {/* Back Button */}
-        <button 
-          onClick={handleBack} 
-          className="flex items-center bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition-colors duration-300 w-full text-center">
-          <FaArrowLeft className="mr-1" /> Back
-        </button>
+
+        <h1 className="card__title  font-bold text-[#3c3852] text-4xl capitalize">
+          {blog.title}
+        </h1>
+        <div className="justify-betw  een items-center mb-6">
+          <div className="flex items-center text-[#323290]">
+            <FaUser className="mr-2" />
+            <span className="font-semibold">{blog.authorName}</span>
+          </div>
+
+
+        </div>
+        <div className="card__content text-[#3c3852] text-[0.86rem] ">
+          {blog.content}
+        </div>
+
+        <div >
+          <button
+            onClick={handleBack}
+            className="bookmarkBtn absolute text-white bg-[#323290] p-[0.4rem] rounded-tl-[0.75rem] rounded-br-[0.75rem] bottom-0 right-0 transition duration-200 flex justify-center items-center hover:scale-105">
+            <span className='IconContainer'><FaArrowLeft className="mr-2 " /></span> <span className='text'>Back to Blogs</span>
+          </button>
+        </div>
+
       </div>
     </div>
-    </>
   );
 };
 

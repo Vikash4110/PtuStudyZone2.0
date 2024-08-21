@@ -7,23 +7,23 @@ import MainVideo from "../assets/ptuvid.mp4";
 // Sample slide content
 const slides = [
   { 
-    title: "Learn and Improve Yourself in Less Time", 
-    description: "Our self-improvement courses are very effective" 
+    title: "Your path to success begins with the right knowledge.", 
+    description: "– Francis Bacon" 
   },
   { 
-    title: "Unlock Your Potential", 
-    description: "Find courses that fit your needs" 
+    title: "Learning never exhausts the mind.", 
+    description: "– Leonardo da Vinci" 
   },
   { 
-    title: "Expert Instructors", 
-    description: "Learn from the best in the industry" 
+    title: "Education is the key to unlock the golden door of freedom.", 
+    description: "– George Washington Carver" 
   },
   { 
-    title: "Flexible Scheduling", 
+    title: "Empower your dreams with education.", 
     description: "Learn at your own pace" 
   },
   { 
-    title: "Affordable Pricing", 
+    title: "Unlock your potential, one chapter at a time.", 
     description: "Quality education at a great price" 
   },
 ];
@@ -62,7 +62,7 @@ const MainSlider = () => {
   return (
     <div className="relative h-screen overflow-hidden">
       <video
-        className="absolute  left-0 w-full h-full object-cover"
+        className="absolute  left-0 w-full h-full object-cover scale-125"
         src={MainVideo}
         autoPlay
         loop
@@ -77,12 +77,10 @@ const MainSlider = () => {
         {slides.map((slide, index) => (
           <div key={index} className="h-screen flex justify-center items-center text-center">
             <div className="text-white max-w-3xl mx-auto px-4 mt-60">
-              <h1 className="text-5xl md:text-6xl font-bold mb-4">
+              <h1 className="text-4xl md:text-5xl font-bold mb-4  ">
                 {slide.title}
               </h1>
-              <p className="text-xl md:text-2xl mb-8">
-                {slide.description}
-              </p>
+              
             </div>
           </div>
         ))}
