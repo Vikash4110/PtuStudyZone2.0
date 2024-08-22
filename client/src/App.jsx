@@ -40,6 +40,12 @@ import SingleBlog from './components/SingleBlog';
 import ComposeBlog from './components/ComposeBlog';
 import UpdateUser from "./components/UpdateUser";
 import Youtube from "./pages/Youtube";
+import ScrollToTop from './components/ScrollToTop';
+import 'aos/dist/aos.css'; // Import AOS styles
+import AOS from 'aos'; // Import AOS
+
+// Initialize AOS
+AOS.init();
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -59,6 +65,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <Navbar />
+      <ScrollToTop/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
@@ -69,46 +76,33 @@ const App = () => {
         <Route path="/pyq" element={<Pyq />} />
         <Route path="/book" element={<Book />} />
         <Route path="/notes" element={<Notes />} />
-        {/* Dashboard */}
         <Route path="/dashboard" element={<UserDashboard />} />
         <Route path="/update-profile" element={<UpdateUser />} />
-        {/* Blogs */}
         <Route path="/my-blogs" element={<MyBlog />} />
         <Route path="/blogs" element={<PTUBlog />} />
         <Route path="/compose-blog" element={<ComposeBlog />} />
         <Route path="/my-blogs/edit/:id" element={<EditBlog />} />
         <Route path="/blogs/:id" element={<SingleBlog />} />
-        {/* Youtube */}
         <Route path="/youtube" element={<Youtube />} />
         <Route path="/contact" element={<Contact />} />
-
-        {/* Admin Panel */}
         <Route path="/admin" element={<AdminLayout />}>
           <Route index element={<Navigate to="/admin/users" />} />
-          {/* Users */}
           <Route path="users" element={<AdminUsers />} />
           <Route path="users/:id/edit" element={<AdminUpdate />} />
-          {/* Contact */}
           <Route path="contacts" element={<AdminContacts />} />
-          {/* Syllabus */}
           <Route path="syllabus" element={<AdminSyllabus />} />
           <Route path="syllabus/add" element={<AdminAddSyllabus />} />
           <Route path="syllabus/:id/edit" element={<AdminEditSyllabus />} />
-          {/* Pyq */}
           <Route path="pyq" element={<AdminPyq />} />
           <Route path="pyq/add" element={<AdminAddPyq />} />
           <Route path="pyq/:id/edit" element={<AdminEditPyq />} />
-          {/* Notes */}
           <Route path="notes" element={<AdminNotes />} />
           <Route path="notes/add" element={<AdminAddNotes />} />
           <Route path="notes/:id/edit" element={<AdminEditNotes />} />
-          {/* Blogs */}
           <Route path="blogs" element={<AdminBlogs />} />
-          {/* Youtube */}
           <Route path="youtube" element={<AdminYoutube />} />
           <Route path="youtube/add" element={<AdminAddYoutube />} />
           <Route path="youtube/:id/edit" element={<AdminEditYoutube />} />
-          {/* Books */}
           <Route path="book" element={<AdminBook />} />
           <Route path="book/add" element={<AdminAddBook />} />
           <Route path="book/:id/edit" element={<AdminEditBook />} />

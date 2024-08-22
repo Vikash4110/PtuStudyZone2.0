@@ -7,20 +7,24 @@ import MainVideo from "../assets/ptuvid.mp4";
 // Sample slide content
 const slides = [
   { 
-    title: "Comprehensive Study Material", 
-    description: "Access all your course notes, previous year questions, and books in one place" 
+    title: "Your path to success begins with the right knowledge.", 
+    description: "– Francis Bacon" 
   },
   { 
-    title: "Interactive Learning Community", 
-    description: "Connect with peers, share knowledge, and get support from fellow students" 
+    title: "Learning never exhausts the mind.", 
+    description: "– Leonardo da Vinci" 
   },
   { 
-    title: "Resourceful Book Library", 
-    description: "Explore a wide range of textbooks and reference materials for every subject" 
+    title: "Education is the key to unlock the golden door of freedom.", 
+    description: "– George Washington Carver" 
   },
   { 
-    title: "Detailed Syllabus Insights", 
-    description: "Stay organized with thorough syllabus breakdowns tailored to your coursework" 
+    title: "Empower your dreams with education.", 
+    description: "Learn at your own pace" 
+  },
+  { 
+    title: "Unlock your potential, one chapter at a time.", 
+    description: "Quality education at a great price" 
   },
 ];
 
@@ -58,7 +62,7 @@ const MainSlider = () => {
   return (
     <div className="relative h-screen overflow-hidden">
       <video
-        className="absolute top-0 left-0 w-full h-full object-cover"
+        className="absolute  left-0 w-full h-full object-cover scale-125"
         src={MainVideo}
         autoPlay
         loop
@@ -73,12 +77,10 @@ const MainSlider = () => {
         {slides.map((slide, index) => (
           <div key={index} className="h-screen flex justify-center items-center text-center">
             <div className="text-white max-w-3xl mx-auto px-4 mt-60">
-              <h1 className="text-5xl md:text-6xl font-bold mb-4">
+              <h1 className="text-4xl md:text-5xl font-bold mb-4  ">
                 {slide.title}
               </h1>
-              <p className="text-xl md:text-2xl mb-8">
-                {slide.description}
-              </p>
+              
             </div>
           </div>
         ))}

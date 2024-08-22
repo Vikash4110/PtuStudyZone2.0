@@ -31,17 +31,19 @@ const Nav = () => {
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50 || location.pathname !== "/") {
-        setNavbarBg("bg-white shadow-md");
-        setTextColor("text-[#ed1f26]");
-        setPadding("py-2 md:py-4"); // Decreased height
-        setUnderlineColor("before:bg-[#ed1f26]");
-        setJoinBtnHoverBg("hover:bg-[#ed1f26]");
-        setJoinBtnHoverText("hover:text-white");
-        setDropdownBg("bg-white");
+        setNavbarBg("bg-white border-b-2 shadow-md transition-shadow duration-300 ease-in-out hover:shadow-xl");
+        setTextColor("text-[#ed1f26] transition-colors duration-300 ease-in-out hover:text-[#d10b22]");
+        setPadding("py-2 transition-all duration-1000 ease-in-out"); // Adjusted height for different devices
+        setUnderlineColor("before:bg-[#ed1f26] before:scale-x-0 group-hover:before:scale-x-100 transition-transform duration-300 ease-in-out");
+        setJoinBtnHoverBg("hover:bg-[#ed1f26] hover:shadow-lg transform hover:scale-105 transition-transform duration-300 ease-in-out");
+        setJoinBtnHoverText("hover:text-white transition-colors duration-300 ease-in-out");
+        setDropdownBg("bg-white border border-[#ed1f26] border-t-transparent shadow-lg rounded-lg transform transition-transform duration-300 ease-in-out hover:scale-105");
+        
+
       } else {
         setNavbarBg("bg-transparent");
         setTextColor("text-white");
-        setPadding("py-4 md:py-6"); // Default height
+        setPadding("py-4 transition-all duration-300 ease-in-out"); // Default height
         setUnderlineColor("before:bg-white");
         setJoinBtnHoverBg("hover:bg-white");
         setJoinBtnHoverText("hover:text-black");
@@ -54,7 +56,7 @@ const Nav = () => {
     if (location.pathname !== "/") {
       setNavbarBg("bg-white shadow-md");
       setTextColor("text-[#ed1f26]");
-      setPadding("py-2 md:py-4");
+      setPadding("py-2");
       setUnderlineColor("before:bg-[#ed1f26]");
       setJoinBtnHoverBg("hover:bg-[#ed1f26]");
       setJoinBtnHoverText("hover:text-white");
@@ -73,7 +75,7 @@ const Nav = () => {
   }, [location.pathname]);
 
   return (
-    <header className={`fixed w-full z-30 transition-all duration-300 ease-in-out ${navbarBg} ${padding}`}>
+    <header className={`fixed w-full z-30 transition-all duration-300 ease-in-out  ${navbarBg} ${padding}`}>
       <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div className="relative flex items-center justify-between">
           <div className="flex-shrink-0">

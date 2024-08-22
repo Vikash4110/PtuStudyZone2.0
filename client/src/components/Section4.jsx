@@ -17,26 +17,27 @@ function Section4() {
       }}
     >
       <div className="text-center">
-        <h1 className="text-4xl font-bold text-white mb-4">
+        <h1 className="text-4xl font-bold text-white mb-4" data-aos="zoom-out" data-duration="1000">
           START LEARNING NOW
         </h1>
-        <h2 className="text-2xl font-medium text-white mb-8">
+        <h2 className="text-2xl font-medium text-white mb-8" data-aos="zoom-out" data-duration="1000" data-aos-delay="100">
           Enhance your skills with best available resources
         </h2>
         <div className="flex gap-4 justify-center">
-          <Link to="/login" className="bg-[#323290] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          <Link to="/login" className="bg-[#323290] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" data-aos="zoom-out" data-duration="1000" data-aos-delay="200">
             Get started now
           </Link>
-          <Link to="/contact" className="bg-[#ed1f26] hover:bg-pink-700 text-white font-bold py-2 px-4 rounded">
+          <Link to="/contact" className="bg-[#ed1f26] hover:bg-pink-700 text-white font-bold py-2 px-4 rounded" data-aos="zoom-out" data-duration="1000" data-aos-delay="200">
             Contact Us
           </Link>
           {isAdmin && (
     <Link
       to="/admin"
-      className="bg-[#34be19] hover:bg-green-700 text-white font-bold py-2 px-4 rounded" >
+      className="bg-[#34be19] hover:bg-green-700 text-white font-bold py-2 px-4 rounded" data-aos="zoom-out" data-duration="1000" data-aos-delay="200">
       Access Admin Panel
     </Link>
   )}
+
         </div>
       </div>
     </div>

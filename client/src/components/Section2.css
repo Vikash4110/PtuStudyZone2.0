@@ -1,16 +1,4 @@
-.background1{
-    width: 80%;
-    height: 80%;
-    margin-left: 11%;
-    margin-top: 10%;
-    /* Add your background pattern here */
-    background-color: white;
-    background-image: radial-gradient(rgba(218, 9, 9, 0.171) 2px, transparent 0);
-    border-radius: 10%;
-    background-size: 30px 30px;
-    background-position: -5px -5px
 
-}
 
 @keyframes move-wave {
     0% {

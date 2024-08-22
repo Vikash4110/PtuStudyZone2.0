@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './About.css';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import about from '../assets/about.png';
 import underline from '../assets/underline.png';
 import backgroundImage from '../assets/bg-integratedweb-2.svg';
@@ -73,9 +75,12 @@ const About = () => {
   const toggleItem = (index) => {
     setActiveIndex(index === activeIndex ? null : index);
   };
+  useEffect(() => {
+    AOS.init({ duration: 1000 }); // Initialize AOS with a duration
+}, []);
 
   return (
-    <div className="max-w-md mx-auto rounded-2xl p-8 bg-white shadow-lg background">
+    <div className="max-w-md mx-auto rounded-2xl p-8 bg-white shadow-lg background" data-aos="fade-up" >
       {items.map((item, index) => (
         <AboutItem
           key={index}
@@ -92,8 +97,8 @@ const About = () => {
 const ContentSection = () => (
  
   
-    <div className='relative flex justify-center items-center flex-col text-center sm:text-left'>
-      <h1 className='text-4xl sm:text-5xl md:text-6xl font-bold flex items-center justify-center sm:justify-start'>
+    <div className='relative flex justify-center items-center flex-col text-center sm:text-left' data-aos="zoom-out">
+      <h1 className='text-4xl sm:text-5xl md:text-6xl font-bold flex items-center justify-center sm:justify-start' >
         <span className='mr-2'>About</span>
         <span className='text-[#ed1f26]'>US</span>
       </h1>
@@ -107,6 +112,7 @@ const ContentSection = () => (
 );
 
 const AboutLayout = () => (
+  
   <div className="relative overflow-hidden ">
     <div className="absolute inset-0 z-[-1]" style={{
       backgroundImage: `url(${backgroundImage})`,

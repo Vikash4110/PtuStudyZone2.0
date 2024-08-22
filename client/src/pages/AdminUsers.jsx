@@ -79,50 +79,50 @@ const AdminUsers = () => {
 
   return (
     <>
-    <br /><br /><br />
-    <section className="bg-white shadow-md rounded my-6">
-      <div className="p-6">
-        <h1 className="text-2xl font-semibold mb-4">Admin Users Data</h1>
-        <div className="overflow-x-auto">
-          <table className="min-w-full bg-white">
-            <thead>
-              <tr>
-                <th className="py-2 px-4 bg-gray-200">Name</th>
-                <th className="py-2 px-4 bg-gray-200">Roll No</th>
-                <th className="py-2 px-4 bg-gray-200">Department</th>
-                <th className="py-2 px-4 bg-gray-200">Semester</th>
-                <th className="py-2 px-4 bg-gray-200">Email</th>
-                <th className="py-2 px-4 bg-gray-200">Phone</th>
-                <th className="py-2 px-4 bg-gray-200">Update</th>
-                <th className="py-2 px-4 bg-gray-200">Delete</th>
-              </tr>
-            </thead>
-            <tbody>
-              {users.map((curUser, index) => (
-                <tr key={index} className="text-center">
-                  <td className="py-2 px-4 border">{curUser.username}</td>
-                  <td className="py-2 px-4 border">{curUser.rollno}</td>
-                  <td className="py-2 px-4 border">{curUser.department}</td>
-                  <td className="py-2 px-4 border">{curUser.semester}</td>
-                  <td className="py-2 px-4 border">{curUser.email}</td>
-                  <td className="py-2 px-4 border">{curUser.phone}</td>
-                  <td className="py-2 px-4 border">
-                    <Link to={`/admin/users/${curUser._id}/edit`} className="bg-blue-500 text-white py-1 px-3 rounded hover:bg-blue-700">
-                      Edit
-                    </Link>
-                  </td>
-                  <td className="py-2 px-4 border">
-                    <button className="bg-red-500 text-white py-1 px-3 rounded hover:bg-red-700" onClick={() => deleteUser(curUser._id)}>
-                      Delete
-                    </button>
-                  </td>
+      <br /><br />
+      <section className="bg-white shadow-md rounded my-6">
+        <div className="p-6">
+          <h1 className="text-2xl font-semibold mb-4">Admin Users Data</h1>
+          <div className="overflow-x-auto">
+            <table className="min-w-full bg-white">
+              <thead>
+                <tr>
+                  <th className="py-2 px-4 bg-gray-200">Name</th>
+                  <th className="py-2 px-4 bg-gray-200">Roll No</th>
+                  <th className="py-2 px-4 bg-gray-200">Department</th>
+                  <th className="py-2 px-4 bg-gray-200">Semester</th>
+                  <th className="py-2 px-4 bg-gray-200">Email</th>
+                  <th className="py-2 px-4 bg-gray-200">Phone</th>
+                  <th className="py-2 px-4 bg-gray-200">Update</th>
+                  <th className="py-2 px-4 bg-gray-200">Delete</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {users.map((curUser, index) => (
+                  <tr key={index} className="text-center">
+                    <td className="py-2 px-4 border">{curUser.username}</td>
+                    <td className="py-2 px-4 border">{curUser.rollno}</td>
+                    <td className="py-2 px-4 border">{curUser.department}</td>
+                    <td className="py-2 px-4 border">{curUser.semester}</td>
+                    <td className="py-2 px-4 border">{curUser.email}</td>
+                    <td className="py-2 px-4 border">{curUser.phone}</td>
+                    <td className="py-2 px-4 border">
+                      <Link to={`/admin/users/${curUser._id}/edit`} className="bg-blue-500 text-white py-1 px-3 rounded hover:bg-blue-700">
+                        Edit
+                      </Link>
+                    </td>
+                    <td className="py-2 px-4 border">
+                      <button className="bg-red-500 text-white py-1 px-3 rounded hover:bg-red-700" onClick={() => deleteUser(curUser._id)}>
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
     </>
   );
 };

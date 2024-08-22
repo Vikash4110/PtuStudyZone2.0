@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { FaUser, FaPen, FaRegNewspaper } from 'react-icons/fa'; // Importing user, pen, and newspaper icons
+import { FaUser, FaPen, FaRegNewspaper, FaCalendarAlt } from 'react-icons/fa'; // Importing user, pen, and newspaper icons
 import { toast } from "react-toastify";
 import underline from '../assets/underline.png';
 const PTUBlog = () => {
   const [blogs, setBlogs] = useState([]);
-  const backendUrl = import.meta.env.VITE_BACKEND_URL;
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;  
 
   useEffect(() => {
     const fetchBlogs = async () => {
@@ -53,28 +53,39 @@ const PTUBlog = () => {
             </Link>
           </div>
 
-          
+
           <div className="container mx-auto  gap-8 px-4 w-5/6  justify-center">
 
             {blogs.length === 0 ? (
-              <p className="text-center text-gray-600">No blogs available.</p>
+              <div className='relative flex justify-center items-center flex-col text-center sm:text-left mb-10 mt-6 col-start-1 col-span-3'>
+                <h1 className='text-base sm:text-lgxl md:text-xl font-bold flex items-center justify-center sm:justify-start'>
+                  <span className='mr-2 text-[#ed1f26]'>No Blogs available !</span>
+                </h1>
+
+              </div>
             ) : (
               blogs.map((blog) => (
 
-                <div key={blog._id} className="bg-white rounded-2xl shadow-md shadow-[#323290] p-6 relative mt-20 flex flex-col space-y-4 hover:scale-105 transition-transform duration-300 w-full ">
+                <div key={blog._id} className="bg-white rounded-2xl shadow-2xl  shadow-[#323290ba] p-6 relative mt-20 flex flex-col  hover:scale-105 transition-transform duration-300 w-full ">
 
-                 
-                    <div className="flex items-center ">
-                      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gradient mb-2 ">{blog.title}</h2>
 
-                    </div>
-                   
-                    <div className="flex justify-between">
                   <div className="flex items-center ">
-                    <FaUser className="text-sm md:text-base lg:text-lg text-[#323290]  leading-relaxed text-center " />
-                    <span className="text-sm md:text-base lg:text-lg text-[#323290]  leading-relaxed text-center font-semibold ">{blog.authorName}</span>
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gradient mb-2 ">{blog.title}</h2>
+
                   </div>
-                  <span className="text-sm md:text-base lg:text-lg text-gray-600 mb-4 font-semibold leading-relaxed text-center ">{new Date(blog.createdAt).toLocaleDateString()}</span>
+
+                  <div className="flex justify-between">
+                    <div className="flex items-center ">
+                      <FaUser className="text-sm md:text-base lg:text-lg text-[#323290]  leading-relaxed text-center mr-2" />
+                      <span className="text-sm md:text-base lg:text-lg text-[#323290]  leading-relaxed text-center font-semibold ">{blog.authorName}</span>
+                    </div>
+                    <div className="flex items-center mb-4">
+                      <FaCalendarAlt className="mr-2 text-gray-600" />
+                      <span className="text-sm md:text-base lg:text-lg text-gray-600 font-semibold leading-relaxed text-center">
+                        {new Date(blog.createdAt).toLocaleDateString()}
+                      </span>
+                    </div>
+
                   </div>
 
 

@@ -1,12 +1,4 @@
-.background{
-    
-    /* Add your background pattern here */
-    background-color: white;
-    background-image: radial-gradient(rgba(26, 9, 218, 0.171) 2px, transparent 0);
-    background-size: 30px 30px;
-    background-position: -5px -5px
 
-}
 /* Custom CSS for fine-tuning */
 @media (max-width: 640px) {
     .underline-image {
