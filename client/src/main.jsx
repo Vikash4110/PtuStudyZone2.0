@@ -8,7 +8,6 @@ import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <AuthProvider>
-    <React.StrictMode> 
       <App />
       <ToastContainer
 position="top-right"
@@ -22,6 +21,5 @@ draggable
 pauseOnHover
 theme="colored"
 transition: Bounce />
-    </React.StrictMode>
   </AuthProvider>
 );
