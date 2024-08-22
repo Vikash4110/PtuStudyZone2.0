@@ -20,7 +20,6 @@ import youtubeLogo from '../assets/youtube.png';
 import bookLogo from '../assets/book.png';
 import studyLogo from '../assets/study.png';
 import resourceLogo from '../assets/resource.png';
-import './About.css'
 
 const About = () => {
   return (
