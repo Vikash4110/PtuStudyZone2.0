@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -6,85 +6,87 @@ import MainVideo from "../assets/ptuvid.mp4";
 
 // Sample slide content
 const slides = [
-  { 
-    title: "Your path to success begins with the right knowledge.", 
-    description: "– Francis Bacon" 
+  {
+    title: "Your path to success begins with the right knowledge.",
+    description: "– Francis Bacon"
   },
-  { 
-    title: "Learning never exhausts the mind.", 
-    description: "– Leonardo da Vinci" 
+  {
+    title: "Learning never exhausts the mind.",
+    description: "– Leonardo da Vinci"
   },
-  { 
-    title: "Education is the key to unlock the golden door of freedom.", 
-    description: "– George Washington Carver" 
+  {
+    title: "Education is the key to unlock the golden door of freedom.",
+    description: "– George Washington Carver"
   },
-  { 
-    title: "Empower your dreams with education.", 
-    description: "Learn at your own pace" 
+  {
+    title: "Empower your dreams with education.",
+    description: "Learn at your own pace"
   },
-  { 
-    title: "Unlock your potential, one chapter at a time.", 
-    description: "Quality education at a great price" 
+  {
+    title: "Unlock your potential, one chapter at a time.",
+    description: "Quality education at a great price"
   },
 ];
 
-// Custom arrow components
-const SampleNextArrow = ({ onClick }) => (
-  <div className="absolute top-1/2 right-4 transform -translate-y-1/2 z-20 cursor-pointer text-white" onClick={onClick}>
-    <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
-    </svg>
-  </div>
-);
-
-const SamplePrevArrow = ({ onClick }) => (
-  <div className="absolute top-1/2 left-4 transform -translate-y-1/2 z-20 cursor-pointer text-white" onClick={onClick}>
-    <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
-    </svg>
-  </div>
-);
-
 const MainSlider = () => {
+  const sliderRef = useRef(null);
+
   const settings = {
     dots: true,
     infinite: true,
     speed: 800,
     slidesToShow: 1,
     slidesToScroll: 1,
-    arrows: true,
+    arrows: false,  // Disable default arrows
     autoplay: true,
     autoplaySpeed: 3000,
-    nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrevArrow />,
   };
 
   return (
-    <div className="relative h-screen overflow-hidden">
+    <div className="relative  md:h-screen lg:h-screen h-[70vh] overflow-hidden">
       <video
-        className="absolute  left-0 w-full h-full object-cover scale-125"
+        className="absolute left-0 w-full md:h-full h-[70vh]  object-cover scale-125"
         src={MainVideo}
         autoPlay
         loop
         muted
-        style={{ 
+        style={{
           filter: 'brightness(60%) contrast(120%) ' // Additional filters
         }}
       />
       <div className="absolute inset-0 bg-black opacity-50 transition-opacity duration-500"></div> {/* Adjust opacity for better text visibility */}
 
-      <Slider {...settings} className="relative z-10">
+      <Slider {...settings} ref={sliderRef} className=" z-10 ">
         {slides.map((slide, index) => (
-          <div key={index} className="h-screen flex justify-center items-center text-center">
-            <div className="text-white max-w-3xl mx-auto px-4 mt-60">
-              <h1 className="text-4xl md:text-5xl font-bold mb-4  ">
+          <div key={index} className="md:h-screen lg:h-screen h-[70vh] flex justify-center items-center text-center md:px-20 px-4">
+            <div className="text-white flex items-center justify-between  md:mt-[40vh] sm:mt-[30vh] mt-[30vh]">
+
+
+              <div className=" z-20 cursor-pointer text-white " onClick={() => sliderRef.current.slickPrev()}>
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
+                </svg>
+              </div>
+
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold  text-center md:px-10 px-5 ">
                 {slide.title}
               </h1>
+
+
+              <div className=" z-20 cursor-pointer text-white " onClick={() => sliderRef.current.slickNext()}>
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
               
             </div>
           </div>
         ))}
-      </Slider>
+        </Slider>
+
+
+      
+
 
       {/* Curvy Background */}
       <div

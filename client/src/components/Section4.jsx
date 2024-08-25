@@ -7,7 +7,7 @@ function Section4() {
   const { isAdmin } = useAuth();
   return (
     <div
-      className="h-96 flex items-center justify-center "
+      className="h-96 flex items-center justify-center mt-24"
       style={{
         backgroundImage: `url(${backgroundImage}), linear-gradient(to right, #5b429c, #28486e)`, // Darker gradient colors
         backgroundBlendMode: 'overlay', // Combines the image and gradient
@@ -16,7 +16,7 @@ function Section4() {
         backgroundAttachment: "fixed"
       }}
     >
-      <div className="text-center">
+      <div className="text-center px-1   sm:px-0">
         <h1 className="text-4xl font-bold text-white mb-4" data-aos="zoom-out" data-duration="1000">
           START LEARNING NOW
         </h1>
