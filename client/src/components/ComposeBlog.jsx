@@ -34,7 +34,7 @@ const ComposeBlog = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-[#fbfbfb] px-4 pt-28">
+    <div className="flex justify-center items-center min-h-screen bg-[#fbfbfb] px-4 pt-12 md:pt-28">
       <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-10 max-w-screen-lg w-full">
         
         {/* Form Section */}
