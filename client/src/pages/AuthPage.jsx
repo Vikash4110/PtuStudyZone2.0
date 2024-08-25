@@ -11,8 +11,8 @@ const AuthPage = ({ setIsLoggedIn, image }) => {
   const activeButton = path === "/register" ? "register" : "login";
 
   return (
-    <div className="flex flex-col min-h-screen pt-4  md:pt-20">
-      <div className="flex-grow flex flex-col-reverse md:flex-row lg:flex-row w-full max-w-[1160px] pt-16 md:pt-0 lg:pt-0 mx-auto justify-between items-center">
+    <div className="flex flex-col min-h-screen pt-4  md:pt-20 " > 
+      <div className="flex-grow flex flex-col-reverse md:flex-row lg:flex-row w-full max-w-[1160px] pt-16 md:pt-0 lg:pt-0 mx-auto justify-between items-center mt-[12vh]">
         <div className="w-full lg:w-1/2 md:w-1/2 flex justify-center items-center">
           <img
             src={loginImg}
@@ -23,8 +23,10 @@ const AuthPage = ({ setIsLoggedIn, image }) => {
             className="max-w-full h-auto hidden md:block lg:block"
           />
         </div>
-        <div className="w-full lg:w-1/2 md:w-1/2  px-6 lg:px-0  text-white mt-10 ">
-          <div className="bg-gradient-to-r from-purple-100 to-red-100 flex text-xl justify-center rounded-full max-w-md mx-auto mb-4">
+        <div className="w-full lg:w-1/2 md:w-1/2  px-6 lg:px-0  text-white" >
+          <div className={`${
+                activeButton === "login" ? " mt-[0vh]" : "-mt-[8vh]"
+              } bg-gradient-to-r from-purple-100 to-red-100 flex text-xl justify-center rounded-full max-w-md mx-auto mb-4 `}>
             <Link
               to="/login"
               className={`${
@@ -46,7 +48,7 @@ const AuthPage = ({ setIsLoggedIn, image }) => {
           </div>
 
           {activeButton === "register" ? (
-            <RegisterForm setIsLoggedIn={setIsLoggedIn} />
+            <RegisterForm setIsLoggedIn={setIsLoggedIn} /> 
           ) : (
             <LoginForm setIsLoggedIn={setIsLoggedIn} />
           )}

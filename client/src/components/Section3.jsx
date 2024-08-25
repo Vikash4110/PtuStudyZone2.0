@@ -27,10 +27,10 @@ const Card = ({ icon, title, description, link }) => (
 
 const CardsSection = () => (
   <div className="px-4 py-8 md:px-8 lg:px-16 lg:mt-0 md:mt-24 mt-16">
-    <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-16 md:mb-28 lg:mb-36 relative" data-aos="fade-up" data-aos-duration="1000">
+    <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-center mb-16 md:mb-28 lg:mb-36 relative" data-aos="fade-up" data-aos-duration="1000">
       Resources We <span className="text-[#ed1f26]">Offer</span>
       <div className="flex justify-center">
-        <img src={underline} alt="Underline" className="w-[15rem] -top-20 md:w-[20rem] md:-top-32 lg:w-[30rem] lg:-top-48 absolute" />
+        <img src={underline} alt="Underline" className="w-[15rem] -top-20 sm:w-[20rem] sm:-top-28 md:w-[30rem] md:-top-48 absolute" />
       </div>
     </h1>
 

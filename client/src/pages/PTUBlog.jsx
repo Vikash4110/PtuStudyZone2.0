@@ -35,7 +35,7 @@ const PTUBlog = () => {
       <br /> <br />
       <div className="py-12">
         <div className="container mx-auto px-4">
-          <div className='relative flex justify-center items-center text-center sm:text-left mb-10 mt-6'>
+          <div className='relative flex justify-center items-center text-center sm:text-left mb-10 mt-6' data-aos="zoom-out" data-aos-duration="1000" >
             <h1 className='text-5xl sm:text-5xl md:text-6xl font-bold flex item-start justify-center sm:justify-start text-center'>
               <span className='mr-2'>Latest Blogs</span>
             </h1>
@@ -45,10 +45,10 @@ const PTUBlog = () => {
 
           {/* Dynamic Buttons for Compose Blog and My Blog */}
           <div className="flex justify-center mt-14  space-x-4 ">
-            <Link to="/compose-blog" className=" items-center justify-center flex space-x-2 bg-white text-[#323290] font-semibold border-2 border-[#323290] py-2 px-4 md:py-2.5 md:px-6 rounded-full shadow hover:bg-[#323290] hover:text-white transition-colors duration-300">
+            <Link to="/compose-blog" className=" items-center justify-center flex space-x-2 bg-white text-[#323290] font-semibold border-2 border-[#323290] py-2 px-4 md:py-2.5 md:px-6 rounded-full shadow hover:bg-[#323290] hover:text-white transition-colors duration-300" data-aos="zoom-out" data-aos-duration="1000" data-aos-dealy="200">
               <FaPen /> <span>Compose Blog</span>
             </Link>
-            <Link to="/my-blogs" className=" flex space-x-2 items-center ustify-center bg-white text-[#323290] font-semibold border-2 border-[#323290] py-2 px-4 md:py-2.5 md:px-6 rounded-full shadow hover:bg-[#323290] hover:text-white transition-colors duration-300">
+            <Link to="/my-blogs" className=" flex space-x-2 items-center ustify-center bg-white text-[#323290] font-semibold border-2 border-[#323290] py-2 px-4 md:py-2.5 md:px-6 rounded-full shadow hover:bg-[#323290] hover:text-white transition-colors duration-300" data-aos="zoom-out" data-aos-duration="1000" data-aos-dealy="200">
               <FaRegNewspaper /> <span>My Blog</span>
             </Link>
           </div>
@@ -66,7 +66,7 @@ const PTUBlog = () => {
             ) : (
               blogs.map((blog) => (
 
-                <div key={blog._id} className="bg-white rounded-2xl shadow-2xl  shadow-[#323290ba] p-6 relative mt-20 flex flex-col  hover:scale-105 transition-transform duration-300 w-full ">
+                <div key={blog._id} className="bg-white rounded-2xl shadow-2xl  shadow-[#323290ba] p-6 relative mt-20 flex flex-col  hover:scale-105 transition-transform duration-300 w-full " data-aos="zoom-out" data-aos-duration="1000" data-aos-dealy="100"> 
 
 
                   <div className="flex items-center ">

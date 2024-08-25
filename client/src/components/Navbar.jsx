@@ -80,7 +80,7 @@ const Nav = () => {
         <div className="relative flex items-center justify-between">
           <div className="flex-shrink-0">
             <Link to="/" title="home" className={`text-2xl font-bold transition-all duration-200 rounded font-pj hover:text-opacity-50 ${textColor}`}>
-              <img src={MainLogo} alt="Main Logo" style={{ height: "70px", width: "auto" }} />
+              <img src={MainLogo} alt="Main Logo" style={{ height: "50px", width: "auto" }} />
             </Link>
           </div>
 

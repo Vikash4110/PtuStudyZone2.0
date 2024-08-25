@@ -53,10 +53,10 @@ const EditBlog = () => {
   return (
     <>
       <br /><br />
-      <div className="flex justify-center items-center min-h-screen bg-[#fbfbfb] px-4 pt-8">
-        <div className="grid grid-cols-1 md:grid-cols-1 items-center gap-10 max-w-screen-lg w-full md:w-3/6">
-          <div className=" w-5/6 justify-self-center md:w-full bg-white rounded-[40px] p-8 shadow-lg">
-            <div className="relative flex justify-center items-center flex-col text-center sm:text-left mb-10 mt-6">
+      <div className="flex justify-center items-center min-h-screen bg-[#fbfbfb] px-4 pt-8 w-full mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-1 items-center gap-10  w-full sm:w-5/6 md:w-4/6 lg:w-3/6">
+          <div className=" w-full  justify-self-center md:w-full bg-white rounded-[40px] p-8 shadow-lg">
+            <div className="relative flex justify-center items-center flex-col text-center sm:text-left mb-10 mt-0">
               <h1 className="font-black text-[30px] text-black">
                 <FaPen className="inline-block mr-2" /> Edit Blog
               </h1>
@@ -98,7 +98,7 @@ const EditBlog = () => {
                   id='content'
                   onChange={(e) => setBlog({ ...blog, content: e.target.value })}
                   className="w-full bg-white p-4 rounded-[20px] shadow-sm border placeholder:text-gray-500 focus:outline-none focus:border-blue-400"
-                  rows="5"
+                  rows="3"
                   required
                 />
 
