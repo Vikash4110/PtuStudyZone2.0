@@ -53,7 +53,6 @@ const Syllabus = () => {
 
   return (
     <>
-      <ToastContainer />
       <br />
       <br />
       <section className="py-12 ">
