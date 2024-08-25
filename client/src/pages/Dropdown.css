@@ -1,0 +1,47 @@
+/* Dropdown container */
+.dropdown-container {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+/* Select element styling */
+.custom-select {
+    width: 50%;
+    max-width: 200px;
+    padding: 0.75rem 1rem;
+    margin: 0 auto;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #323290;
+    background-color: #f1f0fe;
+    border: 2px solid #ed1f26; /* Set border color to #ed1f26 */
+    border-radius: 0.375rem;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23323290' width='24px' height='24px'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 1.5rem;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.custom-select:focus {
+    outline: none;
+    border-color: #ed1f26; /* Set border color to #ed1f26 on focus */
+    background-color: #f1f0fe;
+    box-shadow: 0 0 0 3px rgba(237, 31, 38, 0.2);
+}
+
+/* Option styling */
+.custom-select option {
+    font-size: 0.875rem;
+    font-weight: normal;
+    background-color: #f1f0fe;
+    color: #323290;
+    border: 2px solid #ed1f26; /* Set border color to #ed1f26 */
+}
+
+.custom-select option:hover {
+    background-color: #323290;
+    color: #f1f0fe;
+}

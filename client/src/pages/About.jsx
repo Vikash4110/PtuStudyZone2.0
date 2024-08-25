@@ -46,7 +46,7 @@ const About = () => {
           </div>
           {/* Title Section */}
           <section className="flex flex-col lg:flex-row items-center justify-between py-12 px-4 lg:px-16 md:mt-20 ">
-            <div className="w-4/6 sm:w-3/5 md:w-3/6 lg:w-1/2 flex justify-center lg:justify-start" data-aos="zoom-out" data-aos-duration="1000">
+            <div className="z-20 w-4/6 sm:w-3/5 md:w-3/6 lg:w-1/2 flex justify-center lg:justify-start" data-aos="zoom-out" data-aos-duration="1000">
               <img
                 src={about}
                 alt="Person with Laptop"
@@ -375,16 +375,16 @@ const About = () => {
                     <p className="text-base md:text-lg font-semibold text-center text-gray-800">Punjab Technical University</p>
                   </div>
                   <div className="absolute left-4 top-4 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-700">
-                    <a href="https://www.linkedin.com/in/sahil-jamwal/" className="block my-1 md:my-2 text-white hover:scale-105" target='_blank' rel="noopener noreferrer">
+                    <a href="https://www.linkedin.com/in/sahil-jamwal-227509238/" className="block my-1 md:my-2 text-white hover:scale-105" target='_blank' rel="noopener noreferrer">
                       <img src={LinkdeinLogo} className='w-8 md:w-11 h-8 md:h-11' alt="LinkedIn" />
                     </a>
-                    <a href="https://github.com/sahiljamwal" className="block my-1 md:my-2 text-white hover:scale-105" target='_blank' rel="noopener noreferrer">
+                    <a href="https://github.com/s-jamwal" className="block my-1 md:my-2 text-white hover:scale-105" target='_blank' rel="noopener noreferrer">
                       <img src={githubLogo} className='w-8 md:w-11 h-8 md:h-11' alt="GitHub" />
                     </a>
-                    <a href="https://www.instagram.com/sahiljamwal/" className="block my-1 md:my-2 text-white hover:scale-105" target='_blank' rel="noopener noreferrer">
+                    <a href="https://www.instagram.com/_sahil.jamwal_/?next=%2F" className="block my-1 md:my-2 text-white hover:scale-105" target='_blank' rel="noopener noreferrer">
                       <img src={instagramLogo} className='w-8 md:w-11 h-8 md:h-11' alt="Instagram" />
                     </a>
-                    <a href="https://sahiljamwal.wordpress.com" className="block my-1 md:my-2 text-white hover:scale-105" target='_blank' rel="noopener noreferrer">
+                    <a href="#" className="block my-1 md:my-2 text-white hover:scale-105" target='_blank' rel="noopener noreferrer">
                       <img src={blogLogo} className='w-8 md:w-11 h-8 md:h-11' alt="Blog" />
                     </a>
                   </div>

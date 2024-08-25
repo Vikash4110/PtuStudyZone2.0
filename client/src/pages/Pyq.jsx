@@ -50,8 +50,10 @@ const Pyq = () => {
             <p className="text-lg md:text-xl text-[#323290] mb-12 font-semibold" data-aos="zoom-out" data-aos-duration="1000" data-aos-dealy="100">
             Access previous year question papers to enhance your preparation and boost your confidence for PTU exams.
             </p>
-            <div className="mb-6 text-center" data-aos="zoom-out" data-aos-duration="1000" data-aos-dealy="200">
-            
+
+
+             {/* Radio Buttons for larger screens */}
+          <div className="hidden md:block mb-6 text-center" data-aos="zoom-out" data-aos-duration="1000" data-aos-delay="200">
             <div className="radio-inputs">
               {[1, 2, 3, 4, 5, 6, 7, 8].map((sem) => (
                 <label key={sem} className="radio">
@@ -67,6 +69,24 @@ const Pyq = () => {
               ))}
             </div>
           </div>
+
+          {/* Dropdown for mobile screens */}
+          <div className="dropdown-container block md:hidden" data-aos="zoom-out" data-aos-duration="1000" data-aos-delay="200">
+      <select
+        className="custom-select"
+        value={selectedSemester}
+        onChange={(e) => setSelectedSemester(e.target.value)}
+      >
+        {[1, 2, 3, 4, 5, 6, 7, 8].map((sem) => (
+          <option key={sem} value={sem.toString()}>
+            Semester {sem}
+          </option>
+        ))}
+      </select>
+    </div>
+
+
+
         </div>
         <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4 w-5/6 h-full justify-center">
           {filteredPyq.length > 0 ? (

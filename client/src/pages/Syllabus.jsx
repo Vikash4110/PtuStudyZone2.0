@@ -74,24 +74,40 @@ const Syllabus = () => {
               Download the latest PTU syllabus in PDF format to stay updated with your course requirements.
             </p>
 
-            {/* Radio Buttons */}
-            <div className="mb-6 text-center" data-aos="zoom-out" data-aos-duration="1000" data-aos-dealy="200">
             
-              <div className="radio-inputs">
-                {[1, 2, 3, 4, 5, 6, 7, 8].map((sem) => (
-                  <label key={sem} className="radio">
-                    <input
-                      type="radio"
-                      value={sem.toString()}
-                      checked={selectedSemester === sem.toString()}
-                      onChange={() => setSelectedSemester(sem.toString())}
-                      className="form-radio h-5 w-5 text-[#323290]"
-                    />
-                    <span className="name">Semester {sem}</span>
-                  </label>
-                ))}
-              </div>
+             {/* Radio Buttons for larger screens */}
+          <div className="hidden md:block mb-6 text-center" data-aos="zoom-out" data-aos-duration="1000" data-aos-delay="200">
+            <div className="radio-inputs">
+              {[1, 2, 3, 4, 5, 6, 7, 8].map((sem) => (
+                <label key={sem} className="radio">
+                  <input
+                    type="radio"
+                    value={sem.toString()}
+                    checked={selectedSemester === sem.toString()}
+                    onChange={() => setSelectedSemester(sem.toString())}
+                    className="form-radio h-5 w-5 text-[#323290]"
+                  />
+                  <span className="name">Semester {sem}</span>
+                </label>
+              ))}
             </div>
+          </div>
+
+          {/* Dropdown for mobile screens */}
+          <div className="dropdown-container block md:hidden" data-aos="zoom-out" data-aos-duration="1000" data-aos-delay="200">
+      <select
+        className="custom-select"
+        value={selectedSemester}
+        onChange={(e) => setSelectedSemester(e.target.value)}
+      >
+        {[1, 2, 3, 4, 5, 6, 7, 8].map((sem) => (
+          <option key={sem} value={sem.toString()}>
+            Semester {sem}
+          </option>
+        ))}
+      </select>
+    </div>
+
 
             <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4 w-5/6 h-full justify-center">
               {filteredSyllabus.length > 0 ? (
