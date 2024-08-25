@@ -324,7 +324,7 @@ const About = () => {
           </section>
 
 
-          <div className="w-full p-2 md:p-8 lg:p-12 rounded-3xl border-2 shadow-2xl flex flex-col bg-gray-50 ml-2 mr-2"  >
+          <div className="w-full p-2 md:p-8 lg:p-12 rounded-3xl border-2 shadow-2xl flex flex-col bg-gray-50"  >
             <div className="flex items-center space-x-2 md:space-x-5 self-center mb-8 md:mb-10" data-aos="zoom-out" data-aos-duration="1000">
               <img src={brains} className='w-16 md:w-20 h-16 md:h-20' alt="Brains" />
               <h2 className="text-3xl md:text-4xl font-extrabold text-center text-[#323290]">Meet The Developers!</h2>
@@ -392,6 +392,7 @@ const About = () => {
               </div>
             </section>
           </div>
+        
 
 
           <br />
