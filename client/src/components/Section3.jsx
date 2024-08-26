@@ -20,6 +20,7 @@ const Card = ({ icon, title, description, link }) => (
     <Link to={link} className="bg-white text-[#323290] font-semibold border-2 border-[#323290] py-2 px-4 md:py-2.5 md:px-6 rounded-full shadow hover:bg-[#323290] hover:text-white transition-colors duration-300"  data-aos="zoom-out"  data-aos-duration="1000" data-aos-delay="100" data-aos-offset="100">
       Explore
     </Link>
+  
   </div>
   
 );

@@ -30,6 +30,7 @@ const Footer = () => {
           <p className="text-sm sm:text-base">
             PTU Study Zone is a comprehensive platform designed to simplify the academic experience for students at Punjab Technical University. Whether you're looking for well-organized notes, previous year questions (PYQ), the latest syllabus, or educational resources, everything you need is available in one place.
           </p>
+          
         </div>
         <div className="mb-6 text-center sm:text-left">
           <h4 className="mb-4 font-semibold text-lg sm:text-xl">GET HELP</h4>

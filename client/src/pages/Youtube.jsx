@@ -49,7 +49,7 @@ const Youtube = () => {
         <div className="container mx-auto text-center px-4">
           <div className='relative flex justify-center items-center flex-col text-center sm:text-left mb-10 mt-6' data-aos="zoom-out" data-aos-duration="1000">
             <h1 className='text-4xl sm:text-5xl md:text-6xl font-bold flex items-center justify-center sm:justify-start text-center'>
-              <span className='mr-2'>Sources</span>
+              <span className='mr-2'>Youtube</span>
             </h1>
             <img src={underline} className='absolute top-[-4rem] sm:top-[-4rem] md:top-[-5rem] left-1/2 transform -translate-x-1/2 w-48 sm:w-56 md:w-72' alt="underline" />
           </div>
