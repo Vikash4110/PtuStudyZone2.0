@@ -339,7 +339,7 @@ const About = () => {
                     alt="Vikash Bharal"
                   />
                   <div className="px-4 md:px-6 py-4">
-                    <div className="font-extrabold text-xl md:text-2xl mb-2 text-center text-[#323290]">Vikash Bharal</div>
+                    <div className="font-extrabold text-xl md:text-2xl mb-2 text-center text-[#323290]"><a href="https://vikashbharal.vercel.app/">Vikash Bharal</a></div>
                     <p className="text-base md:text-lg font-semibold text-center text-gray-800">Student</p>
                     <p className="text-base md:text-lg font-semibold text-center text-gray-800">BTech CSE (3rd Year)</p>
                     <p className="text-base md:text-lg font-semibold text-center text-gray-800">Punjab Technical University</p>

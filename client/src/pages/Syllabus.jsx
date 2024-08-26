@@ -7,6 +7,7 @@ import SyllabusIcon from '../assets/work-checklist.svg';
 import underline from '../assets/underline.png';
 import { ClipLoader } from 'react-spinners';
 import './RadioBtn.css';
+import BookLoader from '../components/BookLoader'
 
 const Syllabus = () => {
   const { syllabus } = useAuth();
@@ -108,7 +109,7 @@ const Syllabus = () => {
           {/* Loader */}
           {loading ? (
             <div className="flex justify-center items-center min-h-[300px]">
-              <ClipLoader color="#323290" loading={loading} size={50} />
+              <BookLoader color="#323290" loading={loading} size={50} />
             </div>
           ) : (
             <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4 w-5/6 h-full justify-center">

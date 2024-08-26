@@ -138,9 +138,7 @@ const Nav = () => {
                 About
                 <span className="absolute left-0 bottom-0 h-0.5 bg-red-500 transition-transform transform scale-x-0 group-hover:scale-x-100 w-full"></span>
               </Link>
-         
-              {isLoggedIn && (
-                <>     <Link to="/notes" onClick={() => setIsHamburgerOpen(false)} className="relative inline-block text-[#ed1f26] group">
+              <Link to="/notes" onClick={() => setIsHamburgerOpen(false)} className="relative inline-block text-[#ed1f26] group">
                 Notes
                 <span className="absolute left-0 bottom-0 h-0.5 bg-red-500 transition-transform transform scale-x-0 group-hover:scale-x-100 w-full"></span>
               </Link>
@@ -168,6 +166,8 @@ const Nav = () => {
                     Contact
                     <span className="absolute left-0 bottom-0 h-0.5 bg-red-500 transition-transform transform scale-x-0 group-hover:scale-x-100 w-full"></span>
                   </Link>
+              {isLoggedIn && (
+                <>    
                   <button class>
                     <button
                       onClick={() => setIsHamburgerOpen(false)}
@@ -223,11 +223,7 @@ const Nav = () => {
             <Link to="/about" title="About" className={`relative text-base font-medium transition-all duration-200 rounded font-pj ${textColor} ${underlineColor} before:content-[''] before:absolute before:left-0 before:bottom-0 before:w-full before:h-[2px] before:scale-x-0 hover:before:scale-x-100 before:origin-left before:transition-transform before:duration-300}`}>
               About
             </Link>
-
-          
-            {isLoggedIn && (
-              <>
-              <div
+            <div
               className="relative"
               onMouseEnter={() => setIsResourcesOpen(true)}
               onMouseLeave={() => setIsResourcesOpen(false)}
@@ -261,6 +257,10 @@ const Nav = () => {
                 </div>
               )}
             </div>
+          
+            {isLoggedIn && (
+              <>
+              
                 <Link to="/blogs" title="Blogs" className={`relative text-base font-medium transition-all duration-200 rounded font-pj ${textColor} ${underlineColor} before:content-[''] before:absolute before:left-0 before:bottom-0 before:w-full before:h-[2px] before:scale-x-0 hover:before:scale-x-100 before:origin-left before:transition-transform before:duration-300}`}>
                   Blogs
                 </Link>
