@@ -56,6 +56,7 @@ const Syllabus = () => {
 
   return (
     <>
+    <br /><br />
       <section className="py-12">
         <div className="container mx-auto text-center px-4">
           <div className='relative flex justify-center items-center flex-col text-center sm:text-left mb-10 mt-6'>
