@@ -135,10 +135,12 @@ const Nav = () => {
                 <span className="absolute left-0 bottom-0 h-0.5 bg-red-500 transition-transform transform scale-x-0 group-hover:scale-x-100 w-full"></span>
               </Link>
               <Link to="/about" onClick={() => setIsHamburgerOpen(false)} className="relative inline-block text-[#ed1f26] group">
-                About
+                About Us
                 <span className="absolute left-0 bottom-0 h-0.5 bg-red-500 transition-transform transform scale-x-0 group-hover:scale-x-100 w-full"></span>
               </Link>
-              <Link to="/notes" onClick={() => setIsHamburgerOpen(false)} className="relative inline-block text-[#ed1f26] group">
+             
+              {isLoggedIn && (
+                <>   <Link to="/notes" onClick={() => setIsHamburgerOpen(false)} className="relative inline-block text-[#ed1f26] group">
                 Notes
                 <span className="absolute left-0 bottom-0 h-0.5 bg-red-500 transition-transform transform scale-x-0 group-hover:scale-x-100 w-full"></span>
               </Link>
@@ -163,11 +165,9 @@ const Nav = () => {
                     <span className="absolute left-0 bottom-0 h-0.5 bg-red-500 transition-transform transform scale-x-0 group-hover:scale-x-100 w-full"></span>
                   </Link>
                   <Link to="/contact" onClick={() => setIsHamburgerOpen(false)} className="relative inline-block text-[#ed1f26] group">
-                    Contact
+                    Contact Us
                     <span className="absolute left-0 bottom-0 h-0.5 bg-red-500 transition-transform transform scale-x-0 group-hover:scale-x-100 w-full"></span>
-                  </Link>
-              {isLoggedIn && (
-                <>    
+                  </Link>  
                   <button class>
                     <button
                       onClick={() => setIsHamburgerOpen(false)}
@@ -221,9 +221,12 @@ const Nav = () => {
 
           <div className="hidden lg:absolute lg:inset-y-0 lg:flex lg:items-center lg:justify-center lg:space-x-12 lg:-translate-x-1/2 lg:left-1/2">
             <Link to="/about" title="About" className={`relative text-base font-medium transition-all duration-200 rounded font-pj ${textColor} ${underlineColor} before:content-[''] before:absolute before:left-0 before:bottom-0 before:w-full before:h-[2px] before:scale-x-0 hover:before:scale-x-100 before:origin-left before:transition-transform before:duration-300}`}>
-              About
+              About Us
             </Link>
-            <div
+            
+            {isLoggedIn && (
+              <>
+              <div
               className="relative"
               onMouseEnter={() => setIsResourcesOpen(true)}
               onMouseLeave={() => setIsResourcesOpen(false)}
@@ -258,15 +261,12 @@ const Nav = () => {
               )}
             </div>
           
-            {isLoggedIn && (
-              <>
-              
                 <Link to="/blogs" title="Blogs" className={`relative text-base font-medium transition-all duration-200 rounded font-pj ${textColor} ${underlineColor} before:content-[''] before:absolute before:left-0 before:bottom-0 before:w-full before:h-[2px] before:scale-x-0 hover:before:scale-x-100 before:origin-left before:transition-transform before:duration-300}`}>
                   Blogs
                 </Link>
 
                 <Link to="/contact" title="Contact" className={`relative text-base font-medium transition-all duration-200 rounded font-pj ${textColor} ${underlineColor} before:content-[''] before:absolute before:left-0 before:bottom-0 before:w-full before:h-[2px] before:scale-x-0 hover:before:scale-x-100 before:origin-left before:transition-transform before:duration-300}`}>
-                  Contact
+                  Contact Us
                 </Link>
               </>
             )}
