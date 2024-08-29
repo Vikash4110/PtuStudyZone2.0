@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom/client';
 import { AuthProvider } from "./store/auth";
 import App from './App.jsx';
 import './index.css';
+import 'react-quill/dist/quill.snow.css'; // Import Quill styles
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <AuthProvider>

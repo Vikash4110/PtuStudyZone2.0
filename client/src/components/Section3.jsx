@@ -9,6 +9,7 @@ import SyllabusIcon from '../assets/work-checklist.svg';
 import BooksIcon from '../assets/books.svg';
 import SourcesIcon from '../assets/resource-allocation.svg';
 import BlogsIcon from '../assets/edit.svg';
+
 const Card = ({ icon, title, description, link }) => {
   const { isLoggedIn } = useAuth();
   const navigate = useNavigate();

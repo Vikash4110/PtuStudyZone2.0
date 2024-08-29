@@ -122,7 +122,10 @@ const MyBlog = () => {
                   <span className="text-sm md:text-base lg:text-lg text-gray-600 mb-4 font-semibold leading-relaxed text-center ">{new Date(blog.createdAt).toLocaleDateString()}</span>
                   </div>
 
-                  <p className="text-sm md:text-base lg:text-lg text-gray-600 mb-4 leading-relaxed  ">{blog.content.substring(0, 100)}...</p>
+                  <p
+                    className="text-sm md:text-base lg:text-lg text-gray-600 mb-4 leading-relaxed"
+                    dangerouslySetInnerHTML={{ __html: blog.content.substring(0, 100) + '...' }}
+                  />
                 <div className="flex justify-end mt-4">
                   <button onClick={() => handleView(blog._id)} className="flex items-center bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 transition-colors duration-300 mr-2">
                     <FaEye className="mr-1" /> View

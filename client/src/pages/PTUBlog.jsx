@@ -5,6 +5,7 @@ import { FaUser, FaPen, FaRegNewspaper, FaCalendarAlt } from 'react-icons/fa';
 import { toast } from "react-toastify";
 import underline from '../assets/underline.png';
 import HandLoader from '../components/HandLoader';
+
 const PTUBlog = () => {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true); // State to manage loading
@@ -49,20 +50,20 @@ const PTUBlog = () => {
           </div>
 
           {/* Dynamic Buttons for Compose Blog and My Blog */}
-          <div className="flex justify-center mt-14  space-x-4 ">
-            <Link to="/compose-blog" className=" items-center justify-center flex space-x-2 bg-white text-[#323290] font-semibold border-2 border-[#323290] py-2 px-4 md:py-2.5 md:px-6 rounded-full shadow hover:bg-[#323290] hover:text-white transition-colors duration-300" data-aos="zoom-out" data-aos-duration="1000" data-aos-delay="200">
+          <div className="flex justify-center mt-14 space-x-4 ">
+            <Link to="/compose-blog" className="items-center justify-center flex space-x-2 bg-white text-[#323290] font-semibold border-2 border-[#323290] py-2 px-4 md:py-2.5 md:px-6 rounded-full shadow hover:bg-[#323290] hover:text-white transition-colors duration-300" data-aos="zoom-out" data-aos-duration="1000" data-aos-delay="200">
               <FaPen /> <span>Compose Blog</span>
             </Link>
-            <Link to="/my-blogs" className=" flex space-x-2 items-center justify-center bg-white text-[#323290] font-semibold border-2 border-[#323290] py-2 px-4 md:py-2.5 md:px-6 rounded-full shadow hover:bg-[#323290] hover:text-white transition-colors duration-300" data-aos="zoom-out" data-aos-duration="1000" data-aos-delay="200">
+            <Link to="/my-blogs" className="flex space-x-2 items-center justify-center bg-white text-[#323290] font-semibold border-2 border-[#323290] py-2 px-4 md:py-2.5 md:px-6 rounded-full shadow hover:bg-[#323290] hover:text-white transition-colors duration-300" data-aos="zoom-out" data-aos-duration="1000" data-aos-delay="200">
               <FaRegNewspaper /> <span>My Blog</span>
             </Link>
           </div>
 
           <div className="container mx-auto gap-8 px-4 w-5/6 justify-center">
             {loading ? (  // Conditional rendering based on loading state
-            <div className="flex justify-center items-center min-h-[300px]">
-            <HandLoader  loading={loading} size={50} />
-          </div>
+              <div className="flex justify-center items-center min-h-[300px]">
+                <HandLoader loading={loading} size={50} />
+              </div>
             ) : blogs.length === 0 ? (
               <div className='relative flex justify-center items-center flex-col text-center sm:text-left mb-10 mt-6 col-start-1 col-span-3'>
                 <h1 className='text-base sm:text-lgxl md:text-xl font-bold flex items-center justify-center sm:justify-start'>
@@ -87,7 +88,10 @@ const PTUBlog = () => {
                       </span>
                     </div>
                   </div>
-                  <p className="text-sm md:text-base lg:text-lg text-gray-600 mb-4 leading-relaxed">{blog.content.substring(0, 100)}...</p>
+                  <p
+                    className="text-sm md:text-base lg:text-lg text-gray-600 mb-4 leading-relaxed"
+                    dangerouslySetInnerHTML={{ __html: blog.content.substring(0, 100) + '...' }}
+                  />
                   <Link to={`/blogs/${blog._id}`} className="bg-white text-[#323290] text-center font-semibold border-2 border-[#323290] py-2 px-4 md:py-2.5 md:px-6 w-36 rounded-full shadow hover:bg-[#323290] hover:text-white transition-colors duration-300">
                     Read More
                   </Link>
