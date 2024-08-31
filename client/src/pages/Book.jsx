@@ -39,7 +39,7 @@ const Book = () => {
   const handleDownloadClick = (link, event) => {
     if (link.length === 0) {
       event.preventDefault();
-      toast.error("Sorry 😢, No Book available now!");
+      toast.error("Sorry 😢, This Subject Book is not available!");
     } else if (!isValidDriveLink(link)) {
       event.preventDefault();
       toast.error("Invalid Drive link. Please contact the administrator.");

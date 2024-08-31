@@ -42,7 +42,7 @@ const Syllabus = () => {
   const handleDownloadClick = (link, event) => {
     if (!link) {
       event.preventDefault();
-      toast.error("Sorry 😢, No Syllabus available now!");
+      toast.error("Sorry 😢, This Subject Syllabus is not available!");
     } else if (!isValidDriveLink(link)) {
       event.preventDefault();
       toast.error("Invalid Drive link. Please contact the administrator.");

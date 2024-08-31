@@ -38,7 +38,7 @@ const Youtube = () => {
   const handleDownloadClick = (link, event) => {
     if (link.length === 0) {
       event.preventDefault();
-      toast.error("Sorry 😢, No YouTube Channel available now!");
+      toast.error("Sorry 😢, This Subject YouTube Channel is not available!");
     }
   };
 
