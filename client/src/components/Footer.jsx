@@ -61,7 +61,7 @@ const Footer = () => {
               <Link to="/" className="hover:underline">Home</Link>
             </li>
             <li className="mb-2 text-sm sm:text-lg">
-              <button onClick={() => handleNavigation('/notes')} className="hover:underline">Notes</button>
+              <button onClick={() => handleNavigation('/complaints')} className="hover:underline">Complaints</button>
             </li>
             <li className="mb-2 text-sm sm:text-lg">
               <button onClick={() => handleNavigation('/syllabus')} className="hover:underline">Syllabus</button>

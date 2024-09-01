@@ -140,10 +140,11 @@ const Nav = () => {
               </Link>
              
               {isLoggedIn && (
-                <>   <Link to="/notes" onClick={() => setIsHamburgerOpen(false)} className="relative inline-block text-[#ed1f26] group">
+                <>
+                   {/* <Link to="/notes" onClick={() => setIsHamburgerOpen(false)} className="relative inline-block text-[#ed1f26] group">
                 Notes
                 <span className="absolute left-0 bottom-0 h-0.5 bg-red-500 transition-transform transform scale-x-0 group-hover:scale-x-100 w-full"></span>
-              </Link>
+              </Link> */}
               <Link to="/pyq" onClick={() => setIsHamburgerOpen(false)} className="relative inline-block text-[#ed1f26] group">
                 PYQs
                 <span className="absolute left-0 bottom-0 h-0.5 bg-red-500 transition-transform transform scale-x-0 group-hover:scale-x-100 w-full"></span>
@@ -245,9 +246,9 @@ Complaints                <span className="absolute left-0 bottom-0 h-0.5 bg-red
               {/* Dropdown Menu */}
               {isResourcesOpen && (
                 <div className={`absolute left-0 z-20 w-24 origin-top-left rounded-md shadow-2xl flex flex-col text-center ${dropdownBg} ${textColor}`}>
-                  <Link to="/notes" className={` px-4 py-2 text-base transition-all duration-200 relative ${textColor} ${underlineColor} before:content-[''] before:absolute before:left-0 before:bottom-0 before:w-full before:h-[2px] before:scale-x-0 hover:before:scale-x-100 before:origin-left before:transition-transform before:duration-300}`}>
+                  {/* <Link to="/notes" className={` px-4 py-2 text-base transition-all duration-200 relative ${textColor} ${underlineColor} before:content-[''] before:absolute before:left-0 before:bottom-0 before:w-full before:h-[2px] before:scale-x-0 hover:before:scale-x-100 before:origin-left before:transition-transform before:duration-300}`}>
                     Notes
-                  </Link>
+                  </Link> */}
                   <Link to="/pyq" className={` px-4 py-2 text-base transition-all duration-200 relative ${textColor} ${underlineColor} before:content-[''] before:absolute before:left-0 before:bottom-0 before:w-full before:h-[2px] before:scale-x-0 hover:before:scale-x-100 before:origin-left before:transition-transform before:duration-300}`}>
                     PYQs
                   </Link>

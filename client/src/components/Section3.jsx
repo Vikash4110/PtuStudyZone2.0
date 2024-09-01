@@ -53,12 +53,18 @@ const CardsSection = () => (
       </div>
     </h1>
 
-    <div className="max-w-7xl min-w-2xl mx-auto py-12 px-4 grid gap-8 grid-cols-1 w-5/6 sm:w-2/3 md:w-full lg:w-full sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-      <Card 
-        icon={NotesIcon} 
-        title="Comprehensive Notes" 
-        description="A well-curated collection of notes aligned with the latest syllabus, ensuring you study the right material."
-        link="/notes" 
+    <div className="max-w-7xl min-w-2xl mx-auto py-12 px-4 grid gap-8 grid-cols-1 w-5/6 sm:w-2/3 md:w-full lg:w-full sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3"> 
+    <Card 
+  icon={NotesIcon} 
+  title="Student Grievances" 
+  description="Submit your complaints or issues here. The Head of Department (HOD) will review them, take appropriate action, and work towards resolving them."
+  link="/complaints" 
+/>
+<Card 
+        icon={BlogsIcon} 
+        title="Blogs" 
+        description="Engage with the community by writing and reading blogs that share insights, tips, and experiences."
+        link="/blogs" 
       />
       <Card 
         icon={PYQIcon} 
@@ -84,12 +90,7 @@ const CardsSection = () => (
         description="Explore our curated YouTube channels for each subject, where you can access video lectures and tutorials tailored to the syllabus of Punjab Technical University."
         link="/youtube" 
       />
-      <Card 
-        icon={BlogsIcon} 
-        title="Blogs" 
-        description="Engage with the community by writing and reading blogs that share insights, tips, and experiences."
-        link="/blogs" 
-      />
+   
     </div>
   </div>
 );
