@@ -157,14 +157,14 @@ const About = () => {
                   </div>
                   <div className="ml-4 flex-grow">
                     <div className="flex justify-between items-center">
-                      <h3 className="text-base  sm:text-lg lg:text-xl font-semibold text-gray-800 group-hover:text-[#323290]" onClick={() => toggleOpen(3)}>Comprehensive Notes</h3>
+                      <h3 className="text-base  sm:text-lg lg:text-xl font-semibold text-gray-800 group-hover:text-[#323290]" onClick={() => toggleOpen(3)}>Student Grievances</h3>
                       <div className="flex items-center cursor-pointer ml-auto" onClick={() => toggleOpen(3)}>
                         <FaChevronDown className={`text-gray-600 ${openIndex === 3 ? 'transform rotate-180 transition-all duration-300' : 'transition-all duration-700'}`} />
                       </div>
                     </div>
                     <div className={`transition-all duration-700 overflow-hidden ${openIndex === 3 ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'}`}>
                       <p className="text-sm sm:text-base lg:text-lg text-gray-600 mt-2">
-                        A well-curated collection of notes aligned with the latest syllabus, ensuring you study the right material.
+                      Easily submit your grievances or issues. Our system ensures that each submission is reviewed by the Head of Department (HOD), who will take the necessary steps to address and resolve your concerns.
                       </p>
                     </div>
                   </div>
