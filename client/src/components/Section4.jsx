@@ -5,6 +5,7 @@ import { useAuth } from "../store/auth";
 
 function Section4() {
   const { isAdmin, isLoggedIn } = useAuth();
+  const { isHod, isLoggedInHod } = useAuth();
 
   return (
     <div
@@ -46,6 +47,17 @@ function Section4() {
               data-aos-delay="200"
             >
               Access Admin Panel
+            </Link>
+          )}
+          {isHod && (
+            <Link
+              to="/hod"
+              className="bg-[#570f6f] hover:bg-purple-900 text-white font-bold py-2 px-4 rounded"
+              data-aos="zoom-out"
+              data-duration="1000"
+              data-aos-delay="200"
+            >
+              Access Hod Panel
             </Link>
           )}
         </div>
