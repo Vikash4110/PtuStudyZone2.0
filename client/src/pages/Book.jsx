@@ -104,7 +104,7 @@ const Book = () => {
 
         <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4 w-5/6 h-full justify-center">
           {loading ? (
-            <div className="flex justify-center items-center col-start-1 col-span-3">
+            <div className="flex justify-center items-center col-start-1 col-span-3 mt-20">
               <BookLoader color="#323290" size={50} />
             </div>
           ) : filteredSyllabus.length > 0 ? (

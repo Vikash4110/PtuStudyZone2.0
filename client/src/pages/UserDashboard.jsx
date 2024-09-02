@@ -7,15 +7,13 @@ import profileImg from '../assets/profile2.jpg';
 import underline from '../assets/underline.png';
 
 import {
-  FaUser,
+
   FaEnvelope,
   FaPhone,
   FaEdit,
   FaUniversity,
   FaIdBadge,
-  FaTwitter,
-  FaFacebook,
-  FaInstagram,
+  FaListOl,
 } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
@@ -130,7 +128,7 @@ const UserDashboard = () => {
               <ProfileItem
                 label="Semester"
                 value={userData.semester}
-                icon={<FaUniversity className="text-gray-500" />}
+                icon={<FaListOl className="text-gray-500" />}
               />
             </div>
           </div>

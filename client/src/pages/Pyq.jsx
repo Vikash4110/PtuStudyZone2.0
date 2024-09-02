@@ -104,7 +104,7 @@ const Pyq = () => {
         </div>
 
         {loading ? (
-          <div className="flex justify-center items-center">
+          <div className="flex justify-center items-center mt-20">
             <BookLoader color={"#323290"} loading={loading} size={50} />
           </div>
         ) : (
