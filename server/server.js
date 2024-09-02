@@ -16,7 +16,7 @@ const bookRoute = require('./router/book-router');
 const hodRouter = require('./router/hod-router');
 const complaintRoute = require('./router/complaint-router');
 
-const path = require('path');
+const path = require('path')
 
 const Port = process.env.PORT || 3000;
 const app = express();
