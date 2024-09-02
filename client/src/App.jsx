@@ -11,6 +11,9 @@ import Syllabus from "./pages/Syllabus";
 import Pyq from "./pages/Pyq";
 import Notes from "./pages/Notes";
 import Book from "./pages/Book";
+import Complaint from "./pages/Complaint";
+import HodComplaint from "./pages/HodComplaint";
+import HodLayout from "./components/layouts/HodLayout";
 import UserDashboard from "./pages/UserDashboard";
 import AdminLayout from "./components/layouts/AdminLayout";
 import AdminUsers from "./pages/AdminUsers";
@@ -43,7 +46,6 @@ import Youtube from "./pages/Youtube";
 import ScrollToTop from './components/ScrollToTop';
 import 'aos/dist/aos.css'; // Import AOS styles
 import AOS from 'aos'; // Import AOS
-
 // Initialize AOS
 AOS.init();
 
@@ -76,6 +78,7 @@ const App = () => {
         <Route path="/pyq" element={<Pyq />} />
         <Route path="/book" element={<Book />} />
         <Route path="/notes" element={<Notes />} />
+        <Route path="/complaints" element={<Complaint/>}/>
         <Route path="/dashboard" element={<UserDashboard />} />
         <Route path="/update-profile" element={<UpdateUser />} />
         <Route path="/my-blogs" element={<MyBlog />} />
@@ -106,6 +109,10 @@ const App = () => {
           <Route path="book" element={<AdminBook />} />
           <Route path="book/add" element={<AdminAddBook />} />
           <Route path="book/:id/edit" element={<AdminEditBook />} />
+        </Route>
+        <Route path="/hod" element={<HodLayout />}>
+        <Route index element={<Navigate to="/hod/complaints" />} />
+        <Route path="complaints" element={<HodComplaint />} />
         </Route>
         <Route path="*" element={<Error />} /> {/* This will catch all undefined routes */}
       </Routes>

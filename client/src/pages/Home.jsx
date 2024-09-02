@@ -17,8 +17,7 @@ const Home = ()=>{
        <Section4 />
        <About />
        <Section3 />
-       
-  <Footer/>
+       <Footer/>
         </>
 
     )

@@ -7,7 +7,7 @@ import SourcesIcon from '../assets/resource-allocation.svg';
 import underline from '../assets/underline.png';
 import { ClipLoader } from 'react-spinners'; // Import the loader
 import './RadioBtn.css';
-
+import BookLoader from '../components/BookLoader'
 const Youtube = () => {
   const { youtube } = useAuth();
   const [selectedSemester, setSelectedSemester] = useState("1"); // Default to first semester
@@ -38,7 +38,7 @@ const Youtube = () => {
   const handleDownloadClick = (link, event) => {
     if (link.length === 0) {
       event.preventDefault();
-      toast.error("Sorry 😢, No YouTube Channel available now!");
+      toast.error("Sorry 😢, This Subject YouTube Channel is not available!");
     }
   };
 
@@ -49,7 +49,7 @@ const Youtube = () => {
         <div className="container mx-auto text-center px-4">
           <div className='relative flex justify-center items-center flex-col text-center sm:text-left mb-10 mt-6' data-aos="zoom-out" data-aos-duration="1000">
             <h1 className='text-4xl sm:text-5xl md:text-6xl font-bold flex items-center justify-center sm:justify-start text-center'>
-              <span className='mr-2'>Sources</span>
+              <span className='mr-2'>Youtube</span>
             </h1>
             <img src={underline} className='absolute top-[-4rem] sm:top-[-4rem] md:top-[-5rem] left-1/2 transform -translate-x-1/2 w-48 sm:w-56 md:w-72' alt="underline" />
           </div>
@@ -95,7 +95,7 @@ const Youtube = () => {
         {/* Loader */}
         {loading ? (
           <div className="flex justify-center items-center min-h-[300px]">
-            <ClipLoader color="#323290" loading={loading} size={50} />
+            <BookLoader color="#323290" loading={loading} size={50} />
           </div>
         ) : (
           <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4 w-5/6 h-full justify-center">

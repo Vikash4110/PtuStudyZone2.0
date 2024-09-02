@@ -3,7 +3,6 @@ import Img1 from '../assets/mainImg1.png';
 import { Link } from 'react-router-dom';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-
 const ComponentName = () => {
     useEffect(() => {
         AOS.init({ duration: 1000 }); // Initialize AOS with a duration
@@ -73,6 +72,7 @@ const ComponentName = () => {
                 </div>
             </section>
         </div>
+       
     );
 }
 

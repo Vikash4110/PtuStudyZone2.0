@@ -7,6 +7,7 @@ import SyllabusIcon from '../assets/work-checklist.svg';
 import underline from '../assets/underline.png';
 import { ClipLoader } from 'react-spinners';
 import './RadioBtn.css';
+import BookLoader from '../components/BookLoader'
 
 const Syllabus = () => {
   const { syllabus } = useAuth();
@@ -41,7 +42,7 @@ const Syllabus = () => {
   const handleDownloadClick = (link, event) => {
     if (!link) {
       event.preventDefault();
-      toast.error("Sorry 😢, No Syllabus available now!");
+      toast.error("Sorry 😢, This Subject Syllabus is not available!");
     } else if (!isValidDriveLink(link)) {
       event.preventDefault();
       toast.error("Invalid Drive link. Please contact the administrator.");
@@ -55,6 +56,7 @@ const Syllabus = () => {
 
   return (
     <>
+    <br /><br />
       <section className="py-12">
         <div className="container mx-auto text-center px-4">
           <div className='relative flex justify-center items-center flex-col text-center sm:text-left mb-10 mt-6'>
@@ -108,7 +110,7 @@ const Syllabus = () => {
           {/* Loader */}
           {loading ? (
             <div className="flex justify-center items-center min-h-[300px]">
-              <ClipLoader color="#323290" loading={loading} size={50} />
+              <BookLoader color="#323290" loading={loading} size={50} />
             </div>
           ) : (
             <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4 w-5/6 h-full justify-center">

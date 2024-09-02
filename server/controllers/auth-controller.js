@@ -12,8 +12,12 @@ const register = async (req, res) => {
         const { username, rollno, department, semester, email, phone, password } = req.body;
 
         const userExist = await User.findOne({ email });
+        const rollnoExist = await User.findOne({ rollno });
         if (userExist) {
             return res.status(400).json({ message: "Email already exists" });
+        }
+        if (rollnoExist) {
+            return res.status(400).json({ message: "RollNo already exists" });
         }
 
         const newUser = new User({

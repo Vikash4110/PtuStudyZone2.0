@@ -5,6 +5,7 @@ import { ToastContainer, toast } from "react-toastify";
 import NotesIcon from '../assets/notes.svg';
 import underline from '../assets/underline.png';
 import ClipLoader from "react-spinners/ClipLoader"; // Ensure you have this import for the loader
+import BookLoader from '../components/BookLoader'
 import './RadioBtn.css';
 import './Dropdown.css';
 
@@ -38,7 +39,7 @@ const Notes = () => {
   const handleDownloadClick = (link, event) => {
     if (link.length === 0) {
       event.preventDefault();
-      toast.error("Sorry 😢, No Notes available now!");
+      toast.error("Sorry 😢, This Subject Notes is not available!");
     } else if (!isValidDriveLink(link)) {
       event.preventDefault();
       toast.error("Invalid Drive link. Please contact the administrator.");
@@ -102,7 +103,7 @@ const Notes = () => {
 
         {loading ? (
           <div className="flex justify-center items-center min-h-[300px]">
-            <ClipLoader color="#323290" loading={loading} size={50} />
+            <BookLoader color="#323290" loading={loading} size={50} />
           </div>
         ) : (
           <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4 w-5/6 h-full justify-center">

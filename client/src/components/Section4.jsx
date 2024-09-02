@@ -1,22 +1,24 @@
 import React from 'react';
 import backgroundImage from '../assets/slider-image1.jpg'; // Replace with the correct path to your background image
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useAuth } from "../store/auth";
 
 function Section4() {
-  const { isAdmin } = useAuth();
+  const { isAdmin, isLoggedIn } = useAuth();
+  const { isHod, isLoggedInHod } = useAuth();
+
   return (
     <div
       className="h-96 flex items-center justify-center mt-24"
       style={{
-        backgroundImage: `url(${backgroundImage}), linear-gradient(to right, #5b429c, #28486e)`, // Darker gradient colors
-        backgroundBlendMode: 'overlay', // Combines the image and gradient
+        backgroundImage: `url(${backgroundImage}), linear-gradient(to right, #5b429c, #28486e)`,
+        backgroundBlendMode: 'overlay',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundAttachment: "fixed"
       }}
     >
-      <div className="text-center px-1   sm:px-0">
+      <div className="text-center px-1 sm:px-0">
         <h1 className="text-4xl font-bold text-white mb-4" data-aos="zoom-out" data-duration="1000">
           START LEARNING NOW
         </h1>
@@ -27,17 +29,37 @@ function Section4() {
           <Link to="/login" className="bg-[#323290] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" data-aos="zoom-out" data-duration="1000" data-aos-delay="200">
             Get started now
           </Link>
-          <Link to="/contact" className="bg-[#ed1f26] hover:bg-pink-700 text-white font-bold py-2 px-4 rounded" data-aos="zoom-out" data-duration="1000" data-aos-delay="200">
+          <Link
+            to={isLoggedIn ? "/contact" : "/login"}
+            className="bg-[#ed1f26] hover:bg-pink-700 text-white font-bold py-2 px-4 rounded"
+            data-aos="zoom-out"
+            data-duration="1000"
+            data-aos-delay="200"
+          >
             Contact Us
           </Link>
           {isAdmin && (
-    <Link
-      to="/admin"
-      className="bg-[#34be19] hover:bg-green-700 text-white font-bold py-2 px-4 rounded" data-aos="zoom-out" data-duration="1000" data-aos-delay="200">
-      Access Admin Panel
-    </Link>
-  )}
-
+            <Link
+              to="/admin"
+              className="bg-[#34be19] hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+              data-aos="zoom-out"
+              data-duration="1000"
+              data-aos-delay="200"
+            >
+              Access Admin Panel
+            </Link>
+          )}
+          {isHod && (
+            <Link
+              to="/hod"
+              className="bg-[#570f6f] hover:bg-purple-900 text-white font-bold py-2 px-4 rounded"
+              data-aos="zoom-out"
+              data-duration="1000"
+              data-aos-delay="200"
+            >
+              Access Hod Panel
+            </Link>
+          )}
         </div>
       </div>
     </div>
