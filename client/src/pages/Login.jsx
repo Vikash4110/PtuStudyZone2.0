@@ -3,8 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../store/auth";
 import { toast } from "react-toastify";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
-import { faLock } from '@fortawesome/free-solid-svg-icons'
+import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons'
 import { RotatingLines } from "react-loader-spinner"; // Import the loader component
 
 const backendUrl = import.meta.env.VITE_BACKEND_URL;
@@ -56,9 +55,7 @@ const Login = ({ setIsLoggedIn }) => {
 
   return (
     <>
-
-
-      <form onSubmit={handleSubmit} className="flex flex-col gap-8 w-full max-w-md mx-auto mt-6  text-center border-2 rounded-3xl py-10 lg:py-20 px-6 lg:px-10 shadow-2xl ">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-8 w-full max-w-md mx-auto mt-6 text-center border-2 rounded-3xl py-10 lg:py-20 px-6 lg:px-10 shadow-2xl">
         <div className="relative h-11 w-full">
           <input
             type="email"
@@ -70,12 +67,11 @@ const Login = ({ setIsLoggedIn }) => {
             required
           />
           <label
-            className="pointer-events-none absolute left-3 -top-1.5 flex items-center space-x-2  select-none text-[12px] font-medium leading-tight text-gray-800 transition-all peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-500 peer-focus:-top-1.5 peer-focus:text-[12px] peer-focus:text-[#ed1f26]"
+            className="pointer-events-none absolute left-3 -top-1.5 flex items-center space-x-2 select-none text-[12px] font-medium leading-tight text-gray-800 transition-all peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-500 peer-focus:-top-1.5 peer-focus:text-[12px] peer-focus:text-[#ed1f26]"
           >
             <span><FontAwesomeIcon icon={faEnvelope} /></span><span>Email</span>
           </label>
         </div>
-
 
         <div className="relative h-11 w-full">
           <input
@@ -88,17 +84,15 @@ const Login = ({ setIsLoggedIn }) => {
             required
           />
           <label
-            className="pointer-events-none absolute left-3 -top-1.5 flex items-center space-x-2  select-none text-[12px] font-medium leading-tight text-gray-800 transition-all peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-500 peer-focus:-top-1.5 peer-focus:text-[12px] peer-focus:text-[#ed1f26]"
+            className="pointer-events-none absolute left-3 -top-1.5 flex items-center space-x-2 select-none text-[12px] font-medium leading-tight text-gray-800 transition-all peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-500 peer-focus:-top-1.5 peer-focus:text-[12px] peer-focus:text-[#ed1f26]"
           >
             <span><FontAwesomeIcon icon={faLock} /></span><span>Password</span>
           </label>
         </div>
 
-
-
         <button
           type="submit"
-          className={` py-2 px-4 rounded-full mt-6 font-medium text-white w-1/2 mx-auto  block  bg-gradient-to-r from-purple-500 to-red-500   transition-transform duration-200 ease-in-out hover:scale-105 active:scale-95${loading ? "opacity-50 cursor-not-allowed" : ""}`}
+          className={`py-2 px-4 rounded-full mt-6 font-medium text-white w-1/2 mx-auto block bg-gradient-to-r from-purple-500 to-red-500 transition-transform duration-200 ease-in-out hover:scale-105 active:scale-95${loading ? " opacity-50 cursor-not-allowed" : ""}`}
           disabled={loading} // Disable button while loading
         >
           {loading ? (
@@ -116,16 +110,15 @@ const Login = ({ setIsLoggedIn }) => {
           )}
         </button>
 
-        <p className="text-center mt-4 text-gray-600">
-          New Here? <Link to="/register" className="text-[#ed1f26] font-semibold hover:underline" >Sign Up</Link>
-        </p>
-
-
+        <div className="flex flex-col items-center mt-4 space-y-2">
+          <p className="text-sm text-gray-600">
+            Forgot your password? <Link to="/forgot-password" className="text-[#ed1f26] font-semibold hover:underline">Click here</Link>
+          </p>
+          <p className="text-sm text-gray-600">
+            New Here? <Link to="/register" className="text-[#ed1f26] font-semibold hover:underline">Sign Up</Link>
+          </p>
+        </div>
       </form>
-
-
-
-
     </>
   );
 };

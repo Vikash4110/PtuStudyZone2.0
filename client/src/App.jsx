@@ -44,6 +44,7 @@ import ComposeBlog from './components/ComposeBlog';
 import UpdateUser from "./components/UpdateUser";
 import Youtube from "./pages/Youtube";
 import ScrollToTop from './components/ScrollToTop';
+import ForgotPassword from "./pages/ForgotPassword";
 import 'aos/dist/aos.css'; // Import AOS styles
 import AOS from 'aos'; // Import AOS
 // Initialize AOS
@@ -88,6 +89,9 @@ const App = () => {
         <Route path="/blogs/:id" element={<SingleBlog />} />
         <Route path="/youtube" element={<Youtube />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+
+
         <Route path="/admin" element={<AdminLayout />}>
           <Route index element={<Navigate to="/admin/users" />} />
           <Route path="users" element={<AdminUsers />} />
