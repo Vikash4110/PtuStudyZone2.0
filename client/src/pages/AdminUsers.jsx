@@ -7,6 +7,7 @@ import { Instagram } from 'react-content-loader';
 const AdminUsers = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [userCount, setUserCount] = useState(0); // New state variable for user count
   const { authorizationToken } = useAuth();
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
@@ -26,13 +27,16 @@ const AdminUsers = () => {
 
       if (data && Array.isArray(data.users)) {
         setUsers(data.users);
+        setUserCount(data.users.length); // Update user count
       } else {
         console.error('Unexpected data format:', data);
         setUsers([]);
+        setUserCount(0); // Set user count to 0 if data is not valid
       }
     } catch (error) {
       console.error('Error fetching users:', error);
       setUsers([]);
+      setUserCount(0); // Set user count to 0 on error
     } finally {
       setLoading(false);
     }
@@ -56,6 +60,7 @@ const AdminUsers = () => {
       if (data.message === "User deleted successfully") {
         // Update the state to remove the deleted user from the UI
         setUsers((prevUsers) => prevUsers.filter((user) => user._id !== id));
+        setUserCount((prevCount) => prevCount - 1); // Update user count
         // Show success toast
         toast.success("User deleted successfully");
       }
@@ -83,6 +88,12 @@ const AdminUsers = () => {
       <section className="bg-white shadow-md rounded my-6">
         <div className="p-6">
           <h1 className="text-2xl font-semibold mb-4">Admin Users Data</h1>
+          {/* Display the user count */}
+          <div className="text-center mb-4">
+            <p className="inline-block bg-green-600 text-white py-2 px-4 rounded-lg shadow-md text-lg font-semibold">
+              Total Users Registered: {userCount}
+            </p>
+          </div>
           <div className="overflow-x-auto">
             <table className="min-w-full bg-white">
               <thead>
