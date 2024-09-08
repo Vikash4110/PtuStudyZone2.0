@@ -102,7 +102,7 @@ const StyledWrapper = styled.div`
   --o: 0;
   --c: var(--page);
   position: absolute;
-  top: 2px;
+  top: 0px;
   left: 10px;
   transform-origin: 100% 50%;
   color: var(--c);
