@@ -47,14 +47,15 @@ const BookLoader = () => {
 
 const StyledWrapper = styled.div`
   .loader {
-  --background: linear-gradient(135deg, #23C4F8, #275EFE);
+  --background:linear-gradient(45deg, #323290, #6b6dbd);
+
   --shadow: rgba(39, 94, 254, 0.28);
   --text: #6C7486;
   --page: rgba(255, 255, 255, 0.36);
   --page-fold: rgba(255, 255, 255, 0.52);
   --duration: 3s;
-  width: 200px;
-  height: 140px;
+  width: 140px;
+  height: 100px;
   position: relative;
 }
 
@@ -64,7 +65,7 @@ const StyledWrapper = styled.div`
   position: absolute;
   bottom: 8px;
   width: 120px;
-  top: 80%;
+  top:80%;
   box-shadow: 0 16px 12px var(--shadow);
   transform: rotate(var(--r));
 }
@@ -101,7 +102,7 @@ const StyledWrapper = styled.div`
   --o: 0;
   --c: var(--page);
   position: absolute;
-  top: 10px;
+  top: 2px;
   left: 10px;
   transform-origin: 100% 50%;
   color: var(--c);
@@ -136,8 +137,8 @@ const StyledWrapper = styled.div`
 }
 
 .loader div ul li svg {
-  width: 90px;
-  height: 120px;
+  width: 60px;
+  height: 100px;
   display: block;
 }
 

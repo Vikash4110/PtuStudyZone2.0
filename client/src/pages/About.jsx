@@ -157,7 +157,7 @@ const About = () => {
                   </div>
                   <div className="ml-4 flex-grow">
                     <div className="flex justify-between items-center">
-                      <h3 className="text-base  sm:text-lg lg:text-xl font-semibold text-gray-800 group-hover:text-[#323290]" onClick={() => toggleOpen(3)}>Student Grievances</h3>
+                      <h3 className="text-base  sm:text-lg lg:text-xl font-semibold text-gray-800 group-hover:text-[rgb(50,50,144)]" onClick={() => toggleOpen(3)}>Student Grievances</h3>
                       <div className="flex items-center cursor-pointer ml-auto" onClick={() => toggleOpen(3)}>
                         <FaChevronDown className={`text-gray-600 ${openIndex === 3 ? 'transform rotate-180 transition-all duration-300' : 'transition-all duration-700'}`} />
                       </div>
@@ -392,6 +392,7 @@ const About = () => {
               </div>
             </section>
           </div>
+        
 
 
           <br />
