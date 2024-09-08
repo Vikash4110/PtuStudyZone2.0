@@ -112,7 +112,7 @@ const Contact = () => {
         </div>
 
         {/* Form Section */}
-        <div className="w-5/6 justify-self-center md:w-full bg-white rounded-[40px] p-8 shadow-lg hover:scale-105">
+        <div className="w-5/6 justify-self-center md:w-full bg-white rounded-[40px] p-8 shadow-lg mb-10 lg:mb-0 ">
           <div className="relative flex justify-center items-center flex-col text-center sm:text-left mb-10 ">
             <h1 className="font-semibold text-2xl md:text-3xl text-black">Send us a message</h1>
 

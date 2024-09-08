@@ -86,6 +86,7 @@ const AdminBook = () => {
     <>
     <br />
     <br />
+    <br />
     <section className="bg-white shadow-md rounded my-6">
       <div className="p-6">
         <h1 className="text-2xl font-semibold mb-4">Admin Book Data</h1>

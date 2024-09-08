@@ -32,7 +32,6 @@ const AdminEditPyq = () => {
         }
 
         const data = await response.json();
-        // Make sure to handle data correctly
         if (data) {
           setService(data.service || '');
           setSemester(data.semester || '');
@@ -41,7 +40,6 @@ const AdminEditPyq = () => {
           setLinka(data.linka || '');
           setLinkb(data.linkb || '');
           setLinkc(data.linkc || '');
-
         }
       } catch (error) {
         console.error('Error fetching pyq details:', error);
@@ -126,9 +124,8 @@ const AdminEditPyq = () => {
           <input
             type="url"
             value={linka}
-            onChange={(e) => setLink(e.target.value)}
+            onChange={(e) => setLinka(e.target.value)}
             className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md"
-            required
           />
         </div>
         <div className="mb-4">
@@ -136,9 +133,8 @@ const AdminEditPyq = () => {
           <input
             type="url"
             value={linkb}
-            onChange={(e) => setLink(e.target.value)}
+            onChange={(e) => setLinkb(e.target.value)}
             className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md"
-            required
           />
         </div>
         <div className="mb-4">
@@ -146,9 +142,8 @@ const AdminEditPyq = () => {
           <input
             type="url"
             value={linkc}
-            onChange={(e) => setLink(e.target.value)}
+            onChange={(e) => setLinkc(e.target.value)}
             className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md"
-            required
           />
         </div>
         <button

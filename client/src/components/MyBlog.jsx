@@ -5,15 +5,22 @@ import { FaUser, FaEye, FaEdit, FaPen, FaTrash, FaRegNewspaper } from 'react-ico
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import underline from '../assets/underline.png';
+import HandLoader from '../components/HandLoader'
+
+
 const MyBlog = () => {
   const [blogs, setBlogs] = useState([]);
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
+  const [loading, setLoading] = useState(true); // State to manage loading
   const token = localStorage.getItem('token');
   const navigate = useNavigate();
+  
 
   useEffect(() => {
     const fetchMyBlogs = async () => {
       try {
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+
         const res = await axios.get(`${backendUrl}/api/blogs/my-blogs`, {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -26,6 +33,8 @@ const MyBlog = () => {
         setBlogs(sortedBlogs);
       } catch (err) {
         console.error('Failed to fetch blogs:', err.response ? err.response.data : err.message);
+      }  finally {
+        setLoading(false); // Stop the loader once the data is fetched or if an error occurs
       }
     };
 
@@ -86,7 +95,11 @@ const MyBlog = () => {
 
 
             <div className="container mx-auto  gap-8 px-4 w-5/6  justify-center">
-          {blogs.length === 0 ? (
+            {loading ? (  // Conditional rendering based on loading state
+            <div className="flex justify-center items-center min-h-[300px]">
+            <HandLoader  loading={loading} size={50} />
+          </div>
+          ) : blogs.length === 0 ? (
             <div className='relative flex justify-center items-center flex-col text-center sm:text-left mb-10 mt-6 col-start-1 col-span-3'>
               <h1 className='text-base sm:text-lgxl md:text-xl font-bold flex items-center justify-center sm:justify-start'>
                 <span className='mr-2 text-[#ed1f26]'>No Blogs found !</span>               
@@ -109,7 +122,10 @@ const MyBlog = () => {
                   <span className="text-sm md:text-base lg:text-lg text-gray-600 mb-4 font-semibold leading-relaxed text-center ">{new Date(blog.createdAt).toLocaleDateString()}</span>
                   </div>
 
-                  <p className="text-sm md:text-base lg:text-lg text-gray-600 mb-4 leading-relaxed  ">{blog.content.substring(0, 100)}...</p>
+                  <p
+                    className="text-sm md:text-base lg:text-lg text-gray-600 mb-4 leading-relaxed"
+                    dangerouslySetInnerHTML={{ __html: blog.content.substring(0, 100) + '...' }}
+                  />
                 <div className="flex justify-end mt-4">
                   <button onClick={() => handleView(blog._id)} className="flex items-center bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 transition-colors duration-300 mr-2">
                     <FaEye className="mr-1" /> View

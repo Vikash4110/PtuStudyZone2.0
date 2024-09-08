@@ -150,8 +150,13 @@ export const AuthProvider = ({ children }) => {
 
   const isLoggedIn = !!token;
 
+    // Determine if the user is an Hod based on the user data
+    const isHod = user && user.isHod === true;
+
+    const isLoggedInHod = !!token;
+
   return (
-    <AuthContext.Provider value={{ isLoggedIn, storeTokenInLS, logoutUser, user, syllabus, pyq, notes, youtube,book, authorizationToken, isLoading, isAdmin }}>
+    <AuthContext.Provider value={{ isLoggedIn, isLoggedInHod, storeTokenInLS, logoutUser, user, syllabus, pyq, notes, youtube,book, authorizationToken, isLoading, isAdmin, isHod }}>
       {children}
     </AuthContext.Provider>
   );

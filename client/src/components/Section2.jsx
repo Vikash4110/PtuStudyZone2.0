@@ -3,7 +3,6 @@ import Img1 from '../assets/mainImg1.png';
 import { Link } from 'react-router-dom';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-
 const ComponentName = () => {
     useEffect(() => {
         AOS.init({ duration: 1000 }); // Initialize AOS with a duration
@@ -36,7 +35,7 @@ const ComponentName = () => {
                             </p>
 
                             <Link
-                                to="/login"
+                                to="/register"
                                 title=""
                                 className="inline-flex items-center px-6 py-4 mt-8 font-bold text-[#323290] transition-all duration-200 bg-transparent border-2 border-[#323290] rounded-full lg:mt-8 hover:bg-[#323290] hover:text-white focus:bg-[#323290] focus:text-white"
                                 role="button"
@@ -61,7 +60,7 @@ const ComponentName = () => {
                             </Link>
                         </div>
 
-                        <div className="w-2/3 lg:w-full m-auto">
+                        <div className="w-5/6 md:w-2/3 lg:w-full m-auto">
                             <img 
                                 className="w-full" 
                                 src={Img1} 
@@ -73,6 +72,7 @@ const ComponentName = () => {
                 </div>
             </section>
         </div>
+       
     );
 }
 

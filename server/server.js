@@ -2,16 +2,20 @@ require('dotenv').config();
 const express = require('express');
 const connectDb = require('./utils/db');
 const cors = require('cors');
+const errorMiddleware = require('./middlewares/error-middleware');
+
 const authRoute = require('./router/auth-router');
 const contactRoute = require('./router/contact-user');
 const syllabusRoute = require('./router/syllabus-router');
-const errorMiddleware = require('./middlewares/error-middleware');
 const adminRoute = require('./router/admin-router');
 const pyqRoute = require("./router/pyq-router");
 const notesRoute = require('./router/notes-router');
 const youtubeRoute = require('./router/youtube-router');
 const blogRouter = require("./router/blog-router");
 const bookRoute = require('./router/book-router');
+const hodRouter = require('./router/hod-router');
+const complaintRoute = require('./router/complaint-router');
+
 const path = require('path');
 
 const Port = process.env.PORT || 3000;
@@ -35,6 +39,9 @@ app.use('/api/data', bookRoute);
 app.use('/api/data', youtubeRoute);
 app.use('/api/admin', adminRoute);
 app.use('/api/blogs', blogRouter);
+app.use('/api/hod', hodRouter);
+app.use('/api/form', complaintRoute);
+
 
 app.get('/', (req, res) => {
   res.send('Hello Ptu');
