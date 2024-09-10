@@ -89,7 +89,6 @@ const Register = ({ setIsLoggedIn }) => {
 
         <div className="grid grid-cols-2 gap-6">
 
-
           <div className="relative h-11 w-full col-start-1 col-span-2 md:col-span-1">
             <input
               type="text"
