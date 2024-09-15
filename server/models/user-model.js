@@ -11,7 +11,10 @@ const userSchema = new mongoose.Schema({
     phone: { type: String, required: true },
     password: { type: String, required: true },
     isAdmin: { type: Boolean, default: false },
-    isHod: { type: Boolean, default: false }
+    isHod: { type: Boolean, default: false },
+    otp: { type: String },
+    otpExpires: { type: Date },
+    isVerified: { type: Boolean, default: false } // New field
 });
 
 // Hash password before saving user

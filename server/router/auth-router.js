@@ -7,6 +7,7 @@ const authMiddleware = require("../middlewares/auth-middleware");
 
 router.route("/").get(authControllers.home);
 router.route("/register").post(validate(SignupSchema), authControllers.register);
+router.route("/verify-otp").post(authControllers.verifyOTP); // New route for OTP verification
 router.route("/login").post(validate(loginSchema), authControllers.login);
 router.route("/user").get(authMiddleware, authControllers.user);
 router.route("/update").patch(authMiddleware, authControllers.updateUser);

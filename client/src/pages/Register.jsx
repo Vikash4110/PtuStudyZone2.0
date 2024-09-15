@@ -25,8 +25,11 @@ const Register = ({ setIsLoggedIn }) => {
     email: "",
     phone: "",
     password: "",
+    otp: "",
+    userId: "" 
   });
   const [loading, setLoading] = useState(false); // Loading state
+  const [otpStep, setOtpStep] = useState(false);
   const { storeTokenInLS } = useAuth();
 
   const handleInput = (e) => {
@@ -36,57 +39,69 @@ const Register = ({ setIsLoggedIn }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (!backendUrl) {
-      toast.error(
-        "Backend URL is not defined. Please check your environment variables."
-      );
-      return;
-    }
-
-    setLoading(true); // Start loading
-
+    
+    // Display a loading spinner or some indication that the request is in progress
+    setLoading(true);
+  
     try {
-      const response = await fetch(`${backendUrl}/api/auth/register`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(user),
-      });
-
-      const res_data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(
-          res_data.extraDetails || res_data.message || "Registration failed"
-        );
+      let response;
+      let data;
+  
+      if (otpStep) {
+        // Verify OTP
+        response = await fetch(`${backendUrl}/api/auth/verify-otp`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ userId: user.userId, otp: user.otp }),
+        });
+  
+        data = await response.json();
+  
+        if (response.ok) {
+          toast.success(data.message);
+          setOtpStep(false);
+          navigate("/login");
+        } else {
+          // Extract detailed error message if available
+          const errorMessage = data.errors ? data.errors.map(e => e.message).join(", ") : data.message;
+          toast.error(errorMessage);
+        }
+      } else {
+        // Register User
+        response = await fetch(`${backendUrl}/api/auth/register`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(user),
+        });
+  
+        data = await response.json();
+  
+        if (response.ok) {
+          toast.success(data.msg);
+          setUser(prev => ({ ...prev, userId: data.userId }));
+          setOtpStep(true);
+        } else {
+          // Extract detailed error message if available
+          const errorMessage = data.errors ? data.errors.map(e => e.message).join(", ") : data.message;
+          toast.error(errorMessage);
+        }
       }
-
-      storeTokenInLS(res_data.token);
-      setUser({
-        username: "",
-        rollno: "",
-        department: "B.Tech Computer Science Engineering",
-        semester: "1",
-        email: "",
-        phone: "",
-        password: "",
-      });
-      toast.success("Registered Successfully");
-      navigate("/");
     } catch (error) {
-      console.error("Register error: ", error);
-      toast.error(error.message || "An error occurred. Please try again.");
+      // Log error details for debugging purposes
+      console.error("Error during registration or OTP verification:", error);
+      toast.error("An unexpected error occurred. Please try again.");
     } finally {
-      setLoading(false); // Stop loading
+      // Ensure loading state is reset regardless of success or failure
+      setLoading(false);
     }
   };
-
+  
+  
   return (
     <>
       <form onSubmit={handleSubmit} className="flex flex-col gap-2 w-full max-w-md mx-auto mt-6  text-center border-2 rounded-3xl py-10 lg:py-12 px-6 lg:px-10 shadow-2xl ">
-
+      {!otpStep ? (
+        <>
         <div className="grid grid-cols-2 gap-6">
 
           <div className="relative h-11 w-full col-start-1 col-span-2 md:col-span-1">
@@ -250,7 +265,34 @@ const Register = ({ setIsLoggedIn }) => {
             "Register Now"
           )}
         </button>
-
+        </>
+        ) : (
+        <>
+        <p className="mb-4 text-center text-lg font-semibold text-green-600">
+    OTP has been sent to your email <span className="font-bold text-green-600">{user.email}</span> successfully.
+  </p>
+        <input
+                type="text"
+                name="otp"
+                value={user.otp}
+                onChange={handleInput}
+                placeholder="Enter OTP"
+                required
+                className="shadow-xl peer h-full w-full rounded-xl border border-gray-300 border-t-transparent bg-transparent px-3 py-3 font-sans text-sm font-normal text-gray-700 outline-none transition-all placeholder-shown:border placeholder-shown:border-gray-200 placeholder-shown:border-t-gray-200 focus:border-2 focus:border-[#127c71] focus:border-t-transparent focus:border-r-transparent focus:border-l-transparent disabled:border-0 disabled:bg-gray-50"
+              />
+                            <button
+                type="submit"
+                disabled={loading}
+                className="py-2 px-4 rounded-full mt-6 font-medium text-white w-1/2 mx-auto  block  bg-gradient-to-r from-purple-500 to-red-500   transition-transform duration-200 ease-in-out hover:scale-105 active:scale-95"
+              >
+                {loading ? (
+                  <RotatingLines strokeColor="#fff" strokeWidth="5" animationDuration="0.75" width="20" visible={true} />
+                ) : (
+                  "Verify OTP"
+                )}
+              </button>
+            </>
+        )}
         <p className="text-center mt-4 text-gray-600">
           Already registered? <Link to="/login" className="text-[#ed1f26] font-semibold hover:underline">Login</Link>
         </p>

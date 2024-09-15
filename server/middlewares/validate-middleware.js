@@ -1,21 +1,29 @@
-const validate = (schema) => async (req, res, next) => {
-    try {
-        const parseBody = await schema.parseAsync(req.body);
-        req.body = parseBody;
-        next();
-    } catch (error) {
-        const status = 422;
-        const message = "Fill the Input Properly";
-        const extraDetails = error.errors && error.errors.length > 0 ? error.errors[0].message : "Validation error";
+const { z } = require('zod'); // Ensure Zod is imported
 
-        const errorResponse = {
-            status,
-            extraDetails,
-            message,
-        };
-        console.log(errorResponse);
-        res.status(422).json(errorResponse);
+const validate = (schema) => async (req, res, next) => {
+  try {
+    // Parse and validate the request body
+    const parseBody = await schema.parseAsync(req.body);
+    req.body = parseBody; // Attach validated data to req.body
+    next(); // Proceed to the next middleware/route handler
+  } catch (error) {
+    if (error instanceof z.ZodError) {
+      // Extract field-specific validation error messages
+      const errors = error.errors.map((err) => ({
+        field: err.path[0], // The field that caused the error
+        message: err.message, // The specific error message from Zod
+      }));
+
+      return res.status(422).json({
+        status: 422,
+        message: "Validation Error", // Generic message for the response
+        errors, // Detailed errors for specific fields
+      });
     }
+
+    // For other types of errors, pass it to the default error handler
+    next(error);
+  }
 };
 
 module.exports = validate;

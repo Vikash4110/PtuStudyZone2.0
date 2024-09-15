@@ -1,24 +1,27 @@
 const User = require("../models/user-model");
-const bcrypt = require('bcryptjs');
+const { generateOTP, sendOTPEmail } = require("../utils/otp-utils");
 
 // Home Route
 const home = async (req, res) => {
     res.status(200).send("Hello World");
 };
-
-// User Registration Logic
+//User Registration Logic
 const register = async (req, res) => {
     try {
         const { username, rollno, department, semester, email, phone, password } = req.body;
 
         const userExist = await User.findOne({ email });
         const rollnoExist = await User.findOne({ rollno });
+
         if (userExist) {
             return res.status(400).json({ message: "Email already exists" });
         }
         if (rollnoExist) {
             return res.status(400).json({ message: "RollNo already exists" });
         }
+
+        const otp = generateOTP();
+        const otpExpires = Date.now() + 10 * 60 * 1000; // OTP valid for 10 minutes
 
         const newUser = new User({
             username,
@@ -27,15 +30,18 @@ const register = async (req, res) => {
             semester,
             email,
             phone,
-            password // Password will be hashed in the pre-save hook
+            password,
+            otp,
+            otpExpires,
+            isVerified: false // Ensure user is not verified yet
         });
 
-        await newUser.save(); // Save the user to the database
+        await newUser.save();
+        await sendOTPEmail(email, otp);
 
         res.status(201).json({
-            msg: "Registration Successful",
-            token: await newUser.generateToken(),
-            userId: newUser._id.toString(),
+            msg: "Registration Successful. Please verify your OTP.",
+            userId: newUser._id.toString()
         });
     } catch (err) {
         console.error("Registration error:", err);
@@ -43,7 +49,65 @@ const register = async (req, res) => {
     }
 };
 
+// auth-controller.js
+
+
+//verify-otp
+const verifyOTP = async (req, res) => {
+    try {
+        const { userId, otp } = req.body;
+        const user = await User.findById(userId);
+
+        if (!user) {
+            return res.status(400).json({ message: "User not found" });
+        }
+
+        if (user.otp !== otp) {
+            return res.status(400).json({ message: "Invalid OTP" });
+        }
+
+        if (Date.now() > user.otpExpires) {
+            return res.status(400).json({ message: "OTP has expired" });
+        }
+
+        user.otp = undefined; // Clear OTP
+        user.otpExpires = undefined; // Clear OTP expiry time
+        user.isVerified = true; // Mark user as verified
+        await user.save();
+
+        res.status(200).json({ message: "OTP verified successfully" });
+    } catch (err) {
+        console.error("OTP Verification error:", err);
+        res.status(500).json({ message: "Internal Server Error" });
+    }
+};
+
 // User Login Logic
+// const login = async (req, res) => {
+//     try {
+//         const { email, password } = req.body;
+//         const userExist = await User.findOne({ email });
+
+//         if (!userExist) {
+//             return res.status(400).json({ message: "Invalid Credentials" });
+//         }
+
+//         const isPasswordValid = await userExist.comparePassword(password); // Use comparePassword method
+//         if (isPasswordValid) {
+//             res.status(200).json({
+//                 msg: "Login Successful",
+//                 token: await userExist.generateToken(),
+//                 userId: userExist._id.toString(),
+//             });
+//         } else {
+//             res.status(401).json({ message: "Invalid Email or Password" });
+//         }
+//     } catch (err) {
+//         console.error(err);
+//         res.status(500).json({ message: "Internal Server Error" });
+//     }
+// };
+
 const login = async (req, res) => {
     try {
         const { email, password } = req.body;
@@ -53,7 +117,11 @@ const login = async (req, res) => {
             return res.status(400).json({ message: "Invalid Credentials" });
         }
 
-        const isPasswordValid = await userExist.comparePassword(password); // Use comparePassword method
+        if (!userExist.isVerified) {
+            return res.status(400).json({ message: "User not verified. Please verify your email." });
+        }
+
+        const isPasswordValid = await userExist.comparePassword(password);
         if (isPasswordValid) {
             res.status(200).json({
                 msg: "Login Successful",
@@ -116,4 +184,4 @@ const resetPassword = async (req, res) => {
         res.status(500).json({ message: "Internal Server Error" });
     }
 };
-module.exports = { home, register, login, user, updateUser,resetPassword };
+module.exports = { home, register,verifyOTP, login, user, updateUser,resetPassword };

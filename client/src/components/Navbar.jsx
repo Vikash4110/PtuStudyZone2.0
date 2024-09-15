@@ -161,9 +161,9 @@ const Nav = () => {
                 Youtube
                 <span className="absolute left-0 bottom-0 h-0.5 bg-red-500 transition-transform transform scale-x-0 group-hover:scale-x-100 w-full"></span>
               </Link>
-              {/* <Link to="/complaints" onClick={() => setIsHamburgerOpen(false)} className="relative inline-block text-[#ed1f26] group">
+              <Link to="/complaints" onClick={() => setIsHamburgerOpen(false)} className="relative inline-block text-[#ed1f26] group">
 Complaints                <span className="absolute left-0 bottom-0 h-0.5 bg-red-500 transition-transform transform scale-x-0 group-hover:scale-x-100 w-full"></span>
-              </Link> */}
+              </Link>
                   <Link to="/blogs" onClick={() => setIsHamburgerOpen(false)} className="relative inline-block text-[#ed1f26] group">
                     Blogs
                     <span className="absolute left-0 bottom-0 h-0.5 bg-red-500 transition-transform transform scale-x-0 group-hover:scale-x-100 w-full"></span>
@@ -268,8 +268,8 @@ Complaints                <span className="absolute left-0 bottom-0 h-0.5 bg-red
                 <Link to="/blogs" title="Blogs" className={`relative text-base font-medium transition-all duration-200 rounded font-pj ${textColor} ${underlineColor} before:content-[''] before:absolute before:left-0 before:bottom-0 before:w-full before:h-[2px] before:scale-x-0 hover:before:scale-x-100 before:origin-left before:transition-transform before:duration-300}`}>
                   Blogs
                 </Link>
-                {/* <Link to="/complaints" title="Blogs" className={`relative text-base font-medium transition-all duration-200 rounded font-pj ${textColor} ${underlineColor} before:content-[''] before:absolute before:left-0 before:bottom-0 before:w-full before:h-[2px] before:scale-x-0 hover:before:scale-x-100 before:origin-left before:transition-transform before:duration-300}`}>
-                Complaints                </Link> */}
+                <Link to="/complaints" title="Blogs" className={`relative text-base font-medium transition-all duration-200 rounded font-pj ${textColor} ${underlineColor} before:content-[''] before:absolute before:left-0 before:bottom-0 before:w-full before:h-[2px] before:scale-x-0 hover:before:scale-x-100 before:origin-left before:transition-transform before:duration-300}`}>
+                Complaints                </Link>
 
                 <Link to="/contact" title="Contact" className={`relative text-base font-medium transition-all duration-200 rounded font-pj ${textColor} ${underlineColor} before:content-[''] before:absolute before:left-0 before:bottom-0 before:w-full before:h-[2px] before:scale-x-0 hover:before:scale-x-100 before:origin-left before:transition-transform before:duration-300}`}>
                   Contact Us
