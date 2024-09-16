@@ -44,7 +44,10 @@ import ComposeBlog from './components/ComposeBlog';
 import UpdateUser from "./components/UpdateUser";
 import Youtube from "./pages/Youtube";
 import ScrollToTop from './components/ScrollToTop';
-import ForgotPassword from "./pages/ForgotPassword";
+// import ForgotPassword from "./pages/ForgotPassword";
+import ForgotPassword from './components/ForgotPassword';
+import ResetPassword from './components/ResetPassword';
+
 import 'aos/dist/aos.css'; // Import AOS styles
 import AOS from 'aos'; // Import AOS
 // Initialize AOS
@@ -90,7 +93,7 @@ const App = () => {
         <Route path="/youtube" element={<Youtube />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
-
+        <Route path="/reset-password/:token" element={<ResetPassword />} />
 
         <Route path="/admin" element={<AdminLayout />}>
           <Route index element={<Navigate to="/admin/users" />} />

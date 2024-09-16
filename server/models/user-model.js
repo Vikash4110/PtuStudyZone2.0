@@ -14,7 +14,9 @@ const userSchema = new mongoose.Schema({
     isHod: { type: Boolean, default: false },
     otp: { type: String },
     otpExpires: { type: Date },
-    isVerified: { type: Boolean, default: false } // New field
+    isVerified: { type: Boolean, default: false }, // New field
+    resetPasswordToken: { type: String },
+    resetPasswordExpires: { type: Date }
 });
 
 // Hash password before saving user

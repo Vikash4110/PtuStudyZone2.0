@@ -11,6 +11,8 @@ router.route("/verify-otp").post(authControllers.verifyOTP); // New route for OT
 router.route("/login").post(validate(loginSchema), authControllers.login);
 router.route("/user").get(authMiddleware, authControllers.user);
 router.route("/update").patch(authMiddleware, authControllers.updateUser);
-router.route("/reset-password").post(authControllers.resetPassword);
+// router.route("/reset-password").post(authControllers.resetPassword);
+router.route("/forgot-password").post(authControllers.forgotPassword); // Route for forgot password
+router.route("/reset-password/:token").post(authControllers.resetPassword); // Route for resetting password with token
 
 module.exports = router;
