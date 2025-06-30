@@ -1,5 +1,5 @@
 import { Link, Outlet, Navigate } from "react-router-dom";
-import { FaUser, FaHome, FaBookOpen, FaYoutube, FaClipboardList, FaBlogger } from "react-icons/fa";
+import { FaUser, FaHome, FaBookOpen, FaYoutube, FaClipboardList, FaBlogger,FaBook } from "react-icons/fa";
 import { RiContactsBookFill } from "react-icons/ri";
 import { useAuth } from "../../store/auth";
 import { useState } from "react";
@@ -91,6 +91,13 @@ const AdminLayout = () => {
               label="Blogs"
               activeTab={activeTab}
               onClick={() => handleTabClick("Blogs")}
+            />
+             <SidebarLink
+              to="/admin/material"
+              icon={<FaBook />}
+              label="Contributed Material"
+              activeTab={activeTab}
+              onClick={() => handleTabClick("Contributed Material")}
             />
 
             <SidebarLink

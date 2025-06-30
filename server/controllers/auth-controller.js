@@ -183,9 +183,6 @@ const forgotPassword = async (req, res) => {
         const resetUrl = `${req.protocol}://${process.env.LOCALHOST_URL}/reset-password/${resetToken}`;
 
         const message = `
-            <p>You requested a password reset. Please click on the link below to reset your password:</p>
-            <a href="${resetUrl}">Reset Password</a>
-            <div style="font-family: Arial, sans-serif; color: #333; padding: 20px;">
                 <div style="text-align: center; padding: 10px;">
                     <img src="https://ptustudyzone.vercel.app/assets/mainlogo-CvKJyAPs.png" alt="PTU Study Zone" style="max-width: 150px;"/>
                 </div>

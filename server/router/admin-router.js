@@ -43,7 +43,7 @@ router.route('/youtube/add').post(authMiddleware, adminMiddleware, adminControll
 router.route('/youtube/:id').get(authMiddleware, adminMiddleware, adminController.getYoutubeById);
 router.route('/youtube/update/:id').patch(authMiddleware, adminMiddleware, adminController.updateYoutubeById);
 
-// Youtube Panel
+// Book Panel
 router.route('/book').get(authMiddleware, adminMiddleware, adminController.getAllBook);
 router.route('/book/delete/:id').delete(authMiddleware, adminMiddleware, adminController.deleteBookById);
 router.route('/book/add').post(authMiddleware, adminMiddleware, adminController.addBook);

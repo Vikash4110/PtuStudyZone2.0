@@ -15,6 +15,7 @@ const blogRouter = require("./router/blog-router");
 const bookRoute = require('./router/book-router');
 const hodRouter = require('./router/hod-router');
 const complaintRoute = require('./router/complaint-router');
+const MaterialRoute = require('./router/material-router');
 
 const path = require('path')
 
@@ -42,6 +43,7 @@ app.use('/api/blogs', blogRouter);
 app.use('/api/hod', hodRouter);
 app.use('/api/form', complaintRoute);
 
+app.use('/api/data',MaterialRoute);
 
 app.get('/', (req, res) => {
   res.send('Hello Ptu');

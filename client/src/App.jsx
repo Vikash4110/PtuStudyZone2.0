@@ -48,6 +48,8 @@ import ScrollToTop from './components/ScrollToTop';
 import ForgotPassword from './components/ForgotPassword';
 import ResetPassword from './components/ResetPassword';
 
+import Material from "./pages/Material";
+import AdminMaterial from "./pages/AdminMaterial";
 import 'aos/dist/aos.css'; // Import AOS styles
 import AOS from 'aos'; // Import AOS
 // Initialize AOS
@@ -82,6 +84,7 @@ const App = () => {
         <Route path="/pyq" element={<Pyq />} />
         <Route path="/book" element={<Book />} />
         <Route path="/notes" element={<Notes />} />
+        <Route path="/material" element={<Material/>} />
         <Route path="/complaints" element={<Complaint/>}/>
         <Route path="/dashboard" element={<UserDashboard />} />
         <Route path="/update-profile" element={<UpdateUser />} />
@@ -116,6 +119,7 @@ const App = () => {
           <Route path="book" element={<AdminBook />} />
           <Route path="book/add" element={<AdminAddBook />} />
           <Route path="book/:id/edit" element={<AdminEditBook />} />
+          <Route path="material" element={<AdminMaterial />} />
         </Route>
         <Route path="/hod" element={<HodLayout />}>
         <Route index element={<Navigate to="/hod/complaints" />} />
